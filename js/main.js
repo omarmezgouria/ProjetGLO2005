@@ -496,7 +496,6 @@ window.articonnect = {
   animateOnScroll,
   sampleProducts, // Expose sample products globally
   updateHeaderUI, // Expose header update function
-  // Removed duplicate updateHeaderUI export
 };
 
 /**
@@ -525,7 +524,7 @@ function updateHeaderUI() {
     clientPrefix = "../client/";
     artisanPrefix = "../artisan/";
     authPrefix = "../auth/";
-    indexPath = "../../index.html"; // Go up two levels
+    indexPath = "../index.html"; // CORRECT: Go up one level from client/artisan/auth
     imagePrefix = "../../"; // Go up two levels for images from root
   }
   // Check if we are directly inside html/ (like html/index.html)
@@ -533,15 +532,15 @@ function updateHeaderUI() {
     clientPrefix = "client/"; // Sibling directory
     artisanPrefix = "artisan/";
     authPrefix = "auth/";
-    indexPath = "../index.html"; // Go up one level
+    indexPath = "index.html"; // CORRECT: Already in html/ directory
     imagePrefix = "../"; // Go up one level for images from root
   }
-  // We are at the root (e.g., /index.html or /)
+  // We are potentially outside /html/ (e.g., project root)
   else {
     clientPrefix = "html/client/"; // Need to go into html/ then client/
     artisanPrefix = "html/artisan/";
     authPrefix = "html/auth/";
-    indexPath = "html/index.html"; // Correct path from root
+    indexPath = "html/index.html"; // CORRECT: Path relative to project root
     imagePrefix = ""; // Images are relative to root
   }
 

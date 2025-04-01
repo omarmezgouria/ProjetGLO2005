@@ -1,0 +1,348 @@
+/* ===== CLIENT ORDERS PAGE STYLES ===== */
+
+.orders-page {
+  padding: var(--spacing-6) 0;
+  background-color: var(--color-grey-100);
+}
+
+/* Use profile page styles for the basic dashboard layout */
+@import url("profile.css"); /* Import shared dashboard layout styles */
+
+/* Specific overrides or additions for orders page */
+
+.content-header {
+  margin-bottom: var(--spacing-5);
+}
+.content-header h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-grey-900);
+  margin-bottom: var(--spacing-1);
+}
+.content-header p {
+  color: var(--color-grey-600);
+}
+
+/* Order Tabs */
+.orders-tabs {
+  display: flex;
+  gap: var(--spacing-1);
+  margin-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--color-grey-200);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tab-btn {
+  padding: var(--spacing-3) var(--spacing-4);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  color: var(--color-grey-600);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+  color: var(--color-grey-900);
+}
+
+.tab-btn.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Search and Filter */
+.orders-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-5);
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  position: relative;
+  flex-grow: 1;
+  min-width: 250px;
+}
+
+.search-bar i {
+  position: absolute;
+  left: var(--spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-grey-500);
+}
+
+.search-bar input {
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-2) var(--spacing-2) var(--spacing-6);
+  border: 1px solid var(--color-grey-300);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+.search-bar input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+  outline: none;
+}
+
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-300);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-700);
+  cursor: pointer;
+}
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-options {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-3);
+  z-index: 10;
+  min-width: 200px;
+  display: none; /* Hidden by default, shown by JS */
+}
+.filter-dropdown.active .filter-options {
+  /* Add 'active' class via JS */
+  display: block;
+}
+
+.filter-option {
+  display: block;
+  margin-bottom: var(--spacing-2);
+}
+.filter-option:last-child {
+  margin-bottom: 0;
+}
+.filter-option input {
+  margin-right: var(--spacing-2);
+}
+
+/* Orders List */
+.orders-list {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.order-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-grey-200);
+  overflow: hidden;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--color-grey-100);
+  border-bottom: 1px solid var(--color-grey-200);
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.order-info .order-number {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-grey-900);
+  margin-right: var(--spacing-3);
+}
+
+.order-info .order-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+}
+
+.order-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+}
+
+/* Status colors */
+.order-status.nouvelle .status-dot {
+  background-color: var(--color-info);
+}
+.order-status.nouvelle .status-text {
+  color: var(--color-info);
+}
+
+.order-status.en-preparation .status-dot {
+  background-color: var(--color-warning);
+}
+.order-status.en-preparation .status-text {
+  color: var(--color-warning);
+}
+
+.order-status.expediee .status-dot {
+  background-color: #9b59b6;
+} /* Purple */
+.order-status.expediee .status-text {
+  color: #9b59b6;
+}
+
+.order-status.livree .status-dot {
+  background-color: var(--color-success);
+}
+.order-status.livree .status-text {
+  color: var(--color-success);
+}
+
+.order-status.annulee .status-dot {
+  background-color: var(--color-danger);
+}
+.order-status.annulee .status-text {
+  color: var(--color-danger);
+}
+
+.order-details {
+  padding: var(--spacing-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.order-products {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.order-products .product-thumbnail {
+  /* Style for individual product in list */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.product-thumbnail img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-grey-200);
+}
+
+.product-info .product-title {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-1);
+}
+
+.product-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+}
+.product-meta .product-artisan {
+  margin-left: var(--spacing-2);
+  font-style: italic;
+}
+
+.order-total {
+  text-align: right;
+  min-width: 100px; /* Ensure total doesn't wrap too easily */
+}
+
+.order-total .total-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+  margin-bottom: var(--spacing-1);
+}
+
+.order-total .total-value {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-grey-900);
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-4);
+  background-color: var(--color-grey-100);
+  border-top: 1px solid var(--color-grey-200);
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+}
+
+.order-delivery {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-700);
+}
+.order-delivery i {
+  color: var(--color-primary);
+}
+
+.order-actions {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .orders-tabs {
+    font-size: var(--font-size-sm);
+  }
+  .tab-btn {
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+  .orders-search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .order-header,
+  .order-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .order-status {
+    margin-top: var(--spacing-2);
+  }
+  .order-actions {
+    width: 100%;
+    margin-top: var(--spacing-2);
+  }
+  .order-actions .btn {
+    flex-grow: 1;
+    justify-content: center;
+  }
+}
