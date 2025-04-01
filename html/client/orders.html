@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtiConnect - Mes Commandes</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/pages/orders.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__logo">
+          <a href="../index.html">
+            <img
+              src="../../images/logo.svg"
+              alt="ArtiConnect Logo"
+              class="logo__img"
+            />
+            <span class="logo__text">ArtiConnect</span>
+          </a>
+        </div>
+        <nav class="header__nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="../index.html#how-it-works" class="nav__link"
+                >Comment ça marche</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#artisans" class="nav__link"
+                >Pour les artisans</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#clients" class="nav__link"
+                >Pour les clients</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#testimonials" class="nav__link"
+                >Témoignages</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="header__actions">
+          <div class="search-container">
+            <input
+              type="text"
+              placeholder="Rechercher un produit..."
+              class="search-input"
+            />
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+          </div>
+          <a href="cart.html" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">3</span>
+          </a>
+          <div class="user-menu">
+            <button class="user-menu-btn">
+              <img
+                src="../../images/user-avatar.jpg"
+                alt="Photo de profil"
+                class="user-avatar"
+              />
+              <span class="user-name">Marie Dubois</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="user-dropdown">
+              <ul class="user-dropdown-menu">
+                <li>
+                  <a href="profile.html"
+                    ><i class="fas fa-user"></i> Mon profil</a
+                  >
+                </li>
+                <li>
+                  <a href="orders.html" class="active"
+                    ><i class="fas fa-box"></i> Mes commandes</a
+                  >
+                </li>
+                <!-- Favorites link removed -->
+                <li class="divider"></li>
+                <!-- Logout handled by main.js -->
+              </ul>
+            </div>
+          </div>
+          <button class="menu-toggle" aria-label="Toggle menu">
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="orders-page">
+      <div class="container">
+        <div class="client-dashboard">
+          <div class="dashboard-sidebar">
+            <div class="user-info">
+              <img
+                src="../../images/user-avatar.jpg"
+                alt="Marie Dubois"
+                class="user-avatar"
+              />
+              <div class="user-details">
+                <h3 class="user-name">Marie Dubois</h3>
+                <p class="user-email">marie.dubois@example.com</p>
+              </div>
+            </div>
+            <nav class="dashboard-nav">
+              <ul class="dashboard-menu">
+                <li class="dashboard-menu-item">
+                  <a href="profile.html" class="dashboard-link">
+                    <i class="fas fa-user"></i>
+                    <span>Mon profil</span>
+                  </a>
+                </li>
+                <li class="dashboard-menu-item active">
+                  <a href="orders.html" class="dashboard-link">
+                    <i class="fas fa-box"></i>
+                    <span>Mes commandes</span>
+                  </a>
+                </li>
+                <!-- Favorites link removed -->
+                <!-- Removed links to non-existent addresses.html and settings.html -->
+                <!-- Logout handled by main.js -->
+              </ul>
+            </nav>
+          </div>
+
+          <div class="dashboard-content">
+            <div class="content-header">
+              <h1>Mes commandes</h1>
+              <p>
+                Suivez l'état de vos commandes et consultez votre historique
+                d'achat
+              </p>
+            </div>
+
+            <div class="orders-tabs">
+              <button class="tab-btn active" data-filter="all">
+                Toutes les commandes (8)
+              </button>
+              <button class="tab-btn" data-filter="en-cours">
+                En cours (3)
+              </button>
+              <button class="tab-btn" data-filter="livrees">Livrées (5)</button>
+              <button class="tab-btn" data-filter="annulees">
+                Annulées (0)
+              </button>
+            </div>
+
+            <div class="orders-search">
+              <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input
+                  type="text"
+                  placeholder="Rechercher une commande..."
+                  id="order-search"
+                />
+              </div>
+              <div class="filter-dropdown">
+                <button class="filter-btn">
+                  <i class="fas fa-filter"></i>
+                  <span>Filtrer</span>
+                </button>
+                <div class="filter-options">
+                  <label class="filter-option">
+                    <input type="checkbox" name="date" value="this-month" />
+                    <span>Ce mois-ci</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="date" value="3-months" />
+                    <span>3 derniers mois</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="date" value="6-months" />
+                    <span>6 derniers mois</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="date" value="12-months" />
+                    <span>12 derniers mois</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="orders-list">
+              <!-- Commande 1 -->
+              <div class="order-card" data-status="en-preparation">
+                <div class="order-header">
+                  <div class="order-info">
+                    <h3 class="order-number">Commande #AC-2025-1842</h3>
+                    <span class="order-date">15 mars 2025</span>
+                  </div>
+                  <div class="order-status en-preparation">
+                    <span class="status-dot"></span>
+                    <span class="status-text">En préparation</span>
+                  </div>
+                </div>
+                <div class="order-details">
+                  <div class="order-products">
+                    <div class="product-thumbnail">
+                      <img
+                        src="../../images/product-1.jpg"
+                        alt="Table basse en chêne massif"
+                      />
+                    </div>
+                    <div class="product-info">
+                      <h4 class="product-title">Table basse en chêne massif</h4>
+                      <div class="product-meta">
+                        <span class="product-quantity">1 × 620,00 €</span>
+                        <span class="product-artisan">Par Sophie Dupont</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="order-total">
+                    <span class="total-label">Total</span>
+                    <span class="total-value">620,00 €</span>
+                  </div>
+                </div>
+                <div class="order-footer">
+                  <div class="order-delivery">
+                    <i class="fas fa-truck"></i>
+                    <span class="delivery-estimate"
+                      >Livraison estimée: <strong>25-30 mars 2025</strong></span
+                    >
+                  </div>
+                  <div class="order-actions">
+                    <a
+                      href="order_detail.html?orderId=AC-2025-1842"
+                      <!--
+                      Changed
+                      id
+                      to
+                      orderId
+                      --
+                    >
+                      class="btn btn--outline btn--small" >Détails</a
+                    >
+                    <button class="btn btn--primary btn--small contact-artisan">
+                      Contacter l'artisan
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Commande 2 -->
+              <div class="order-card" data-status="en-preparation">
+                <div class="order-header">
+                  <div class="order-info">
+                    <h3 class="order-number">Commande #AC-2025-1835</h3>
+                    <span class="order-date">10 mars 2025</span>
+                  </div>
+                  <div class="order-status expediee">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Expédiée</span>
+                  </div>
+                </div>
+                <div class="order-details">
+                  <div class="order-products">
+                    <div class="product-thumbnail">
+                      <img
+                        src="../../images/product-2.jpg"
+                        alt="Étagère murale sur mesure"
+                      />
+                    </div>
+                    <div class="product-info">
+                      <h4 class="product-title">Étagère murale sur mesure</h4>
+                      <div class="product-meta">
+                        <span class="product-quantity">2 × 345,00 €</span>
+                        <span class="product-artisan">Par Lucas Morin</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="order-total">
+                    <span class="total-label">Total</span>
+                    <span class="total-value">690,00 €</span>
+                  </div>
+                </div>
+                <div class="order-footer">
+                  <div class="order-delivery">
+                    <i class="fas fa-truck"></i>
+                    <span class="delivery-estimate"
+                      >Livraison estimée: <strong>20-22 mars 2025</strong></span
+                    >
+                  </div>
+                  <div class="order-actions">
+                    <a
+                      href="order_detail.html?orderId=AC-2025-1835"
+                      <!--
+                      Changed
+                      id
+                      to
+                      orderId
+                      --
+                    >
+                      class="btn btn--outline btn--small" >Détails</a
+                    >
+                    <a href="#" class="btn btn--secondary btn--small"
+                      >Suivre le colis</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Commande 3 -->
+              <div class="order-card" data-status="nouvelle">
+                <div class="order-header">
+                  <div class="order-info">
+                    <h3 class="order-number">Commande #AC-2025-1830</h3>
+                    <span class="order-date">5 mars 2025</span>
+                  </div>
+                  <div class="order-status nouvelle">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Nouvelle</span>
+                  </div>
+                </div>
+                <div class="order-details">
+                  <div class="order-products">
+                    <div class="product-thumbnail">
+                      <img
+                        src="../../images/product-3.jpg"
+                        alt="Bol en céramique artisanal"
+                      />
+                    </div>
+                    <div class="product-info">
+                      <h4 class="product-title">Bol en céramique artisanal</h4>
+                      <div class="product-meta">
+                        <span class="product-quantity">4 × 45,00 €</span>
+                        <span class="product-artisan">Par Emma Bernard</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="order-total">
+                    <span class="total-label">Total</span>
+                    <span class="total-value">180,00 €</span>
+                  </div>
+                </div>
+                <div class="order-footer">
+                  <div class="order-delivery">
+                    <i class="fas fa-clock"></i>
+                    <span class="delivery-estimate">Traitement en cours</span>
+                  </div>
+                  <div class="order-actions">
+                    <a
+                      href="order_detail.html?orderId=AC-2025-1830"
+                      class="btn btn--outline btn--small"
+                      >Détails</a
+                    >
+                    <button class="btn btn--primary btn--small contact-artisan">
+                      Contacter l'artisan
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Add more order cards here or load dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <!-- Simplified Footer -->
+      <div class="container">
+        <div class="footer__bottom">
+          <p class="footer__copyright">
+            &copy; 2025 ArtiConnect. Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/orders.js"></script>
+  </body>
+</html>

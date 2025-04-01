@@ -1,0 +1,88 @@
+<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8" /> <meta
+name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ArtiConnect - Mon Profil</title> <link rel="stylesheet"
+href="../../css/main.css" /> <link rel="stylesheet"
+href="../../css/pages/profile.css" /> <!-- Font Awesome for icons --> <link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/> <!-- Google Fonts --> <link rel="preconnect"
+href="https://fonts.googleapis.com" /> <link rel="preconnect"
+href="https://fonts.gstatic.com" crossorigin /> <link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+rel="stylesheet" /> </head> <body> <header class="header"> <div
+class="container"> <div class="header__logo"> <a href="../index.html"> <img
+src="../../images/logo.svg" alt="ArtiConnect Logo" class="logo__img" /> <span
+class="logo__text">ArtiConnect</span> </a> </div> <nav class="header__nav"> <ul
+class="nav__list"> <li class="nav__item"> <a href="../index.html#how-it-works"
+class="nav__link" >Comment ça marche</a > </li> <li class="nav__item"> <a
+href="../index.html#artisans" class="nav__link" >Pour les artisans</a > </li>
+<li class="nav__item"> <a href="../index.html#clients" class="nav__link" >Pour
+les clients</a > </li> <li class="nav__item"> <a
+href="../index.html#testimonials" class="nav__link" >Témoignages</a > </li>
+</ul> </nav> <div class="header__actions"> <!-- Actions dynamically populated by
+js/main.js --> </div> <button class="menu-toggle" aria-label="Toggle menu">
+<span class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
+<span class="menu-toggle__bar"></span> </button> </div> </header> <main
+class="profile-page"> <div class="container"> <div class="client-dashboard">
+<div class="dashboard-sidebar"> <div class="user-info"> <img
+src="../../images/user-avatar.jpg" alt="Marie Dubois" class="user-avatar" />
+<div class="user-details"> <h3 class="user-name">Marie Dubois</h3> <p
+class="user-email">marie.dubois@example.com</p> </div> </div> <nav
+class="dashboard-nav"> <ul class="dashboard-menu"> <li
+class="dashboard-menu-item active"> <a href="profile.html"
+class="dashboard-link"> <i class="fas fa-user"></i> <span>Mon profil</span> </a>
+</li> <li class="dashboard-menu-item"> <a href="orders.html"
+class="dashboard-link"> <i class="fas fa-box"></i> <span>Mes commandes</span>
+</a> </li> <!-- Favorites link removed --> <!-- Removed links to non-existent
+addresses.html and settings.html --> <!-- Logout handled by main.js --> </ul>
+</nav> </div> <div class="dashboard-content"> <div class="content-header">
+<h1>Mon profil</h1> <p>Gérez vos informations personnelles et préférences</p>
+</div> <div class="profile-sections"> <div class="profile-section"> <div
+class="section-header"> <h2>Informations personnelles</h2> <button class="btn
+btn--outline btn--small edit-section-btn"> Modifier </button> </div> <div
+class="section-content"> <div class="profile-info view-mode"> <div
+class="info-group"> <label class="info-label">Prénom</label> <p
+class="info-value">Marie</p> </div> <div class="info-group"> <label
+class="info-label">Nom</label> <p class="info-value">Dubois</p> </div> <div
+class="info-group"> <label class="info-label">Email</label> <p
+class="info-value">marie.dubois@example.com</p> </div> <div class="info-group">
+<label class="info-label">Téléphone</label> <p class="info-value">+33 6 12 34 56
+78</p> </div> <div class="info-group"> <label class="info-label">Date de
+naissance</label> <p class="info-value">12/04/1988</p> </div> </div> <div
+class="profile-form edit-mode hidden"> <form id="personal-info-form"> <div
+class="form-row"> <div class="form-group half"> <label for="first-name"
+class="form-label" >Prénom</label > <input type="text" id="first-name"
+name="firstName" class="form-control" value="Marie" /> </div> <div
+class="form-group half"> <label for="last-name" class="form-label">Nom</label>
+<input type="text" id="last-name" name="lastName" class="form-control"
+value="Dubois" /> </div> </div> <div class="form-group"> <label for="email"
+class="form-label">Email</label> <input type="email" id="email" name="email"
+class="form-control" value="marie.dubois@example.com" /> </div> <div
+class="form-group"> <label for="phone" class="form-label">Téléphone</label>
+<input type="tel" id="phone" name="phone" class="form-control" value="+33 6 12
+34 56 78" /> </div> <div class="form-group"> <label for="birthdate"
+class="form-label" >Date de naissance</label > <input type="date" id="birthdate"
+name="birthdate" class="form-control" value="1988-04-12" /> </div> <div
+class="form-actions"> <button type="button" class="btn btn--outline
+cancel-edit-btn" > Annuler </button> <button type="submit" class="btn
+btn--primary save-btn"> Enregistrer </button> </div> </form> </div> </div>
+</div> <div class="profile-section"> <div class="section-header"> <h2>Photo de
+profil</h2> <button class="btn btn--outline btn--small edit-section-btn">
+Modifier </button> </div> <div class="section-content"> <div
+class="profile-photo view-mode"> <div class="current-photo"> <img
+src="../../images/user-avatar.jpg" alt="Marie Dubois" class="large-avatar" />
+</div> </div> <div class="profile-photo-form edit-mode hidden"> <form
+id="photo-form"> <div class="photo-upload"> <div class="current-photo"> <img
+src="../../images/user-avatar.jpg" alt="Marie Dubois" class="large-avatar" />
+</div> <div class="upload-actions"> <label for="profile-photo-upload" class="btn
+btn--outline" > <i class="fas fa-upload"></i> Choisir une photo </label> <input
+type="file" id="profile-photo-upload" accept="image/*" class="hidden" /> <button
+type="button" class="btn btn--outline btn--danger remove-photo-btn" > <i
+class="fas fa-trash-alt"></i> Supprimer </button> </div> </div> <p
+class="upload-instructions"> Formats acceptés: JPG, PNG. Taille maximale: 5 Mo
+</p> <div class="form-actions"> <button type="button" class="btn btn--outline
+cancel-edit-btn" > Annuler </button> <button type="submit" class="btn
+btn--primary save-btn"> Enregistrer </button> </div> </form> </div> </div>
+</div> <!-- Communication Preferences section removed --> </div> </div> </div>
+</div> </main> <script src="../../js/main.js"></script> <script
+src="../../js/profile.js"></script> </body> </html> ]]>

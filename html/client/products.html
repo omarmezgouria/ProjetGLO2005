@@ -1,0 +1,121 @@
+<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8" /> <meta
+name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ArtiConnect - Catalogue de Produits</title> <link rel="stylesheet"
+href="../../css/main.css" /> <link rel="stylesheet"
+href="../../css/pages/products.css" /> <!-- Font Awesome for icons --> <link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/> <!-- Google Fonts --> <link rel="preconnect"
+href="https://fonts.googleapis.com" /> <link rel="preconnect"
+href="https://fonts.gstatic.com" crossorigin /> <link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+rel="stylesheet" /> </head> <body> <header class="header"> <div
+class="container"> <div class="header__logo"> <a href="../index.html"> <img
+src="../../images/logo.svg" alt="ArtiConnect Logo" class="logo__img" /> <span
+class="logo__text">ArtiConnect</span> </a> </div> <nav class="header__nav"> <ul
+class="nav__list"> <li class="nav__item"> <a href="../index.html#how-it-works"
+class="nav__link" >Comment ça marche</a > </li> <li class="nav__item"> <a
+href="../index.html#artisans" class="nav__link" >Pour les artisans</a > </li>
+<li class="nav__item"> <a href="../index.html#clients" class="nav__link" >Pour
+les clients</a > </li> <li class="nav__item"> <a
+href="../index.html#testimonials" class="nav__link" >Témoignages</a > </li>
+</ul> </nav> <div class="header__actions"> <!-- Actions dynamically populated by
+js/main.js --> </div> <button class="menu-toggle" aria-label="Toggle menu">
+<span class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
+<span class="menu-toggle__bar"></span> </button> </div> </header> <main
+class="products-page"> <div class="container"> <div class="products-header">
+<h1>Découvrez nos créations artisanales</h1> <p> Explorez notre collection de
+produits authentiques fabriqués à la main par des artisans passionnés. </p>
+</div> <div class="products-layout"> <aside class="filters-sidebar"> <div
+class="filters-header"> <h2>Filtres</h2> <button
+class="clear-filters">Réinitialiser</button> </div> <div class="filter-group">
+<h3 class="filter-title">Catégories</h3> <div class="filter-options"> <label
+class="filter-option"> <input type="checkbox" name="category" value="bois" />
+<span class="checkbox-custom"></span> <span>Travail du bois</span> <span
+class="count">(42)</span> </label> <label class="filter-option"> <input
+type="checkbox" name="category" value="ceramique" /> <span
+class="checkbox-custom"></span> <span>Céramique</span> <span
+class="count">(28)</span> </label> <label class="filter-option"> <input
+type="checkbox" name="category" value="textile" /> <span
+class="checkbox-custom"></span> <span>Textile et couture</span> <span
+class="count">(36)</span> </label> <label class="filter-option"> <input
+type="checkbox" name="category" value="bijoux" /> <span
+class="checkbox-custom"></span> <span>Bijouterie</span> <span
+class="count">(23)</span> </label> <label class="filter-option"> <input
+type="checkbox" name="category" value="cuir" /> <span
+class="checkbox-custom"></span> <span>Maroquinerie</span> <span
+class="count">(17)</span> </label> <label class="filter-option"> <input
+type="checkbox" name="category" value="verre" /> <span
+class="checkbox-custom"></span> <span>Verrerie</span> <span
+class="count">(12)</span> </label> </div> </div> <div class="filter-group"> <h3
+class="filter-title">Prix</h3> <div class="filter-options"> <div
+class="price-range"> <div class="price-inputs"> <input type="number"
+id="min-price" placeholder="Min" min="0" /> <span>à</span> <input type="number"
+id="max-price" placeholder="Max" min="0" /> </div> <button class="btn btn--small
+btn--outline price-apply"> Appliquer </button> </div> </div> </div> <div
+class="filter-group"> <h3 class="filter-title">Disponibilité</h3> <div
+class="filter-options"> <label class="filter-option"> <input type="checkbox"
+name="availability" value="in-stock" /> <span class="checkbox-custom"></span>
+<span>En stock</span> <span class="count">(124)</span> </label> <label
+class="filter-option"> <input type="checkbox" name="availability"
+value="custom-order" /> <span class="checkbox-custom"></span> <span>Sur
+commande</span> <span class="count">(36)</span> </label> </div> </div> <div
+class="filter-group"> <h3 class="filter-title">Artisans</h3> <div
+class="filter-options"> <label class="filter-option"> <input type="checkbox"
+name="artisan" value="sophie-dupont" /> <span class="checkbox-custom"></span>
+<span>Sophie Dupont</span> <span class="count">(15)</span> </label> <label
+class="filter-option"> <input type="checkbox" name="artisan" value="lucas-morin"
+/> <span class="checkbox-custom"></span> <span>Lucas Morin</span> <span
+class="count">(12)</span> </label> <label class="filter-option"> <input
+type="checkbox" name="artisan" value="emma-bernard" /> <span
+class="checkbox-custom"></span> <span>Emma Bernard</span> <span
+class="count">(9)</span> </label> <label class="filter-option"> <input
+type="checkbox" name="artisan" value="thomas-petit" /> <span
+class="checkbox-custom"></span> <span>Thomas Petit</span> <span
+class="count">(8)</span> </label> <label class="filter-option"> <input
+type="checkbox" name="artisan" value="mylene-gagnon" /> <span
+class="checkbox-custom"></span> <span>Mylène Gagnon</span> <span
+class="count">(7)</span> </label> </div> <a href="#" class="see-more">Voir plus
+d'artisans</a> </div> </aside> <div class="products-content"> <div
+class="products-toolbar"> <div class="products-count"> <span>158 produits</span>
+</div> <div class="products-sort"> <label for="sort-select">Trier par :</label>
+<select id="sort-select" class="sort-select"> <option
+value="popular">Popularité</option> <option value="recent">Plus récents</option>
+<option value="price-low">Prix croissant</option> <option
+value="price-high">Prix décroissant</option> <option value="name-az">Nom
+(A-Z)</option> <option value="name-za">Nom (Z-A)</option> </select> </div> <div
+class="view-options"> <button class="view-option view-grid active"> <i
+class="fas fa-th-large"></i> </button> <button class="view-option view-list"> <i
+class="fas fa-list"></i> </button> </div> </div> <div class="products-grid">
+<!-- Produit 1 --> <div class="product-card"> <!-- Favorite button removed -->
+<a href="product_detail.html" class="product-image"> <img
+src="../../images/product-1.jpg" alt="Table basse en chêne" /> </a> <div
+class="product-info"> <div class="product-category">Travail du bois</div> <h3
+class="product-title"> <a href="product_detail.html" >Table basse en chêne
+massif</a > </h3> <div class="product-artisan"> <a href="#">Par Sophie
+Dupont</a> </div> <div class="product-price">620,00 €</div> <div
+class="product-rating"> <div class="stars"> <i class="fas fa-star"></i> <i
+class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+<i class="fas fa-star-half-alt"></i> </div> <span
+class="rating-count">(24)</span> </div> <div class="product-actions"> <button
+class="btn btn--primary add-to-cart"> <i class="fas fa-shopping-cart"></i>
+Ajouter </button> <a href="product_detail.html" class="btn btn--outline
+view-details" >Détails</a > </div> </div> </div> <!-- Produit 2 --> <div
+class="product-card"> <!-- Favorite button removed --> <a
+href="product_detail.html" class="product-image"> <img
+src="../../images/product-2.jpg" alt="Étagère murale sur mesure" /> </a> <div
+class="product-info"> <div class="product-category">Travail du bois</div> <h3
+class="product-title"> <a href="product_detail.html">Étagère murale sur
+mesure</a> </h3> <div class="product-artisan"> <a href="#">Par Lucas Morin</a>
+</div> <div class="product-price">345,00 €</div> <div class="product-rating">
+<div class="stars"> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>
+</div> <span class="rating-count">(18)</span> </div> <div
+class="product-actions"> <button class="btn btn--primary add-to-cart"> <i
+class="fas fa-shopping-cart"></i> Ajouter </button> <a
+href="product_detail.html" class="btn btn--outline view-details" >Détails</a >
+</div> </div> </div> <!-- Produit 3 --> <div class="product-card"> <!-- Favorite
+button removed --> <a href="product_detail.html" class="product-image"></a>
+</div> </div> </div> </div> </div> </main> <script
+src="../../js/main.js"></script> <script src="../../js/product.js"></script>
+</body> </html> ]]>

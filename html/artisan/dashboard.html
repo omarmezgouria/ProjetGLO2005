@@ -1,0 +1,124 @@
+<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8"> <meta
+name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArtiConnect - Tableau de bord Artisan</title> <link rel="stylesheet"
+href="../../css/main.css"> <link rel="stylesheet"
+href="../../css/pages/dashboard.css"> <!-- Font Awesome for icons --> <link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts --> <link rel="preconnect"
+href="https://fonts.googleapis.com"> <link rel="preconnect"
+href="https://fonts.gstatic.com" crossorigin> <link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+rel="stylesheet"> </head> <body class="dashboard-body"> <header
+class="dashboard-header"> <div class="container"> <div class="header__logo"> <a
+href="../index.html"> <img src="../../images/logo.svg" alt="ArtiConnect Logo"
+class="logo__img"> <span class="logo__text">ArtiConnect</span> </a> </div> <div
+class="header__search"> <div class="search-container"> <i class="fas fa-search
+search-icon"></i> <input type="text" placeholder="Rechercher..."
+class="search-input"> </div> </div> <div class="header__actions"> <!-- Actions
+dynamically populated by js/main.js --> </div> <button class="menu-toggle"
+aria-label="Toggle menu"> <span class="menu-toggle__bar"></span> <span
+class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
+</button> </div> </header> <div class="dashboard-container"> <aside
+class="sidebar"> <nav class="sidebar-nav"> <ul class="nav-menu"> <li
+class="nav-item active"> <a href="dashboard.html" class="nav-link"> <i
+class="fas fa-tachometer-alt"></i> <span>Tableau de bord</span> </a> </li> <li
+class="nav-item"> <a href="orders.html" class="nav-link"> <i class="fas
+fa-shopping-cart"></i> <span>Commandes</span> <span class="nav-badge">5</span>
+</a> </li> <li class="nav-item"> <a href="products.html" class="nav-link"> <i
+class="fas fa-box"></i> <span>Mes produits</span> </a> </li> <li
+class="nav-item"> <a href="inventory.html" class="nav-link"> <i class="fas
+fa-warehouse"></i> <span>Inventaire</span> </a> </li> <!-- Removed links to
+non-existent portfolio.html, analytics.html, settings.html --> <li
+class="nav-item"> <a href="profile.html" class="nav-link"> <i class="fas
+fa-user-circle"></i> <span>Mon profil</span> </a> </li> </ul> </nav> <div
+class="sidebar-footer"> <div class="sidebar-footer-content"> <!-- Artisan status
+removed previously --> </div> </div> </aside> <main class="dashboard-content">
+<div class="dashboard-header"> <h1>Tableau de bord</h1> <div class="date-range">
+<button class="date-range-btn"> <i class="far fa-calendar-alt"></i> <span>Ce
+mois-ci</span> <i class="fas fa-chevron-down"></i> </button> </div> </div> <div
+class="stats-cards"> <div class="stat-card"> <div class="stat-card-header">
+<h3>Chiffre d'affaires</h3> <div class="stat-card-icon revenue"> <i class="fas
+fa-dollar-sign"></i> </div> </div> <div class="stat-card-value">2 840,50 €</div>
+<div class="stat-card-comparison up"> <i class="fas fa-arrow-up"></i>
+<span>12,4% par rapport au mois dernier</span> </div> </div> <div
+class="stat-card"> <div class="stat-card-header"> <h3>Commandes</h3> <div
+class="stat-card-icon orders"> <i class="fas fa-shopping-bag"></i> </div> </div>
+<div class="stat-card-value">18</div> <div class="stat-card-comparison up"> <i
+class="fas fa-arrow-up"></i> <span>4 de plus que le mois dernier</span> </div>
+</div> <div class="stat-card"> <div class="stat-card-header"> <h3>Produits
+vendus</h3> <div class="stat-card-icon customers"> <i class="fas
+fa-box-open"></i> </div> </div> <div class="stat-card-value">24</div> <div
+class="stat-card-comparison up"> <i class="fas fa-arrow-up"></i> <span>7 de plus
+que le mois dernier</span> </div> </div> <div class="stat-card"> <div
+class="stat-card-header"> <h3>Produits en ligne</h3> <div class="stat-card-icon
+rating"> <i class="fas fa-tags"></i> </div> </div> <div
+class="stat-card-value">42</div> <div class="stat-card-comparison up"> <i
+class="fas fa-arrow-up"></i> <span>3 de plus que le mois dernier</span> </div>
+</div> </div> <div class="dashboard-grid"> <div class="dashboard-card
+chart-card"> <div class="card-header"> <h2>Revenus mensuels</h2> <div
+class="card-actions"> <button class="card-action-btn" aria-label="Plus
+d'options"> <i class="fas fa-ellipsis-v"></i> </button> </div> </div> <div
+class="card-body"> <div class="chart-container"> <!-- Ce serait un graphique
+généré par une librairie comme Chart.js --> <div class="chart-placeholder"> <div
+class="chart-bars"> <div class="chart-bar" style="height: 40%;"></div> <div
+class="chart-bar" style="height: 65%;"></div> <div class="chart-bar"
+style="height: 35%;"></div> <div class="chart-bar" style="height: 80%;"></div>
+<div class="chart-bar" style="height: 55%;"></div> <div class="chart-bar active"
+style="height: 90%;"></div> </div> <div class="chart-labels"> <span>Jan</span>
+<span>Fév</span> <span>Mar</span> <span>Avr</span> <span>Mai</span>
+<span>Juin</span> </div> </div> </div> </div> </div> <div class="dashboard-card
+recent-orders"> <div class="card-header"> <h2>Commandes récentes</h2> <a
+href="orders.html" class="view-all">Voir tout</a> </div> <div class="card-body">
+<div class="table-responsive"> <table class="dashboard-table"> <thead> <tr>
+<th>Client</th> <th>Produit</th> <th>Date</th> <th>Statut</th> <th>Montant</th>
+</tr> </thead> <tbody> <tr> <td> <div class="client-info"> <img
+src="../../images/client-1.jpg" alt="Client" class="client-avatar"> <span>Marie
+Lavoie</span> </div> </td> <td>Table basse en chêne</td> <td>10 juin 2025</td>
+<td><span class="status-badge new">Nouvelle</span></td> <td>620,00 €</td> </tr>
+<tr> <td> <div class="client-info"> <img src="../../images/client-2.jpg"
+alt="Client" class="client-avatar"> <span>Thomas Martin</span> </div> </td>
+<td>Étagère murale sur mesure</td> <td>8 juin 2025</td> <td><span
+class="status-badge in-progress">En cours</span></td> <td>345,00 €</td> </tr>
+<tr> <td> <div class="client-info"> <img src="../../images/client-3.jpg"
+alt="Client" class="client-avatar"> <span>Sophie Tremblay</span> </div> </td>
+<td>Banc en bois recyclé</td> <td>5 juin 2025</td> <td><span class="status-badge
+completed">Terminée</span></td> <td>280,00 €</td> </tr> <tr> <td> <div
+class="client-info"> <img src="../../images/client-4.jpg" alt="Client"
+class="client-avatar"> <span>Alexandre Roy</span> </div> </td> <td>Restauration
+commode ancienne</td> <td>2 juin 2025</td> <td><span class="status-badge
+shipped">Expédiée</span></td> <td>450,00 €</td> </tr> </tbody> </table> </div>
+</div> </div> <!-- Recent Messages panel removed --> <div class="dashboard-card
+upcoming-events"> <div class="card-header"> <h2>Événements à venir</h2> <!--
+Removed link to non-existent calendar.html --> <a href="#" class="view-all">Voir
+calendrier</a> </div> <div class="card-body"> <div class="events-list"> <div
+class="event-item"> <div class="event-date"> <div class="event-day">15</div>
+<div class="event-month">Juin</div> </div> <div class="event-content"> <h4
+class="event-title">Livraison - Étagère murale sur mesure</h4> <p
+class="event-details"><i class="fas fa-map-marker-alt"></i> 123 Rue du Commerce,
+Québec</p> <p class="event-details"><i class="far fa-clock"></i> 14:00 -
+16:00</p> </div> </div> <div class="event-item"> <div class="event-date"> <div
+class="event-day">18</div> <div class="event-month">Juin</div> </div> <div
+class="event-content"> <h4 class="event-title">Consultation - Conception armoire
+de cuisine</h4> <p class="event-details"><i class="fas fa-map-marker-alt"></i>
+Vidéoconférence</p> <p class="event-details"><i class="far fa-clock"></i> 10:30
+- 11:30</p> </div> </div> <div class="event-item"> <div class="event-date"> <div
+class="event-day">22</div> <div class="event-month">Juin</div> </div> <div
+class="event-content"> <h4 class="event-title">Salon de l'artisanat local</h4>
+<p class="event-details"><i class="fas fa-map-marker-alt"></i> Centre des
+congrès, Montréal</p> <p class="event-details"><i class="far fa-clock"></i>
+09:00 - 18:00</p> </div> </div> </div> </div> </div> </div> <div
+class="dashboard-card quick-actions"> <div class="card-header"> <h2>Actions
+rapides</h2> </div> <div class="card-body"> <div class="actions-grid"> <a
+href="add_products.html" class="action-item"> <!-- Corrected link --> <div
+class="action-icon"> <i class="fas fa-plus"></i> </div> <h4>Ajouter un
+produit</h4> </a> <a href="orders.html?filter=new" class="action-item"> <div
+class="action-icon"> <i class="fas fa-shopping-cart"></i> </div> <h4>Gérer les
+commandes</h4> </a> <a href="inventory.html" class="action-item"> <div
+class="action-icon"> <i class="fas fa-boxes"></i> </div> <h4>Mettre à jour le
+stock</h4> </a> <!-- Removed link to non-existent analytics.html --> <a href="#"
+class="action-item"> <div class="action-icon"> <i class="fas fa-chart-pie"></i>
+</div> <h4>Voir les statistiques</h4> </a> </div> </div> </div> </main> </div>
+<script src="../../js/main.js"></script> <script
+src="../../js/dashboard.js"></script> <!-- Assuming dashboard.js is correct -->
+</body> </html> ]]>

@@ -1,0 +1,103 @@
+<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8" /> <meta
+name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ArtiConnect - Ajouter un Produit</title> <link rel="stylesheet"
+href="../../css/main.css" /> <link rel="stylesheet"
+href="../../css/pages/dashboard.css" /> <link rel="stylesheet"
+href="../../css/pages/product-form.css" /> <!-- Font Awesome for icons --> <link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/> <!-- Google Fonts --> <link rel="preconnect"
+href="https://fonts.googleapis.com" /> <link rel="preconnect"
+href="https://fonts.gstatic.com" crossorigin /> <link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+rel="stylesheet" /> </head> <body class="dashboard-body"> <header
+class="dashboard-header"> <div class="container"> <div class="header__logo"> <a
+href="../index.html"> <img src="../../images/logo.svg" alt="ArtiConnect Logo"
+class="logo__img" /> <span class="logo__text">ArtiConnect</span> </a> </div>
+<div class="header__search"> <div class="search-container"> <i class="fas
+fa-search search-icon"></i> <input type="text" placeholder="Rechercher..."
+class="search-input" /> </div> </div> <div class="header__actions"> <!-- Actions
+dynamically populated by js/main.js --> </div> <button class="menu-toggle"
+aria-label="Toggle menu"> <span class="menu-toggle__bar"></span> <span
+class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
+</button> </div> </header> <div class="dashboard-container"> <aside
+class="sidebar"> <nav class="sidebar-nav"> <ul class="nav-menu"> <li
+class="nav-item"> <a href="dashboard.html" class="nav-link"> <i class="fas
+fa-tachometer-alt"></i> <span>Tableau de bord</span> </a> </li> <li
+class="nav-item"> <a href="orders.html" class="nav-link"> <i class="fas
+fa-shopping-cart"></i> <span>Commandes</span> <span class="nav-badge">5</span>
+</a> </li> <li class="nav-item active"> <a href="products.html"
+class="nav-link"> <i class="fas fa-box"></i> <span>Mes produits</span> </a>
+</li> <li class="nav-item"> <a href="inventory.html" class="nav-link"> <i
+class="fas fa-warehouse"></i> <span>Inventaire</span> </a> </li> <!-- Removed
+links to non-existent portfolio.html, analytics.html, settings.html --> <li
+class="nav-item"> <a href="profile.html" class="nav-link"> <i class="fas
+fa-user-circle"></i> <span>Mon profil</span> </a> </li> </ul> </nav> <div
+class="sidebar-footer"> <div class="sidebar-footer-content"></div> </div>
+</aside> <main class="dashboard-content"> <div class="page-header"> <div
+class="breadcrumb"> <a href="products.html">Mes produits</a> <span
+class="separator"><i class="fas fa-chevron-right"></i></span> <span
+class="current">Ajouter un produit</span> </div> <h1>Ajouter un nouveau
+produit</h1> </div> <div class="product-form-container"> <form id="product-form"
+class="product-form"> <div class="form-tabs"> <button type="button"
+class="tab-btn active" data-tab="general"> Général </button> <button
+type="button" class="tab-btn" data-tab="images"> Images </button> <button
+type="button" class="tab-btn" data-tab="details"> Détails </button> <button
+type="button" class="tab-btn" data-tab="price-inventory"> Prix & Inventaire
+</button> <button type="button" class="tab-btn" data-tab="shipping"> Livraison
+</button> </div> <div class="form-content"> <!-- Onglet Général --> <div
+class="tab-content active" id="general-content"> <div class="form-group"> <label
+for="product-name" class="form-label required" >Nom du produit</label > <input
+type="text" id="product-name" name="name" class="form-control" required />
+<small class="form-text" >Nom clair et descriptif, 70 caractères max. Le titre
+apparaîtra dans les résultats de recherche.</small > </div> <div
+class="form-group"> <label for="product-description" class="form-label required"
+>Description</label > <textarea id="product-description" name="description"
+class="form-control rich-editor" rows="6" required ></textarea> <small
+class="form-text" >Décrivez votre produit en détail. Incluez les
+caractéristiques, matériaux, dimensions et toute autre information
+pertinente.</small > </div> <div class="form-row"> <div class="form-group half">
+<label for="product-category" class="form-label required" >Catégorie
+principale</label > <select id="product-category" name="category"
+class="form-control" required > <option value="">Sélectionner une
+catégorie</option> <option value="bois">Travail du bois</option> <option
+value="ceramique">Céramique</option> <option value="textile">Textile et
+couture</option> <option value="bijoux">Bijouterie</option> <option
+value="cuir">Maroquinerie</option> <option value="verre">Verrerie</option>
+<option value="metal">Métallerie</option> <option value="papier">Art du
+papier</option> </select> </div> <div class="form-group half"> <label
+for="product-subcategory" class="form-label" >Sous-catégorie</label > <select
+id="product-subcategory" name="subcategory" class="form-control" > <option
+value="">Sélectionner une sous-catégorie</option> <!-- Les options seront
+remplies dynamiquement selon la catégorie principale --> </select> </div> </div>
+<div class="form-group"> <label for="product-tags"
+class="form-label">Mots-clés</label> <input type="text" id="product-tags"
+name="tags" class="form-control tags-input" placeholder="Ajoutez des mots-clés
+séparés par des virgules" /> <small class="form-text" >Ajoutez jusqu'à 10
+mots-clés pour améliorer la visibilité de votre produit dans les
+recherches.</small > </div> </div> <!-- Onglet Images --> <div
+class="tab-content" id="images-content"> <div class="product-images"> <div
+class="image-dropzone"> <div class="dropzone-content"> <i class="fas
+fa-cloud-upload-alt"></i> <h3>Glissez et déposez vos images ici</h3> <p>ou</p>
+<label for="image-upload" class="btn btn--primary" >Parcourir</label > <input
+type="file" id="image-upload" multiple accept="image/*" class="hidden" /> <p
+class="dropzone-instructions"> Formats acceptés: JPG, PNG (Max 5MB par image)
+</p> </div> </div> <div class="uploaded-images"> <h3>Images téléchargées</h3> <p
+class="image-instructions"> Faites glisser pour réorganiser les images. La
+première image sera l'image principale du produit. </p> <div class="image-grid"
+id="uploaded-images-grid"> <!-- Les images téléchargées seront ajoutées ici -->
+</div> </div> <div class="image-guidelines"> <h3>Conseils pour de bonnes
+photos</h3> <ul class="guidelines-list"> <li> Utilisez un fond neutre pour
+mettre en valeur votre produit </li> <li>Assurez-vous que votre produit est bien
+éclairé</li> <li>Incluez des photos sous différents angles</li> <li>Montrez les
+détails et textures importantes</li> <li>Ajoutez une photo qui montre l'échelle
+du produit</li> </ul> </div> </div> </div> <!-- Onglet Détails --> <div
+class="tab-content" id="details-content"> <div class="form-section"> <h3
+class="section-title">Caractéristiques</h3> <div class="form-row"> <div
+class="form-group half"> <label for="product-materials" class="form-label"
+>Matériaux</label > <input type="text" id="product-materials" name="materials"
+class="form-control" /> <small class="form-text" >Ex: Chêne massif, Cuir
+végétal, Coton bio, etc.s</small > </div> </div> </div> </div> <!-- Other tabs
+(price, shipping) would go here --> </div> </form> </div> </main> </div> <script
+src="../../js/main.js"></script> <script
+src="../../js/product_form.js"></script> </body> </html> ]]>

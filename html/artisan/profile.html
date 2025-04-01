@@ -1,0 +1,103 @@
+<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8"> <meta
+name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArtiConnect - Profil Artisan</title> <link rel="stylesheet"
+href="../../css/main.css"> <link rel="stylesheet"
+href="../../css/pages/dashboard.css"> <link rel="stylesheet"
+href="../../css/pages/artisan-profile.css"> <!-- Font Awesome for icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts --> <link rel="preconnect"
+href="https://fonts.googleapis.com"> <link rel="preconnect"
+href="https://fonts.gstatic.com" crossorigin> <link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+rel="stylesheet"> </head> <body class="dashboard-body"> <header
+class="dashboard-header"> <div class="container"> <div class="header__logo"> <a
+href="../index.html"> <img src="../../images/logo.svg" alt="ArtiConnect Logo"
+class="logo__img"> <span class="logo__text">ArtiConnect</span> </a> </div> <div
+class="header__search"> <div class="search-container"> <i class="fas fa-search
+search-icon"></i> <input type="text" placeholder="Rechercher..."
+class="search-input"> </div> </div> <div class="header__actions"> <!-- Actions
+dynamically populated by js/main.js --> </div> <button class="menu-toggle"
+aria-label="Toggle menu"> <span class="menu-toggle__bar"></span> <span
+class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
+</button> </div> </header> <div class="dashboard-container"> <aside
+class="sidebar"> <nav class="sidebar-nav"> <ul class="nav-menu"> <li
+class="nav-item"> <a href="dashboard.html" class="nav-link"> <i class="fas
+fa-tachometer-alt"></i> <span>Tableau de bord</span> </a> </li> <li
+class="nav-item"> <a href="orders.html" class="nav-link"> <i class="fas
+fa-shopping-cart"></i> <span>Commandes</span> <span class="nav-badge">5</span>
+</a> </li> <li class="nav-item"> <a href="products.html" class="nav-link"> <i
+class="fas fa-box"></i> <span>Mes produits</span> </a> </li> <li
+class="nav-item"> <a href="inventory.html" class="nav-link"> <i class="fas
+fa-warehouse"></i> <span>Inventaire</span> </a> </li> <!-- Removed links to
+non-existent portfolio.html, analytics.html, settings.html --> <li
+class="nav-item active"> <a href="profile.html" class="nav-link"> <i class="fas
+fa-user-circle"></i> <span>Mon profil</span> </a> </li> </ul> </nav> <div
+class="sidebar-footer"> <div class="sidebar-footer-content"> <!-- Artisan status
+removed previously --> </div> </div> </aside> <main class="dashboard-content">
+<div class="page-header"> <h1>Mon profil</h1> <div class="profile-preview"> <a
+href="#" class="btn btn--outline"> <i class="fas fa-eye"></i> Voir mon profil
+public </a> </div> </div> <div class="profile-sections"> <!-- Section Photo et
+Informations de Base --> <div class="profile-section"> <div
+class="section-header"> <h2>Informations de base</h2> <button class="btn
+btn--outline btn--small edit-section-btn">Modifier</button> </div> <div
+class="section-content"> <div class="basic-info view-mode"> <div
+class="profile-photo"> <img src="../../images/artisan-large.jpg" alt="Sophie
+Dupont" class="large-avatar"> </div> <div class="profile-details"> <div
+class="info-group"> <label class="info-label">Nom</label> <p
+class="info-value">Sophie Dupont</p> </div> <div class="info-group"> <label
+class="info-label">Nom de l'entreprise/atelier</label> <p
+class="info-value">Atelier Bois & Âme</p> </div> <div class="info-group"> <label
+class="info-label">Email</label> <p
+class="info-value">sophie.dupont@example.com</p> </div> <div class="info-group">
+<label class="info-label">Téléphone</label> <p class="info-value">+33 6 12 34 56
+78</p> </div> <div class="info-group"> <label class="info-label">Catégorie
+principale</label> <p class="info-value">Travail du bois</p> </div> <div
+class="info-group"> <label class="info-label">Artisan depuis</label> <p
+class="info-value">2018</p> </div> </div> </div> <div class="basic-info-form
+edit-mode hidden"> <form id="basic-info-form"> <div class="form-row"> <div
+class="form-group half"> <label for="first-name"
+class="form-label">Prénom</label> <input type="text" id="first-name"
+name="firstName" class="form-control" value="Sophie"> </div> <div
+class="form-group half"> <label for="last-name" class="form-label">Nom</label>
+<input type="text" id="last-name" name="lastName" class="form-control"
+value="Dupont"> </div> </div> <div class="form-group"> <label
+for="business-name" class="form-label">Nom de l'entreprise/atelier</label>
+<input type="text" id="business-name" name="businessName" class="form-control"
+value="Atelier Bois & Âme"> </div> <div class="form-row"> <div class="form-group
+half"> <label for="email" class="form-label">Email</label> <input type="email"
+id="email" name="email" class="form-control" value="sophie.dupont@example.com">
+</div> <div class="form-group half"> <label for="phone"
+class="form-label">Téléphone</label> <input type="tel" id="phone" name="phone"
+class="form-control" value="+33 6 12 34 56 78"> </div> </div> <div
+class="form-row"> <div class="form-group half"> <label for="main-category"
+class="form-label">Catégorie principale</label> <select id="main-category"
+name="mainCategory" class="form-control"> <option value="bois" selected>Travail
+du bois</option> <option value="ceramique">Céramique</option> <option
+value="textile">Textile et couture</option> <option
+value="bijoux">Bijouterie</option> <option value="cuir">Maroquinerie</option>
+<option value="verre">Verrerie</option> <option
+value="metal">Métallerie</option> <option value="papier">Art du papier</option>
+</select> </div> <div class="form-group half"> <label for="artisan-since"
+class="form-label">Artisan depuis</label> <select id="artisan-since"
+name="artisanSince" class="form-control"> <option value="2023">2023</option>
+<option value="2022">2022</option> <option value="2021">2021</option> <option
+value="2020">2020</option> <option value="2019">2019</option> <option
+value="2018" selected>2018</option> <option value="2017">2017</option> <option
+value="2016">2016</option> <option value="2015">2015</option> <option
+value="earlier">Avant 2015</option> </select> </div> </div> <div
+class="form-group"> <label class="form-label">Photo de profil</label> <div
+class="photo-upload"> <div class="current-photo"> <img
+src="../../images/artisan-large.jpg" alt="Sophie Dupont" class="large-avatar">
+</div> <div class="upload-actions"> <label for="profile-photo-upload" class="btn
+btn--outline"> <i class="fas fa-upload"></i> Choisir une photo </label> <input
+type="file" id="profile-photo-upload" accept="image/*" class="hidden"> <button
+type="button" class="btn btn--outline btn--danger remove-photo-btn"> <i
+class="fas fa-trash-alt"></i> Supprimer </button> </div> </div> <p
+class="upload-instructions"> Formats acceptés: JPG, PNG. Taille maximale: 5 Mo
+</p> </div> <div class="form-actions"> <button type="button" class="btn
+btn--outline cancel-edit-btn">Annuler</button> <button type="submit" class="btn
+btn--primary save-btn">Enregistrer</button> </div> </form> </div> </div> </div>
+<!-- Add other profile sections here (e.g., Description, Portfolio, Address,
+Password) --> </div> </main> </div> <script src="../../js/main.js"></script>
+<script src="../../js/artisan_profile.js"></script> </body> </html>]]>

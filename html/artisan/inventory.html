@@ -1,0 +1,108 @@
+<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8"> <meta
+name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArtiConnect - Gestion de l'Inventaire</title> <link rel="stylesheet"
+href="../../css/main.css"> <link rel="stylesheet"
+href="../../css/pages/dashboard.css"> <link rel="stylesheet"
+href="../../css/pages/inventory.css"> <!-- Font Awesome for icons --> <link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts --> <link rel="preconnect"
+href="https://fonts.googleapis.com"> <link rel="preconnect"
+href="https://fonts.gstatic.com" crossorigin> <link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+rel="stylesheet"> </head> <body class="dashboard-body"> <header
+class="dashboard-header"> <div class="container"> <div class="header__logo"> <a
+href="../index.html"> <img src="../../images/logo.svg" alt="ArtiConnect Logo"
+class="logo__img"> <span class="logo__text">ArtiConnect</span> </a> </div> <div
+class="header__search"> <div class="search-container"> <i class="fas fa-search
+search-icon"></i> <input type="text" placeholder="Rechercher un produit..."
+class="search-input"> </div> </div> <div class="header__actions"> <!-- Actions
+dynamically populated by js/main.js --> </div> <button class="menu-toggle"
+aria-label="Toggle menu"> <span class="menu-toggle__bar"></span> <span
+class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
+</button> </div> </header> <div class="dashboard-container"> <aside
+class="sidebar"> <nav class="sidebar-nav"> <ul class="nav-menu"> <li
+class="nav-item"> <a href="dashboard.html" class="nav-link"> <i class="fas
+fa-tachometer-alt"></i> <span>Tableau de bord</span> </a> </li> <li
+class="nav-item"> <a href="orders.html" class="nav-link"> <i class="fas
+fa-shopping-cart"></i> <span>Commandes</span> <span class="nav-badge">5</span>
+</a> </li> <li class="nav-item"> <a href="products.html" class="nav-link"> <i
+class="fas fa-box"></i> <span>Mes produits</span> </a> </li> <li class="nav-item
+active"> <a href="inventory.html" class="nav-link"> <i class="fas
+fa-warehouse"></i> <span>Inventaire</span> </a> </li> <!-- Removed links to
+non-existent portfolio.html, analytics.html, settings.html --> <li
+class="nav-item"> <a href="profile.html" class="nav-link"> <i class="fas
+fa-user-circle"></i> <span>Mon profil</span> </a> </li> </ul> </nav> <div
+class="sidebar-footer"> <div class="sidebar-footer-content"> <!-- Artisan status
+removed previously --> </div> </div> </aside> <main class="dashboard-content">
+<div class="page-header"> <h1>Gestion de l'inventaire</h1> <div
+class="header-actions"> <button class="btn btn--outline"> <i class="fas
+fa-upload"></i> Importer </button> <button class="btn btn--outline"> <i
+class="fas fa-download"></i> Exporter </button> <button class="btn btn--primary
+bulk-update-btn"> <i class="fas fa-pen"></i> Mise à jour groupée </button>
+</div> </div> <div class="inventory-summary"> <div class="summary-card"> <div
+class="summary-icon"> <i class="fas fa-boxes"></i> </div> <div
+class="summary-content"> <h3>42</h3> <p>Total des produits</p> </div> </div>
+<div class="summary-card"> <div class="summary-icon in-stock"> <i class="fas
+fa-box"></i> </div> <div class="summary-content"> <h3>28</h3> <p>En stock</p>
+</div> </div> <div class="summary-card"> <div class="summary-icon low-stock"> <i
+class="fas fa-exclamation-triangle"></i> </div> <div class="summary-content">
+<h3>5</h3> <p>Stock bas</p> </div> </div> <div class="summary-card"> <div
+class="summary-icon out-stock"> <i class="fas fa-times-circle"></i> </div> <div
+class="summary-content"> <h3>9</h3> <p>Épuisé</p> </div> </div> </div> <div
+class="inventory-filters"> <div class="filters-group"> <div
+class="search-wrapper"> <i class="fas fa-search"></i> <input type="text"
+placeholder="Rechercher un produit" class="filter-search"> </div> <div
+class="filter-select-wrapper"> <select class="filter-select"
+id="category-filter"> <option value="">Toutes les catégories</option> <option
+value="bois">Travail du bois</option> <option
+value="ceramique">Céramique</option> <option value="textile">Textile</option>
+<option value="bijoux">Bijouterie</option> <option value="cuir">Cuir</option>
+<option value="verre">Verrerie</option> </select> </div> <div
+class="filter-select-wrapper"> <select class="filter-select" id="status-filter">
+<option value="">Tous les statuts</option> <option value="in-stock">En
+stock</option> <option value="low-stock">Stock bas</option> <option
+value="out-of-stock">Épuisé</option> </select> </div> <button class="btn
+btn--outline filter-more"> <i class="fas fa-sliders-h"></i> Plus de filtres
+</button> </div> </div> <div class="inventory-table-container"> <table
+class="inventory-table"> <thead> <tr> <th> <label class="checkbox-container">
+<input type="checkbox" id="select-all-products"> <span class="checkmark"></span>
+</label> </th> <th>Produit</th> <th>SKU</th> <th>Catégorie</th> <th>Prix</th>
+<th>Stock</th> <th>Seuil d'alerte</th> <th>Statut</th> <th>Dernière mise à
+jour</th> <th>Actions</th> </tr> </thead> <tbody> <!-- Produit 1 --> <tr> <td>
+<label class="checkbox-container"> <input type="checkbox" name="product-select">
+<span class="checkmark"></span> </label> </td> <td class="product-info"> <div
+class="product-img-name"> <img src="../../images/product-1.jpg" alt="Table basse
+en chêne massif" class="product-thumbnail"> <span class="product-name">Table
+basse en chêne massif</span> </div> </td> <td class="product-sku">TBC-001</td>
+<td class="product-category">Travail du bois</td> <td
+class="product-price">620,00 €</td> <td class="product-stock"> <input
+type="number" value="3" min="0" class="stock-input"> </td> <td
+class="stock-threshold"> <input type="number" value="2" min="0"
+class="threshold-input"> </td> <td class="stock-status"> <span
+class="status-badge in-stock">En stock</span> </td> <td class="last-updated">12
+mars 2025</td> <td class="product-actions"> <div class="action-buttons"> <button
+class="action-btn edit-btn" title="Modifier"> <i class="fas fa-edit"></i>
+</button> <button class="action-btn history-btn" title="Historique"> <i
+class="fas fa-history"></i> </button> <button class="action-btn more-btn"
+title="Plus d'actions"> <i class="fas fa-ellipsis-v"></i> </button> </div> </td>
+</tr> <!-- Produit 2 --> <tr> <td> <label class="checkbox-container"> <input
+type="checkbox" name="product-select"> <span class="checkmark"></span> </label>
+</td> <td class="product-info"> <div class="product-img-name"> <img
+src="../../images/product-2.jpg" alt="Étagère murale sur mesure"
+class="product-thumbnail"> <span class="product-name">Étagère murale sur
+mesure</span> </div> </td> <td class="product-sku">ETG-002</td> <td
+class="product-category">Travail du bois</td> <td class="product-price">345,00
+€</td> <td class="product-stock"> <input type="number" value="5" min="0"
+class="stock-input"> </td> <td class="stock-threshold"> <input type="number"
+value="3" min="0" class="threshold-input"> </td> <td class="stock-status"> <span
+class="status-badge in-stock">En stock</span> </td> <td class="last-updated">10
+mars 2025</td> <td class="product-actions"> <div class="action-buttons"> <button
+class="action-btn edit-btn" title="Modifier"> <i class="fas fa-edit"></i>
+</button> <button class="action-btn history-btn" title="Historique"> <i
+class="fas fa-history"></i> </button> <button class="action-btn more-btn"
+title="Plus d'actions"> <i class="fas fa-ellipsis-v"></i> </button> </div> </td>
+</tr> <!-- Add more product rows here --> </tbody> </table> </div> </main>
+</div> <script src="../../js/main.js"></script> <!-- Add inventory.js if it
+exists --> <!-- <script src="../../js/inventory.js"></script> --> </body>
+</html> ]]>

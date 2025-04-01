@@ -1,0 +1,317 @@
+/* ===== AUTHENTICATION PAGES STYLES ===== */
+
+.auth-page {
+  padding: calc(var(--header-height) + var(--spacing-4)) 0 var(--spacing-8);
+  min-height: calc(100vh - var(--header-height));
+}
+
+.auth-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.auth-content {
+  padding: var(--spacing-8) var(--spacing-6);
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.auth-title {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-grey-900);
+  margin-bottom: var(--spacing-2);
+}
+
+.auth-subtitle {
+  color: var(--color-grey-600);
+  margin-bottom: var(--spacing-6);
+}
+
+.auth-form {
+  margin-bottom: var(--spacing-4);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.auth-footer {
+  text-align: center;
+  color: var(--color-grey-600);
+}
+
+.auth-footer a {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.auth-image {
+  position: relative;
+  height: 100%;
+  min-height: 600px;
+}
+
+.auth-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.auth-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.7)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--spacing-6);
+  color: var(--color-white);
+}
+
+.auth-image-content h2 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-3);
+}
+
+.auth-image-content p {
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Password Toggle */
+.password-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: var(--spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-grey-500);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-1);
+}
+
+.password-toggle:hover {
+  color: var(--color-grey-700);
+}
+
+/* Password Strength Meter */
+.password-strength {
+  margin-top: var(--spacing-2);
+}
+
+.strength-meter {
+  height: 4px;
+  background-color: var(--color-grey-200);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-1);
+  overflow: hidden;
+}
+
+.strength-meter-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strength-meter-fill[data-strength="0"] {
+  width: 0%;
+}
+
+.strength-meter-fill[data-strength="1"] {
+  width: 25%;
+  background-color: var(--color-danger);
+}
+
+.strength-meter-fill[data-strength="2"] {
+  width: 50%;
+  background-color: var(--color-warning);
+}
+
+.strength-meter-fill[data-strength="3"] {
+  width: 75%;
+  background-color: var(--color-info);
+}
+
+.strength-meter-fill[data-strength="4"] {
+  width: 100%;
+  background-color: var(--color-success);
+}
+
+.strength-text {
+  color: var(--color-grey-600);
+  font-size: var(--font-size-sm);
+}
+
+/* User Type Selector */
+.user-type-selector {
+  margin-bottom: var(--spacing-6);
+}
+
+.selector-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-grey-800);
+  margin-bottom: var(--spacing-3);
+  text-align: center;
+}
+
+.selector-options {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.selector-option {
+  flex: 1;
+  padding: var(--spacing-4);
+  border: 2px solid var(--color-grey-300);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.selector-option:hover {
+  border-color: var(--color-primary-light);
+  background-color: var(--color-grey-100);
+}
+
+.selector-option.selected {
+  border-color: var(--color-primary);
+  background-color: rgba(74, 111, 165, 0.05);
+}
+
+.selector-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--spacing-3);
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  font-size: var(--font-size-2xl);
+  border-radius: var(--radius-full);
+}
+
+.selector-option h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-2);
+  color: var(--color-grey-900);
+}
+
+.selector-option p {
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+}
+
+/* Checkbox styling */
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+}
+
+.checkbox-container input[type="checkbox"] {
+  min-width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+.checkbox-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-700);
+}
+
+.checkbox-label a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.form-helper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-3);
+}
+
+.forgot-password {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .auth-image {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .auth-content {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+
+  .auth-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .selector-options {
+    flex-direction: column;
+  }
+
+  .auth-page {
+    padding: calc(var(--header-height) + var(--spacing-2)) 0 var(--spacing-4);
+  }
+
+  .user-type-selector {
+    margin-bottom: var(--spacing-4);
+  }
+
+  .social-auth {
+    gap: var(--spacing-2);
+  }
+
+  .form-helper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-2);
+  }
+}

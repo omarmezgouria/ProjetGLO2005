@@ -1,0 +1,154 @@
+<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8" /> <meta
+name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ArtiConnect - Connecter les artisans et les clients</title> <link
+rel="stylesheet" href="../css/main.css" /> <!-- Corrected Path --> <link
+rel="stylesheet" href="../css/pages/landing.css" /> <!-- Corrected Path --> <!--
+Font Awesome for icons --> <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/> <!-- Google Fonts --> <link rel="preconnect"
+href="https://fonts.googleapis.com" /> <link rel="preconnect"
+href="https://fonts.gstatic.com" crossorigin /> <link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+rel="stylesheet" /> </head> <body> <header class="header"> <div
+class="container"> <div class="header__logo"> <img src="../images/logo.svg" <!--
+Corrected Path --> alt="ArtiConnect Logo" class="logo__img" /> <span
+class="logo__text">ArtiConnect</span> </div> <nav class="header__nav"> <ul
+class="nav__list"> <li class="nav__item"> <a href="#how-it-works"
+class="nav__link">Comment ça marche</a> </li> <li class="nav__item"> <a
+href="#artisans" class="nav__link">Pour les artisans</a> </li> <li
+class="nav__item"> <a href="#clients" class="nav__link">Pour les clients</a>
+</li> <li class="nav__item"> <a href="#testimonials"
+class="nav__link">Témoignages</a> </li> </ul> </nav> <div
+class="header__actions"> <!-- Links populated by js/main.js --> <a href="#"
+class="btn btn--outline">Connexion</a> <a href="#" class="btn
+btn--primary">Inscription</a> </div> <button class="menu-toggle"
+aria-label="Toggle menu"> <span class="menu-toggle__bar"></span> <span
+class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
+</button> </div> </header> <main> <!-- Hero Section --> <section class="hero">
+<div class="container"> <div class="hero__content"> <h1 class="hero__title">
+Découvrez des créations artisanales uniques </h1> <p class="hero__subtitle">
+ArtiConnect vous propose une collection soigneusement sélectionnée de produits
+artisanaux authentiques, fabriqués avec passion par des artisans locaux. </p>
+<div class="hero__buttons"> <a href="auth/register.html?type=client" class="btn
+btn--primary btn--large" >Découvrir les produits</a > <a
+href="auth/register.html?type=artisan" class="btn btn--secondary btn--large"
+>Vendre mes créations</a > </div> </div> <div class="hero__image"> <img
+src="../images/hero-image.jpg" <!-- Corrected Path --> alt="Artisan au travail"
+class="hero__img" /> </div> </div> </section> <!-- How It Works Section -->
+<section class="section how-it-works" id="how-it-works"> <div class="container">
+<h2 class="section__title">Comment ça marche</h2> <div class="steps"> <div
+class="step"> <div class="step__icon"> <i class="fas fa-user-plus"></i> </div>
+<h3 class="step__title">Créez votre profil</h3> <p class="step__description">
+Inscrivez-vous comme artisan ou client et personnalisez votre profil avec vos
+informations et préférences. </p> </div> <div class="step"> <div
+class="step__icon"> <i class="fas fa-search"></i> </div> <h3
+class="step__title">Découvrez des produits uniques</h3> <p
+class="step__description"> Parcourez notre catalogue de produits artisanaux,
+filtrez par catégorie et trouvez des pièces uniques qui vous correspondent. </p>
+</div> <div class="step"> <div class="step__icon"> <i class="fas
+fa-shopping-cart"></i> </div> <h3 class="step__title">Achetez en toute
+simplicité</h3> <p class="step__description"> Ajoutez vos articles préférés au
+panier et finalisez votre achat via notre processus de paiement sécurisé et
+simplifié. </p> </div> <div class="step"> <div class="step__icon"> <i class="fas
+fa-box"></i> </div> <h3 class="step__title">Recevez vos créations</h3> <p
+class="step__description"> Suivez vos commandes dans votre historique et recevez
+vos produits artisanaux directement chez vous. </p> </div> </div> </div>
+</section> <!-- For Artisans Section --> <section class="section section--alt
+artisans-section" id="artisans"> <div class="container"> <div
+class="split-content"> <div class="split-content__image"> <img
+src="../images/artisan-workshop.jpg" <!-- Corrected Path --> alt="Atelier
+d'artisan" class="split-content__img" /> </div> <div
+class="split-content__text"> <h2 class="section__title">Pour les artisans</h2>
+<p class="section__description"> Présentez et vendez vos créations auprès d'une
+clientèle passionnée. ArtiConnect vous offre une plateforme simple pour mettre
+en valeur vos produits artisanaux. </p> <ul class="feature-list"> <li
+class="feature-list__item"> <i class="fas fa-check feature-list__icon"></i>
+<span >Catalogue de produits avec photos de haute qualité</span > </li> <li
+class="feature-list__item"> <i class="fas fa-check feature-list__icon"></i>
+<span>Accès à une clientèle passionnée d'artisanat</span> </li> <li
+class="feature-list__item"> <i class="fas fa-check feature-list__icon"></i>
+<span>Gestion simplifiée de l'inventaire et des ventes</span> </li> <li
+class="feature-list__item"> <i class="fas fa-check feature-list__icon"></i>
+<span>Tableau de bord pour suivre vos ventes</span> </li> </ul> <a
+href="auth/register.html?type=artisan" class="btn btn--primary" >S'inscrire
+comme artisan</a > </div> </div> </div> </section> <!-- For Clients Section -->
+<section class="section clients-section" id="clients"> <div class="container">
+<div class="split-content split-content--reverse"> <div
+class="split-content__text"> <h2 class="section__title">Pour les clients</h2> <p
+class="section__description"> Découvrez des produits uniques fabriqués à la
+main. Trouvez des pièces exceptionnelles qui correspondent à votre style et vos
+goûts. </p> <ul class="feature-list"> <li class="feature-list__item"> <i
+class="fas fa-check feature-list__icon"></i> <span >Recherche par catégorie,
+matériau ou gamme de prix</span > </li> <li class="feature-list__item"> <i
+class="fas fa-check feature-list__icon"></i> <span>Galerie de photos détaillées
+pour chaque produit</span> </li> <li class="feature-list__item"> <i class="fas
+fa-check feature-list__icon"></i> <span >Liste de favoris pour sauvegarder vos
+coups de cœur</span > </li> <li class="feature-list__item"> <i class="fas
+fa-check feature-list__icon"></i> <span >Processus d'achat simplifié et
+paiements sécurisés</span > </li> </ul> <a href="auth/register.html?type=client"
+class="btn btn--primary" >S'inscrire comme client</a > </div> <div
+class="split-content__image"> <img src="../images/client-browsing.jpg" <!--
+Corrected Path --> alt="Client parcourant des produits artisanaux"
+class="split-content__img" /> </div> </div> </div> </section> <!-- Testimonials
+Section --> <section class="section section--alt testimonials"
+id="testimonials"> <div class="container"> <h2 class="section__title">Ils nous
+font confiance</h2> <div class="testimonials__grid"> <div class="testimonial">
+<div class="testimonial__content"> <p class="testimonial__text"> "Depuis que
+j'ai rejoint ArtiConnect, j'ai pu développer ma clientèle et me concentrer
+davantage sur mon art. La plateforme est intuitive et les clients sont au
+rendez-vous." </p> <div class="testimonial__rating"> <i class="fas fa-star"></i>
+<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas
+fa-star"></i> <i class="fas fa-star"></i> </div> </div> <div
+class="testimonial__author"> <img src="../images/testimonial-1.jpg" <!--
+Corrected Path --> alt="Sophie Dupont" class="testimonial__img" /> <div
+class="testimonial__info"> <h4 class="testimonial__name">Sophie Dupont</h4> <p
+class="testimonial__role">Céramiste, Québec</p> </div> </div> </div> <div
+class="testimonial"> <div class="testimonial__content"> <p
+class="testimonial__text"> "J'ai trouvé un ébéniste extraordinaire grâce à
+ArtiConnect pour ma table sur mesure. Le processus était transparent et le
+résultat dépasse mes attentes!" </p> <div class="testimonial__rating"> <i
+class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+<i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i> </div> </div>
+<div class="testimonial__author"> <img src="../images/testimonial-2.jpg" <!--
+Corrected Path --> alt="Marc Tremblay" class="testimonial__img" /> <div
+class="testimonial__info"> <h4 class="testimonial__name">Marc Tremblay</h4> <p
+class="testimonial__role">Client satisfait</p> </div> </div> </div> <div
+class="testimonial"> <div class="testimonial__content"> <p
+class="testimonial__text"> "ArtiConnect m'a permis de trouver des projets
+intéressants et de me faire connaître au-delà de ma région. Les outils de
+gestion sont vraiment pratiques." </p> <div class="testimonial__rating"> <i
+class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+<i class="fas fa-star"></i> <i class="fas fa-star"></i> </div> </div> <div
+class="testimonial__author"> <img src="../images/testimonial-3.jpg" <!--
+Corrected Path --> alt="Lucas Morin" class="testimonial__img" /> <div
+class="testimonial__info"> <h4 class="testimonial__name">Lucas Morin</h4> <p
+class="testimonial__role">Menuisier, Montréal</p> </div> </div> </div> </div>
+</div> </section> <!-- Call to Action --> <section class="section cta"> <div
+class="container"> <div class="cta__content"> <h2 class="cta__title">Prêt à vous
+lancer ?</h2> <p class="cta__description"> Rejoignez la communauté ArtiConnect
+et découvrez un nouveau monde de possibilités. </p> <div class="cta__buttons">
+<a href="auth/register.html?type=client" class="btn btn--primary btn--large" >Je
+cherche un artisan</a > <a href="auth/register.html?type=artisan" class="btn
+btn--secondary btn--large" >Je suis un artisan</a > </div> </div> </div>
+</section> </main> <footer class="footer"> <div class="container"> <div
+class="footer__grid"> <div class="footer__column"> <div class="footer__logo">
+<img src="../images/logo-white.svg" <!-- Corrected Path --> alt="ArtiConnect
+Logo" class="logo__img" /> <span class="logo__text">ArtiConnect</span> </div> <p
+class="footer__description"> La plateforme qui connecte artisans et clients pour
+des projets uniques et authentiques. </p> </div> <div class="footer__column">
+<h3 class="footer__title">Liens utiles</h3> <ul class="footer__links"> <li> <a
+href="#how-it-works" class="footer__link" >Comment ça marche</a > </li> <li> <a
+href="#artisans" class="footer__link">Pour les artisans</a> </li> <li> <a
+href="#clients" class="footer__link">Pour les clients</a> </li> <li> <a
+href="#testimonials" class="footer__link">Témoignages</a> </li> </ul> </div>
+<div class="footer__column"> <h3 class="footer__title">Contact</h3> <ul
+class="footer__contact"> <li class="footer__contact-item"> <i class="fas
+fa-envelope"></i> <a href="mailto:contact@articonnect.com"
+>contact@articonnect.com</a > </li> <li class="footer__contact-item"> <i
+class="fas fa-phone"></i> <a href="tel:+18005551234">+1 (800) 555-1234</a> </li>
+<li class="footer__contact-item"> <i class="fas fa-map-marker-alt"></i>
+<span>123 Rue de l'Innovation, Québec, QC G1V 0A6</span> </li> </ul> </div>
+</div> <div class="footer__bottom"> <p class="footer__copyright"> &copy; 2025
+ArtiConnect. Tous droits réservés. </p> </div> </div> </footer> <script
+src="../js/main.js"></script> <!-- Corrected Path --> <script
+src="../js/landing.js"></script> <!-- Corrected Path --> </body> </html>]]>

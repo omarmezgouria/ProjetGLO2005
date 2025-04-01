@@ -1,0 +1,333 @@
+/* ===== PRODUCT FORM PAGE STYLES ===== */
+
+.page-header {
+  margin-bottom: var(--spacing-6);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--color-grey-200);
+}
+
+.breadcrumb {
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+  margin-bottom: var(--spacing-2);
+}
+
+.breadcrumb a {
+  color: var(--color-primary);
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .separator {
+  margin: 0 var(--spacing-2);
+}
+
+.breadcrumb .current {
+  color: var(--color-grey-800);
+  font-weight: var(--font-weight-medium);
+}
+
+.page-header h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-grey-900);
+  margin-top: var(--spacing-1);
+}
+
+.product-form-container {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden; /* Ensure border-radius applies */
+}
+
+.product-form {
+  /* No specific styles needed for the form itself, handled by container */
+}
+
+/* Form Tabs */
+.form-tabs {
+  display: flex;
+  background-color: var(--color-grey-100);
+  border-bottom: 1px solid var(--color-grey-200);
+  overflow-x: auto; /* Allow scrolling on small screens */
+  white-space: nowrap;
+}
+
+.tab-btn {
+  padding: var(--spacing-3) var(--spacing-4);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  color: var(--color-grey-600);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+  color: var(--color-grey-900);
+  background-color: var(--color-grey-200);
+}
+
+.tab-btn.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Form Content & Tabs */
+.form-content {
+  padding: var(--spacing-6);
+}
+
+.tab-content {
+  display: none; /* Hidden by default */
+}
+
+.tab-content.active {
+  display: block; /* Show active tab content */
+}
+
+/* General Form Styles */
+.form-group {
+  margin-bottom: var(--spacing-5);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-2);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-grey-700);
+}
+
+.form-label.required::after {
+  content: " *";
+  color: var(--color-danger);
+}
+
+.form-control {
+  /* Inherits from main.css */
+}
+
+.form-text {
+  display: block;
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-5); /* Add margin to rows as well */
+}
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+.form-group.half {
+  flex: 1;
+  min-width: calc(50% - var(--spacing-2));
+}
+
+/* Rich Editor Placeholder */
+.rich-editor {
+  min-height: 150px; /* Example height */
+}
+
+/* Tags Input Placeholder */
+.tags-input {
+  /* Add specific styles if using a tags library */
+}
+
+/* Images Tab */
+.product-images {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Dropzone | Guidelines */
+  gap: var(--spacing-6);
+}
+
+.image-dropzone {
+  border: 2px dashed var(--color-grey-300);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  text-align: center;
+  background-color: var(--color-grey-100);
+  transition: border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+.image-dropzone.dragover {
+  /* Add class via JS on dragover */
+  border-color: var(--color-primary);
+  background-color: rgba(74, 111, 165, 0.05);
+}
+
+.dropzone-content i {
+  font-size: 3rem;
+  color: var(--color-grey-400);
+  margin-bottom: var(--spacing-3);
+}
+
+.dropzone-content h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-grey-700);
+  margin-bottom: var(--spacing-1);
+}
+
+.dropzone-content p {
+  color: var(--color-grey-600);
+  margin-bottom: var(--spacing-3);
+}
+
+.dropzone-instructions {
+  font-size: var(--font-size-xs);
+  color: var(--color-grey-500);
+  margin-top: var(--spacing-3);
+}
+
+.uploaded-images {
+  margin-top: var(--spacing-5);
+  grid-column: 1 / 3; /* Span both columns */
+}
+
+.uploaded-images h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-1);
+}
+
+.image-instructions {
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-600);
+  margin-bottom: var(--spacing-3);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--spacing-3);
+}
+
+/* Placeholder for uploaded image items */
+.image-item {
+  position: relative;
+  border: 1px solid var(--color-grey-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 1 / 1; /* Square aspect ratio */
+}
+.image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.image-item .remove-img-btn {
+  position: absolute;
+  top: var(--spacing-1);
+  right: var(--spacing-1);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  width: 24px;
+  height: 24px;
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-item .remove-img-btn:hover {
+  background-color: var(--color-danger);
+}
+
+.image-guidelines {
+  background-color: var(--color-grey-100);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  height: fit-content; /* Fit content height */
+}
+
+.image-guidelines h3 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-3);
+}
+
+.guidelines-list {
+  list-style: disc;
+  padding-left: var(--spacing-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-700);
+  display: grid;
+  gap: var(--spacing-2);
+}
+
+/* Details Tab */
+.form-section {
+  margin-bottom: var(--spacing-5);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--color-grey-200);
+}
+.form-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.form-section .section-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-grey-800);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Form Actions (Save/Publish) - Add to bottom of form */
+.product-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4) var(--spacing-6); /* Match content padding */
+  border-top: 1px solid var(--color-grey-200);
+  background-color: var(--color-grey-100);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .product-images {
+    grid-template-columns: 1fr; /* Stack dropzone and guidelines */
+  }
+  .image-guidelines {
+    margin-top: var(--spacing-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .form-content {
+    padding: var(--spacing-4);
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 0;
+  }
+  .form-group.half {
+    margin-bottom: var(--spacing-5);
+    min-width: 100%;
+  }
+  .form-group.half:last-child {
+    margin-bottom: 0;
+  }
+  .product-form-actions {
+    padding: var(--spacing-3) var(--spacing-4);
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .product-form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
