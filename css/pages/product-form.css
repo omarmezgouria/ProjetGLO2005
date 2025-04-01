@@ -1,4 +1,4 @@
-/* ===== PRODUCT FORM PAGE STYLES ===== */
+/* ===== STYLES PAGE FORMULAIRE PRODUIT ===== */
 
 .page-header {
   margin-bottom: var(--spacing-6);
@@ -39,19 +39,19 @@
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  overflow: hidden; /* Ensure border-radius applies */
+  overflow: hidden; /* S'assurer que le border-radius s'applique */
 }
 
 .product-form {
-  /* No specific styles needed for the form itself, handled by container */
+  /* Aucun style spécifique nécessaire pour le formulaire lui-même, géré par le conteneur */
 }
 
-/* Form Tabs */
+/* Onglets Formulaire */
 .form-tabs {
   display: flex;
   background-color: var(--color-grey-100);
   border-bottom: 1px solid var(--color-grey-200);
-  overflow-x: auto; /* Allow scrolling on small screens */
+  overflow-x: auto; /* Autoriser le défilement sur les petits écrans */
   white-space: nowrap;
 }
 
@@ -77,20 +77,20 @@
   border-bottom-color: var(--color-primary);
 }
 
-/* Form Content & Tabs */
+/* Contenu Formulaire & Onglets */
 .form-content {
   padding: var(--spacing-6);
 }
 
 .tab-content {
-  display: none; /* Hidden by default */
+  display: none; /* Masqué par défaut */
 }
 
 .tab-content.active {
-  display: block; /* Show active tab content */
+  display: block; /* Afficher le contenu de l'onglet actif */
 }
 
-/* General Form Styles */
+/* Styles Généraux Formulaire */
 .form-group {
   margin-bottom: var(--spacing-5);
 }
@@ -108,7 +108,7 @@
 }
 
 .form-control {
-  /* Inherits from main.css */
+  /* Hérite de main.css */
 }
 
 .form-text {
@@ -121,7 +121,7 @@
 .form-row {
   display: flex;
   gap: var(--spacing-4);
-  margin-bottom: var(--spacing-5); /* Add margin to rows as well */
+  margin-bottom: var(--spacing-5); /* Ajouter aussi une marge aux lignes */
 }
 .form-row:last-child {
   margin-bottom: 0;
@@ -132,20 +132,20 @@
   min-width: calc(50% - var(--spacing-2));
 }
 
-/* Rich Editor Placeholder */
+/* Espace réservé Éditeur Riche */
 .rich-editor {
-  min-height: 150px; /* Example height */
+  min-height: 150px; /* Hauteur exemple */
 }
 
-/* Tags Input Placeholder */
+/* Espace réservé Entrée Mots-clés */
 .tags-input {
-  /* Add specific styles if using a tags library */
+  /* Ajouter des styles spécifiques si vous utilisez une bibliothèque de mots-clés */
 }
 
-/* Images Tab */
+/* Onglet Images */
 .product-images {
   display: grid;
-  grid-template-columns: 1fr auto; /* Dropzone | Guidelines */
+  grid-template-columns: 1fr auto; /* Zone de dépôt | Directives */
   gap: var(--spacing-6);
 }
 
@@ -159,7 +159,7 @@
     background-color var(--transition-fast);
 }
 .image-dropzone.dragover {
-  /* Add class via JS on dragover */
+  /* Ajouter la classe via JS lors du survol en glissant */
   border-color: var(--color-primary);
   background-color: rgba(74, 111, 165, 0.05);
 }
@@ -190,7 +190,7 @@
 
 .uploaded-images {
   margin-top: var(--spacing-5);
-  grid-column: 1 / 3; /* Span both columns */
+  grid-column: 1 / 3; /* S'étend sur les deux colonnes */
 }
 
 .uploaded-images h3 {
@@ -211,13 +211,13 @@
   gap: var(--spacing-3);
 }
 
-/* Placeholder for uploaded image items */
+/* Espace réservé pour les éléments d'image téléversés */
 .image-item {
   position: relative;
   border: 1px solid var(--color-grey-200);
   border-radius: var(--radius-md);
   overflow: hidden;
-  aspect-ratio: 1 / 1; /* Square aspect ratio */
+  aspect-ratio: 1 / 1; /* Ratio d'aspect carré */
 }
 .image-item img {
   width: 100%;
@@ -248,7 +248,7 @@
   background-color: var(--color-grey-100);
   padding: var(--spacing-4);
   border-radius: var(--radius-lg);
-  height: fit-content; /* Fit content height */
+  height: fit-content; /* Ajuster la hauteur au contenu */
 }
 
 .image-guidelines h3 {
@@ -266,7 +266,7 @@
   gap: var(--spacing-2);
 }
 
-/* Details Tab */
+/* Onglet Détails */
 .form-section {
   margin-bottom: var(--spacing-5);
   padding-bottom: var(--spacing-4);
@@ -285,20 +285,20 @@
   margin-bottom: var(--spacing-4);
 }
 
-/* Form Actions (Save/Publish) - Add to bottom of form */
+/* Actions Formulaire (Enregistrer/Publier) - Ajouter en bas du formulaire */
 .product-form-actions {
   display: flex;
   justify-content: flex-end;
   gap: var(--spacing-3);
-  padding: var(--spacing-4) var(--spacing-6); /* Match content padding */
+  padding: var(--spacing-4) var(--spacing-6); /* Correspondre au padding du contenu */
   border-top: 1px solid var(--color-grey-200);
   background-color: var(--color-grey-100);
 }
 
-/* Responsive */
+/* Adaptatif */
 @media (max-width: 992px) {
   .product-images {
-    grid-template-columns: 1fr; /* Stack dropzone and guidelines */
+    grid-template-columns: 1fr; /* Empiler la zone de dépôt et les directives */
   }
   .image-guidelines {
     margin-top: var(--spacing-4);

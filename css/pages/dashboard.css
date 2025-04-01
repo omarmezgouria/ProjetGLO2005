@@ -1,4 +1,4 @@
-/* Products Grid */
+/* Grille Produits */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -86,7 +86,7 @@
   color: var(--color-grey-600);
 }
 
-/* Inventory Status */
+/* Statut Inventaire */
 .inventory-summary {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -156,7 +156,7 @@
   font-size: var(--font-size-sm);
 }
 
-/* Quick Actions */
+/* Actions Rapides */
 .actions-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -211,7 +211,7 @@
   color: var(--color-white);
 }
 
-/* Responsive Styles */
+/* Styles Adaptatifs */
 @media (max-width: 1024px) {
   .sidebar {
     width: 220px;
@@ -389,7 +389,7 @@
   color: var(--color-primary);
 }
 
-/* Dashboard Content Styles */
+/* Styles Contenu Tableau de Bord */
 .dashboard-header {
   display: flex;
   justify-content: space-between;
@@ -426,7 +426,7 @@
   border-color: var(--color-primary);
 }
 
-/* Stats Cards */
+/* Cartes Statistiques */
 .stats-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -506,7 +506,7 @@
   color: var(--color-grey-500);
 }
 
-/* Dashboard Grid */
+/* Grille Tableau de Bord */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -566,7 +566,7 @@
   padding: var(--spacing-4);
 }
 
-/* Chart Placeholder (for demo) */
+/* Espace réservé Graphique (pour démo) */
 .chart-container {
   min-height: 300px;
   display: flex;
@@ -615,7 +615,7 @@
   text-align: center;
 }
 
-/* Table Styles */
+/* Styles Tableau */
 .table-responsive {
   overflow-x: auto;
 }
@@ -688,9 +688,9 @@
   background-color: rgba(231, 76, 60, 0.1);
   color: #e74c3c;
 }
-/* Message List styles removed */
+/* Styles Liste Messages supprimés */
 
-/* Events List */
+/* Liste Événements */
 .events-list {
   display: flex;
   flex-direction: column;
@@ -760,7 +760,7 @@
   color: var(--color-primary);
 }
 
-/* Todo List */
+/* Liste Tâches */
 .todo-list {
   grid-column: span 2;
 }
@@ -891,7 +891,7 @@
   color: var(--color-grey-500);
 }
 
-/* Responsive Styles */
+/* Styles Adaptatifs */
 @media (max-width: 1024px) {
   .sidebar {
     width: 220px;
@@ -963,9 +963,9 @@
   .dashboard-table td {
     padding: var(--spacing-2);
   }
-} /* ===== DASHBOARD STYLES ===== */
+} /* ===== STYLES TABLEAU DE BORD ===== */
 
-/* Dashboard Layout */
+/* Mise en page Tableau de Bord */
 .dashboard-body {
   min-height: 100vh;
   background-color: var(--color-grey-100);
@@ -1015,7 +1015,7 @@
   margin-left: 260px;
 }
 
-/* Header Search */
+/* Recherche En-tête */
 .header__search {
   margin-left: var(--spacing-6);
   margin-right: auto;
@@ -1051,7 +1051,7 @@
   outline: none;
 }
 
-/* Header Actions */
+/* Actions En-tête */
 .header__actions {
   display: flex;
   align-items: center;
@@ -1059,7 +1059,7 @@
 }
 
 .notification-btn /*, .message-btn */ {
-  /* Message button removed */
+  /* Bouton message supprimé */
   position: relative;
   background: none;
   border: none;
@@ -1071,12 +1071,12 @@
 }
 
 .notification-btn:hover /*, .message-btn:hover */ {
-  /* Message button removed */
+  /* Bouton message supprimé */
   color: var(--color-primary);
 }
 
 .notification-badge /*, .message-badge */ {
-  /* Message badge removed */
+  /* Badge message supprimé */
   position: absolute;
   top: 0;
   right: 0;
@@ -1091,7 +1091,7 @@
   border-radius: var(--radius-full);
 }
 
-/* User Menu */
+/* Menu Utilisateur */
 .user-menu {
   position: relative;
 }
@@ -1169,9 +1169,9 @@
   color: var(--color-danger) !important;
 }
 
-/* Notification Dropdown styles removed */
+/* Styles menu déroulant notifications supprimés */
 
-/* Sidebar Styles */
+/* Styles Barre Latérale */
 .sidebar-nav {
   padding: var(--spacing-4) 0;
 }

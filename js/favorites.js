@@ -1,1 +1,1 @@
-// Favorites functionality has been removed. This file is intentionally empty.
+// La fonctionnalité des favoris a été supprimée. Ce fichier est intentionnellement vide.

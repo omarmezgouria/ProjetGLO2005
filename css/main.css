@@ -1,21 +1,21 @@
-/* ===== DESIGN SYSTEM ===== */
+/* ===== SYSTÈME DE DESIGN ===== */
 
-/* CSS Variables for Design System */
+/* Variables CSS pour le Système de Design */
 :root {
-  /* Colors */
-  --color-primary: #4a6fa5; /* Deep blue */
-  --color-primary-light: #6b8cba; /* Lighter blue */
-  --color-primary-dark: #385680; /* Darker blue */
+  /* Couleurs */
+  --color-primary: #4a6fa5; /* Bleu profond */
+  --color-primary-light: #6b8cba; /* Bleu plus clair */
+  --color-primary-dark: #385680; /* Bleu plus foncé */
 
-  --color-secondary: #d4a373; /* Warm beige */
-  --color-secondary-light: #e9d8a6; /* Light beige */
-  --color-secondary-dark: #bc8a5f; /* Dark beige */
+  --color-secondary: #d4a373; /* Beige chaud */
+  --color-secondary-light: #e9d8a6; /* Beige clair */
+  --color-secondary-dark: #bc8a5f; /* Beige foncé */
 
-  --color-accent: #e76f51; /* Terracotta */
-  --color-accent-light: #f4a261; /* Light orange */
-  --color-accent-dark: #cc5a3e; /* Dark terracotta */
+  --color-accent: #e76f51; /* Terre cuite */
+  --color-accent-light: #f4a261; /* Orange clair */
+  --color-accent-dark: #cc5a3e; /* Terre cuite foncée */
 
-  --color-grey-100: #f8f9fa; /* Very light grey */
+  --color-grey-100: #f8f9fa; /* Gris très clair */
   --color-grey-200: #e9ecef;
   --color-grey-300: #dee2e6;
   --color-grey-400: #ced4da;
@@ -23,7 +23,7 @@
   --color-grey-600: #6c757d;
   --color-grey-700: #495057;
   --color-grey-800: #343a40;
-  --color-grey-900: #212529; /* Very dark grey */
+  --color-grey-900: #212529; /* Gris très foncé */
 
   --color-white: #ffffff;
   --color-black: #000000;
@@ -33,7 +33,7 @@
   --color-danger: #e74c3c;
   --color-info: #3498db;
 
-  /* Typography */
+  /* Typographie */
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Playfair Display", serif;
 
@@ -48,14 +48,14 @@
   --font-size-4xl: 2.5rem; /* 40px */
   --font-size-5xl: 3rem; /* 48px */
 
-  /* Font Weights */
+  /* Graisses de Police */
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Spacing */
+  /* Espacement */
   --spacing-1: 0.25rem; /* 4px */
   --spacing-2: 0.5rem; /* 8px */
   --spacing-3: 0.75rem; /* 12px */
@@ -67,16 +67,16 @@
   --spacing-9: 4rem; /* 64px */
   --spacing-10: 5rem; /* 80px */
 
-  /* Border Radius */
+  /* Rayon de Bordure */
   --radius-sm: 0.125rem; /* 2px */
   --radius-base: 0.25rem; /* 4px */
   --radius-md: 0.375rem; /* 6px */
   --radius-lg: 0.5rem; /* 8px */
   --radius-xl: 0.75rem; /* 12px */
   --radius-2xl: 1rem; /* 16px */
-  --radius-full: 9999px; /* Fully rounded */
+  --radius-full: 9999px; /* Entièrement arrondi */
 
-  /* Box Shadows */
+  /* Ombres Portées */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -91,14 +91,14 @@
   --transition-base: 300ms ease;
   --transition-slow: 500ms ease;
 
-  /* Container dimensions */
+  /* Dimensions Conteneur */
   --container-max-width: 1200px;
   --header-height: 5rem;
 }
 
-/* ===== BASE STYLES ===== */
+/* ===== STYLES DE BASE ===== */
 
-/* Reset and Base Styles */
+/* Réinitialisation et Styles de Base */
 *,
 *::before,
 *::after {
@@ -148,7 +148,7 @@ select {
   font: inherit;
 }
 
-/* ===== UTILITY CLASSES ===== */
+/* ===== CLASSES UTILITAIRES ===== */
 
 .container {
   width: 100%;
@@ -187,7 +187,7 @@ select {
   border: 0;
 }
 
-/* ===== BUTTONS ===== */
+/* ===== BOUTONS ===== */
 
 .btn {
   display: inline-flex;
@@ -280,7 +280,7 @@ select {
   margin-right: var(--spacing-2);
 }
 
-/* ===== FORM ELEMENTS ===== */
+/* ===== ÉLÉMENTS DE FORMULAIRE ===== */
 
 .form-group {
   margin-bottom: var(--spacing-4);
@@ -332,7 +332,7 @@ select {
   color: var(--color-danger);
 }
 
-/* ===== HEADER ===== */
+/* ===== EN-TÊTE ===== */
 
 .header {
   position: fixed;
@@ -417,7 +417,7 @@ select {
   transition: all var(--transition-fast);
 }
 
-/* ===== FOOTER ===== */
+/* ===== PIED DE PAGE ===== */
 
 .footer {
   padding: var(--spacing-8) 0 var(--spacing-4);
@@ -533,7 +533,7 @@ select {
   border-radius: var(--radius-md);
 }
 
-/* ===== RESPONSIVE STYLES ===== */
+/* ===== STYLES ADAPTATIFS ===== */
 
 @media (max-width: 1024px) {
   :root {
@@ -556,7 +556,7 @@ select {
     display: flex;
   }
 
-  /* When mobile menu is active */
+  /* Lorsque le menu mobile est actif */
   .header.menu-active {
     height: 100vh;
     overflow-y: auto;

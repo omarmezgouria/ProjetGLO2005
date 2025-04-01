@@ -4,10 +4,10 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Check login status and load user data
+  // Vérifier le statut de connexion et charger les données utilisateur
   loadUserOrders();
 
-  // Initialize order filtering/searching (basic placeholders)
+  // Initialiser le filtrage/recherche de commandes (espaces réservés de base)
   initOrderFilters();
 });
 
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function loadUserOrders() {
   const userString = localStorage.getItem("articonnect_user");
   if (!userString) {
-    window.location.href = "../auth/login.html"; // Redirect if not logged in
+    window.location.href = "../auth/login.html"; // Rediriger si non connecté
     return;
   }
 
@@ -31,13 +31,13 @@ function loadUserOrders() {
     return;
   }
 
-  // Ensure it's a client
+  // S'assurer qu'il s'agit d'un client
   if (currentUser.type !== "client") {
-    window.location.href = "../index.html"; // Redirect non-clients
+    window.location.href = "../index.html"; // Rediriger les non-clients
     return;
   }
 
-  // Populate sidebar user info (redundant if main.js handles it, but safe fallback)
+  // Remplir les informations utilisateur de la barre latérale (redondant si main.js le gère, mais solution de repli sûre)
   const sidebarUserName = document.querySelector(
     ".dashboard-sidebar .user-name"
   );
@@ -48,16 +48,16 @@ function loadUserOrders() {
     sidebarUserName.textContent = currentUser.name || "Utilisateur";
   if (sidebarUserEmail) sidebarUserEmail.textContent = currentUser.email;
 
-  // Retrieve all orders
+  // Récupérer toutes les commandes
   const ordersJson = localStorage.getItem("articonnect_orders");
   const allOrders = ordersJson ? JSON.parse(ordersJson) : [];
 
-  // Filter orders for the current user (matching email)
+  // Filtrer les commandes pour l'utilisateur actuel (correspondance d'email)
   const userOrders = allOrders.filter(
     (order) => order.user && order.user.email === currentUser.email
   );
 
-  // Render the filtered orders
+  // Afficher les commandes filtrées
   renderOrders(userOrders);
 }
 
@@ -72,7 +72,7 @@ function renderOrders(orders) {
     return;
   }
 
-  ordersListContainer.innerHTML = ""; // Clear existing/placeholder orders
+  ordersListContainer.innerHTML = ""; // Effacer les commandes existantes/espaces réservés
 
   if (orders.length === 0) {
     ordersListContainer.innerHTML = `
@@ -81,36 +81,36 @@ function renderOrders(orders) {
                 <p>Vous n'avez pas encore passé de commande.</p>
                 <a href="products.html" class="btn btn--primary">Commencer mes achats</a>
             </div>`;
-    // Update tab counts (optional)
+    // Mettre à jour les compteurs d'onglets (optionnel)
     updateTabCounts({});
     return;
   }
 
-  // Sort orders by date, newest first
+  // Trier les commandes par date, les plus récentes d'abord
   orders.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const statusCounts = {}; // To count orders per status for tabs
+  const statusCounts = {}; // Pour compter les commandes par statut pour les onglets
 
   orders.forEach((order) => {
     const orderCard = document.createElement("div");
     orderCard.className = "order-card";
-    // Add status as data attribute for filtering
+    // Ajouter le statut comme attribut de données pour le filtrage
     const statusClass = order.status
       ? order.status.toLowerCase().replace(/\s+/g, "-")
       : "inconnu";
     orderCard.dataset.status = statusClass;
 
-    // Increment status count
+    // Incrémenter le compteur de statut
     statusCounts[statusClass] = (statusCounts[statusClass] || 0) + 1;
 
-    // Determine status text and class
+    // Déterminer le texte et la classe du statut
     let statusText = order.status || "Inconnu";
-    // Simple mapping for demo
+    // Mappage simple pour la démo
     if (statusClass === "completed") statusText = "Livrée";
     else if (statusClass === "processing") statusText = "En préparation";
-    // Add more statuses as needed
+    // Ajouter plus de statuts si nécessaire
 
-    // Get first product image as thumbnail
+    // Obtenir la première image du produit comme miniature
     const firstItemImage =
       order.items[0]?.imageUrl || "../../images/placeholder.png";
     const firstItemName = order.items[0]?.name || "Article";
@@ -148,7 +148,7 @@ function renderOrders(orders) {
                         <h4 class="product-title">${firstItemName}${
       totalItems > 1 ? ` et ${totalItems - 1} autre(s)` : ""
     }</h4>
-                        <!-- Maybe show total quantity instead -->
+                        <!-- Peut-être afficher la quantité totale à la place -->
                     </div>
                 </div>
                 <div class="order-total">
@@ -158,20 +158,20 @@ function renderOrders(orders) {
             </div>
             <div class="order-footer">
                  <div class="order-delivery">
-                     <!-- Placeholder for delivery info -->
+                     <!-- Espace réservé pour les informations de livraison -->
                  </div>
                 <div class="order-actions">
                     <a href="order_detail.html?orderId=${
                       order.id
                     }" class="btn btn--outline btn--small">Détails</a>
-                    <!-- Add other relevant actions like 'Reorder', 'Track', 'Contact' -->
+                    <!-- Ajouter d'autres actions pertinentes comme 'Recommander', 'Suivre', 'Contacter' -->
                 </div>
             </div>
         `;
     ordersListContainer.appendChild(orderCard);
   });
 
-  // Update tab counts
+  // Mettre à jour les compteurs d'onglets
   updateTabCounts(statusCounts, orders.length);
 }
 
@@ -184,7 +184,7 @@ function updateTabCounts(statusCounts, totalOrders = 0) {
   document.querySelector(
     '.tab-btn[data-filter="all"]'
   ).textContent = `Toutes les commandes (${totalOrders})`;
-  // Example status mapping - adjust keys based on actual statuses used in simulation
+  // Exemple de mappage de statut - ajuster les clés en fonction des statuts réels utilisés dans la simulation
   document.querySelector(
     '.tab-btn[data-filter="en-cours"]'
   ).textContent = `En cours (${
@@ -196,7 +196,7 @@ function updateTabCounts(statusCounts, totalOrders = 0) {
   document.querySelector(
     '.tab-btn[data-filter="annulees"]'
   ).textContent = `Annulées (${statusCounts["cancelled"] || 0})`;
-  // Add more status mappings as needed
+  // Ajouter plus de mappages de statut si nécessaire
 }
 
 /**
@@ -234,7 +234,7 @@ function filterOrders(statusFilter, searchTerm) {
   const searchTermLower = searchTerm.toLowerCase();
 
   orderCards.forEach((card) => {
-    // Status mapping for filtering (adjust keys as needed)
+    // Mappage de statut pour le filtrage (ajuster les clés si nécessaire)
     let cardStatus = card.dataset.status;
     let statusMatch = false;
     if (statusFilter === "all") {
@@ -249,9 +249,9 @@ function filterOrders(statusFilter, searchTerm) {
     } else if (statusFilter === "annulees" && cardStatus === "cancelled") {
       statusMatch = true;
     }
-    // Add more specific status checks if needed
+    // Ajouter des vérifications de statut plus spécifiques si nécessaire
 
-    // Basic search: check order number and first product title
+    // Recherche de base : vérifier le numéro de commande et le titre du premier produit
     const orderNumber =
       card.querySelector(".order-number")?.textContent.toLowerCase() || "";
     const productTitle =
@@ -269,7 +269,7 @@ function filterOrders(statusFilter, searchTerm) {
   });
 }
 
-// Helper function (consider moving to main.js)
+// Fonction utilitaire (envisager de déplacer vers main.js)
 function formatDate(date) {
   if (!date || !(date instanceof Date)) return "-";
   return date.toLocaleDateString("fr-FR", {
@@ -279,7 +279,7 @@ function formatDate(date) {
   });
 }
 
-// Helper function (should use the one from cart.js or main.js)
+// Fonction utilitaire (devrait utiliser celle de cart.js ou main.js)
 function formatPrice(price) {
   if (typeof price !== "number") {
     price = parseFloat(price) || 0;

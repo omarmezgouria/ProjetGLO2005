@@ -4,13 +4,13 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Check login status and load user data
+  // Vérifier le statut de connexion et charger les données utilisateur
   loadProfileData();
 
-  // Initialize edit/view mode toggles
+  // Initialiser les bascules de mode édition/vue
   initEditToggles();
 
-  // Initialize form submissions
+  // Initialiser les soumissions de formulaire
   initProfileForms();
 });
 
@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function loadProfileData() {
   const userString = localStorage.getItem("articonnect_user");
   if (!userString) {
-    // Not logged in, redirect to login
-    window.location.href = "../auth/login.html"; // Adjust path as needed
+    // Non connecté, rediriger vers la connexion
+    window.location.href = "../auth/login.html"; // Ajuster le chemin si nécessaire
     return;
   }
 
@@ -35,33 +35,33 @@ function loadProfileData() {
     return;
   }
 
-  // Ensure it's a client profile
+  // S'assurer qu'il s'agit d'un profil client
   if (user.type !== "client") {
     console.warn(
       "Attempting to access client profile with non-client user type:",
       user.type
     );
-    // Redirect to appropriate dashboard or homepage
+    // Rediriger vers le tableau de bord ou la page d'accueil approprié
     window.location.href = "../index.html";
     return;
   }
 
-  // Populate Sidebar User Info
+  // Remplir les informations utilisateur de la barre latérale
   const sidebarUserName = document.querySelector(
     ".dashboard-sidebar .user-name"
   );
   const sidebarUserEmail = document.querySelector(
     ".dashboard-sidebar .user-email"
   );
-  // const sidebarUserAvatar = document.querySelector('.dashboard-sidebar .user-avatar'); // TODO: Update avatar src if stored
+  // const sidebarUserAvatar = document.querySelector('.dashboard-sidebar .user-avatar'); // TODO : Mettre à jour la source de l'avatar si stockée
 
   if (sidebarUserName) sidebarUserName.textContent = user.name || "Utilisateur";
   if (sidebarUserEmail) sidebarUserEmail.textContent = user.email;
 
-  // Populate Personal Info View Mode
+  // Remplir le mode vue des informations personnelles
   const infoView = document.querySelector(".profile-info.view-mode");
   if (infoView) {
-    // Assuming user.name is "FirstName LastName"
+    // En supposant que user.name est "Prénom Nom"
     const nameParts = user.name ? user.name.split(" ") : ["", ""];
     const firstName = nameParts[0];
     const lastName = nameParts.slice(1).join(" ");
@@ -72,14 +72,14 @@ function loadProfileData() {
       lastName || "-";
     infoView.querySelector(".info-group:nth-child(3) .info-value").textContent =
       user.email || "-";
-    // Add placeholders for phone/birthdate as they are not in our basic user object yet
+    // Ajouter des espaces réservés pour le téléphone/date de naissance car ils ne sont pas encore dans notre objet utilisateur de base
     infoView.querySelector(".info-group:nth-child(4) .info-value").textContent =
       user.phone || "-";
     infoView.querySelector(".info-group:nth-child(5) .info-value").textContent =
-      user.birthdate ? formatDate(new Date(user.birthdate)) : "-"; // Assuming formatDate exists or we add it
+      user.birthdate ? formatDate(new Date(user.birthdate)) : "-"; // En supposant que formatDate existe ou que nous l'ajoutons
   }
 
-  // Populate Personal Info Edit Mode Form
+  // Remplir le formulaire du mode édition des informations personnelles
   const infoForm = document.getElementById("personal-info-form");
   if (infoForm) {
     const nameParts = user.name ? user.name.split(" ") : ["", ""];
@@ -88,11 +88,11 @@ function loadProfileData() {
       nameParts.slice(1).join(" ") || "";
     infoForm.querySelector("#email").value = user.email || "";
     infoForm.querySelector("#phone").value = user.phone || "";
-    infoForm.querySelector("#birthdate").value = user.birthdate || ""; // Assumes YYYY-MM-DD format if stored
+    infoForm.querySelector("#birthdate").value = user.birthdate || ""; // Suppose le format AAAA-MM-JJ si stocké
   }
 
-  // TODO: Populate Photo Section (if avatar URL is stored)
-  // TODO: Populate Preferences View/Edit Modes (if preferences are stored)
+  // TODO : Remplir la section Photo (si l'URL de l'avatar est stockée)
+  // TODO : Remplir les modes Vue/Édition des préférences (si les préférences sont stockées)
 }
 
 /**
@@ -111,14 +111,14 @@ function initEditToggles() {
       editBtn.addEventListener("click", () => {
         viewMode.classList.add("hidden");
         editMode.classList.remove("hidden");
-        editBtn.style.display = "none"; // Hide edit button when editing
+        editBtn.style.display = "none"; // Masquer le bouton d'édition lors de l'édition
       });
 
       cancelBtn.addEventListener("click", () => {
         editMode.classList.add("hidden");
         viewMode.classList.remove("hidden");
-        editBtn.style.display = ""; // Show edit button again
-        // Optional: Reset form fields to original values if needed
+        editBtn.style.display = ""; // Afficher à nouveau le bouton d'édition
+        // Optionnel : Réinitialiser les champs du formulaire aux valeurs d'origine si nécessaire
       });
     }
   });
@@ -130,9 +130,9 @@ function initEditToggles() {
 function initProfileForms() {
   const personalInfoForm = document.getElementById("personal-info-form");
   const photoForm = document.getElementById("photo-form");
-  const preferencesForm = document.getElementById("preferences-form"); // Assuming an ID for this form
+  const preferencesForm = document.getElementById("preferences-form"); // En supposant un ID pour ce formulaire
 
-  // --- Personal Info Form ---
+  // --- Formulaire d'informations personnelles ---
   if (personalInfoForm) {
     personalInfoForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -141,28 +141,28 @@ function initProfileForms() {
       saveBtn.innerHTML =
         '<i class="fas fa-spinner fa-spin"></i> Enregistrement...';
 
-      // Simulate saving data
+      // Simuler l'enregistrement des données
       setTimeout(() => {
         try {
           const userString = localStorage.getItem("articonnect_user");
           if (!userString) throw new Error("User not found");
           let user = JSON.parse(userString);
 
-          // Get updated values
+          // Obtenir les valeurs mises à jour
           const firstName = this.querySelector("#first-name").value.trim();
           const lastName = this.querySelector("#last-name").value.trim();
-          user.name = `${firstName} ${lastName}`.trim(); // Reconstruct name
+          user.name = `${firstName} ${lastName}`.trim(); // Reconstruire le nom
           user.email = this.querySelector("#email").value.trim();
           user.phone = this.querySelector("#phone").value.trim();
-          user.birthdate = this.querySelector("#birthdate").value; // Assumes YYYY-MM-DD
+          user.birthdate = this.querySelector("#birthdate").value; // Suppose AAAA-MM-JJ
 
-          // Save updated user object back to localStorage
+          // Enregistrer l'objet utilisateur mis à jour dans localStorage
           localStorage.setItem("articonnect_user", JSON.stringify(user));
 
-          // Update view mode display
-          loadProfileData(); // Reload data to update view mode
+          // Mettre à jour l'affichage du mode vue
+          loadProfileData(); // Recharger les données pour mettre à jour le mode vue
 
-          // Switch back to view mode
+          // Revenir au mode vue
           const section = this.closest(".profile-section");
           section.querySelector(".edit-mode").classList.add("hidden");
           section.querySelector(".view-mode").classList.remove("hidden");
@@ -173,34 +173,34 @@ function initProfileForms() {
           console.error("Error updating personal info:", error);
           alert("Erreur lors de la mise à jour des informations.");
         } finally {
-          // Restore button
+          // Restaurer le bouton
           saveBtn.disabled = false;
           saveBtn.innerHTML = "Enregistrer";
         }
-      }, 1000); // Simulate network delay
+      }, 1000); // Simuler le délai réseau
     });
   }
 
-  // --- Photo Form ---
+  // --- Formulaire Photo ---
   if (photoForm) {
     photoForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      // Simulate photo upload - just show alert and switch back
+      // Simuler le téléversement de photo - afficher simplement une alerte et revenir en arrière
       alert("Simulation: Photo de profil mise à jour (non implémenté).");
       const section = this.closest(".profile-section");
       section.querySelector(".edit-mode").classList.add("hidden");
       section.querySelector(".view-mode").classList.remove("hidden");
       section.querySelector(".edit-section-btn").style.display = "";
     });
-    // TODO: Add file input change handler to show preview
+    // TODO : Ajouter un gestionnaire de changement d'entrée de fichier pour afficher l'aperçu
   }
 
-  // --- Preferences Form ---
+  // --- Formulaire Préférences ---
   if (preferencesForm) {
     preferencesForm.addEventListener("submit", function (e) {
-      // Assuming a save button exists and triggers submit
+      // En supposant qu'un bouton d'enregistrement existe et déclenche la soumission
       e.preventDefault();
-      // Simulate saving preferences - just show alert and switch back
+      // Simuler l'enregistrement des préférences - afficher simplement une alerte et revenir en arrière
       alert("Simulation: Préférences mises à jour (non implémenté).");
       const section = this.closest(".profile-section");
       section.querySelector(".edit-mode").classList.add("hidden");
@@ -210,7 +210,7 @@ function initProfileForms() {
   }
 }
 
-// Helper function (consider moving to main.js if used elsewhere)
+// Fonction utilitaire (envisager de déplacer vers main.js si utilisée ailleurs)
 function formatDate(date) {
   if (!date || !(date instanceof Date)) return "-";
   return date.toLocaleDateString("fr-FR", {

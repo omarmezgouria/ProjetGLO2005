@@ -4,16 +4,16 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize animations for landing page elements
+  // Initialiser les animations pour les éléments de la page d'accueil
   initLandingAnimations();
 
-  // Set active navigation based on scroll position
+  // Définir la navigation active en fonction de la position de défilement
   initScrollSpy();
 
-  // Initialize testimonial slider (if needed)
+  // Initialiser le carrousel de témoignages (si nécessaire)
   // initTestimonialSlider();
 
-  // Handle registration type selection
+  // Gérer la sélection du type d'inscription
   handleRegistrationType();
 });
 
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
  * Initialize animations for landing page elements
  */
 function initLandingAnimations() {
-  // Animate hero section elements when page loads
+  // Animer les éléments de la section héros au chargement de la page
   const heroContent = document.querySelector(".hero__content");
   const heroImage = document.querySelector(".hero__image");
 
@@ -37,7 +37,7 @@ function initLandingAnimations() {
     }, 500);
   }
 
-  // Animate sections when they come into view
+  // Animer les sections lorsqu'elles apparaissent dans la vue
   if (window.articonnect && window.articonnect.animateOnScroll) {
     window.articonnect.animateOnScroll(".step", "animate-fade-in-up");
     window.articonnect.animateOnScroll(
@@ -96,10 +96,10 @@ function initTestimonialSlider() {
     const testimonialContainer = document.querySelector('.testimonials__grid');
     const testimonials = document.querySelectorAll('.testimonial');
     
-    // Only initialize slider on mobile
+    // Initialiser le carrousel uniquement sur mobile
     if (window.innerWidth <= 768 && testimonialContainer && testimonials.length > 1) {
-        // Simple slider implementation could go here
-        // Or you could integrate a library like Swiper.js
+        // Une implémentation simple de carrousel pourrait aller ici
+        // Ou vous pourriez intégrer une bibliothèque comme Swiper.js
     }
 }
 */
@@ -111,7 +111,7 @@ function handleRegistrationType() {
   if (window.articonnect && window.articonnect.getUrlParameter) {
     const userType = window.articonnect.getUrlParameter("type");
 
-    // Store user type selection in localStorage for use on registration page
+    // Stocker la sélection du type d'utilisateur dans localStorage pour utilisation sur la page d'inscription
     if (userType && (userType === "artisan" || userType === "client")) {
       localStorage.setItem("articonnect_user_type", userType);
     }
@@ -161,7 +161,7 @@ function animateCountUp(element, target, duration = 2000) {
   }, stepTime);
 }
 
-// Add CSS for animations
+// Ajouter le CSS pour les animations
 document.addEventListener("DOMContentLoaded", function () {
   const style = document.createElement("style");
   style.textContent = `

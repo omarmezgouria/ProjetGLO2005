@@ -1,6 +1,6 @@
-/* ===== LANDING PAGE SPECIFIC STYLES ===== */
+/* ===== STYLES SPÉCIFIQUES PAGE D'ACCUEIL ===== */
 
-/* Hero Section */
+/* Section Héros */
 .hero {
   position: relative;
   padding: calc(var(--header-height) + var(--spacing-8)) 0 var(--spacing-9);
@@ -46,7 +46,7 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* Section Styles */
+/* Styles Section */
 .section {
   padding: var(--spacing-9) 0;
 }
@@ -71,7 +71,7 @@
   max-width: 800px;
 }
 
-/* How It Works Section */
+/* Section Comment ça marche */
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -121,7 +121,7 @@
   color: var(--color-grey-700);
 }
 
-/* Split Content Sections */
+/* Sections Contenu Divisé */
 .split-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -169,7 +169,7 @@
   color: var(--color-primary);
 }
 
-/* Testimonials Section */
+/* Section Témoignages */
 .testimonials__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -251,7 +251,7 @@
   color: var(--color-grey-600);
 }
 
-/* Call to Action Section */
+/* Section Appel à l'action */
 .cta {
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -281,7 +281,7 @@
   gap: var(--spacing-4);
 }
 
-/* Responsive Styles for Landing Page */
+/* Styles Adaptatifs pour Page d'Accueil */
 @media (max-width: 1024px) {
   .hero__title {
     font-size: var(--font-size-3xl);

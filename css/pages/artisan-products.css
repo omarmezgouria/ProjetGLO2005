@@ -1,4 +1,4 @@
-/* ===== ARTISAN PRODUCTS PAGE STYLES ===== */
+/* ===== STYLES PAGE PRODUITS ARTISAN ===== */
 
 .page-header {
   display: flex;
@@ -7,7 +7,7 @@
   margin-bottom: var(--spacing-6);
   padding-bottom: var(--spacing-4);
   border-bottom: 1px solid var(--color-grey-200);
-  flex-wrap: wrap; /* Allow wrapping */
+  flex-wrap: wrap; /* Autoriser le retour à la ligne */
   gap: var(--spacing-3);
 }
 
@@ -17,7 +17,7 @@
   color: var(--color-grey-900);
 }
 
-/* Filters */
+/* Filtres */
 .products-filters {
   display: flex;
   justify-content: space-between;
@@ -35,7 +35,7 @@
   display: flex;
   gap: var(--spacing-3);
   flex-wrap: wrap;
-  flex-grow: 1; /* Allow filter group to take available space */
+  flex-grow: 1; /* Autoriser le groupe de filtres à prendre l'espace disponible */
 }
 
 .search-wrapper {
@@ -83,7 +83,7 @@
   display: flex;
   border: 1px solid var(--color-grey-300);
   border-radius: var(--radius-md);
-  overflow: hidden; /* Clip button borders */
+  overflow: hidden; /* Couper les bordures des boutons */
 }
 
 .view-btn {
@@ -107,7 +107,7 @@
   color: var(--color-white);
 }
 
-/* Products Summary */
+/* Résumé Produits */
 .products-summary {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -134,7 +134,7 @@
   border-radius: var(--radius-full);
   font-size: var(--font-size-xl);
   color: var(--color-white);
-  background-color: var(--color-primary); /* Default */
+  background-color: var(--color-primary); /* Défaut */
 }
 .summary-icon.active {
   background-color: var(--color-success);
@@ -155,7 +155,7 @@
   color: var(--color-grey-600);
 }
 
-/* Products Grid */
+/* Grille Produits */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -185,12 +185,12 @@
   background-color: rgba(255, 255, 255, 0.8);
   padding: var(--spacing-1);
   border-radius: var(--radius-md);
-  opacity: 0; /* Hidden by default */
+  opacity: 0; /* Masqué par défaut */
   transition: opacity var(--transition-fast);
 }
 
 .product-item:hover .product-actions {
-  opacity: 1; /* Show on hover */
+  opacity: 1; /* Afficher au survol */
 }
 
 .action-btn {
@@ -215,7 +215,7 @@
   width: 10px;
   height: 10px;
   border-radius: var(--radius-full);
-  border: 2px solid var(--color-white); /* White border for contrast */
+  border: 2px solid var(--color-white); /* Bordure blanche pour contraste */
 }
 .product-status.active {
   background-color: var(--color-success);
@@ -285,9 +285,9 @@
   color: var(--color-grey-500);
 }
 
-/* List View (Initially hidden, toggled by JS) */
+/* Vue Liste (Initialement masquée, basculée par JS) */
 .products-list {
-  display: none; /* Hidden by default */
+  display: none; /* Masqué par défaut */
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
@@ -343,7 +343,7 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Status Badge (copied from inventory.css) */
+/* Badge de statut (copié depuis inventory.css) */
 .status-badge {
   display: inline-block;
   padding: 0.25rem 0.5rem;
@@ -356,7 +356,7 @@
   color: #2ecc71;
 }
 .status-badge.inactive {
-  background-color: rgba(108, 117, 125, 0.1); /* Grey */
+  background-color: rgba(108, 117, 125, 0.1); /* Gris */
   color: #6c757d;
 }
 .status-badge.out-of-stock {
@@ -364,7 +364,7 @@
   color: #e74c3c;
 }
 
-/* Responsive */
+/* Adaptatif */
 @media (max-width: 768px) {
   .products-summary {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

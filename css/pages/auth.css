@@ -1,4 +1,4 @@
-/* ===== AUTHENTICATION PAGES STYLES ===== */
+/* ===== STYLES PAGES AUTHENTIFICATION ===== */
 
 .auth-page {
   padding: calc(var(--header-height) + var(--spacing-4)) 0 var(--spacing-8);
@@ -98,7 +98,7 @@
   opacity: 0.9;
 }
 
-/* Password Toggle */
+/* Bascule Mot de passe */
 .password-container {
   position: relative;
 }
@@ -122,7 +122,7 @@
   color: var(--color-grey-700);
 }
 
-/* Password Strength Meter */
+/* Indicateur Force Mot de passe */
 .password-strength {
   margin-top: var(--spacing-2);
 }
@@ -170,7 +170,7 @@
   font-size: var(--font-size-sm);
 }
 
-/* User Type Selector */
+/* Sélecteur Type Utilisateur */
 .user-type-selector {
   margin-bottom: var(--spacing-6);
 }
@@ -233,7 +233,7 @@
   color: var(--color-grey-600);
 }
 
-/* Checkbox styling */
+/* Style Case à cocher */
 .checkbox-container {
   display: flex;
   align-items: flex-start;
@@ -272,7 +272,7 @@
   text-decoration: underline;
 }
 
-/* Responsive styles */
+/* Styles adaptatifs */
 @media (max-width: 992px) {
   .auth-container {
     grid-template-columns: 1fr;

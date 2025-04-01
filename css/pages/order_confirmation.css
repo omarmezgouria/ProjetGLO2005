@@ -1,4 +1,4 @@
-/* ===== ORDER CONFIRMATION PAGE STYLES ===== */
+/* ===== STYLES PAGE CONFIRMATION DE COMMANDE ===== */
 
 .order-confirmation-page {
   padding: calc(var(--header-height-simple, 60px) + var(--spacing-6)) 0
@@ -7,7 +7,7 @@
   min-height: calc(
     100vh - var(--header-height-simple, 60px) -
       var(--footer-height-simple, 60px)
-  ); /* Adjust footer height if needed */
+  ); /* Ajuster la hauteur du pied de page si nécessaire */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +87,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 200px; /* Limit height for many items */
+  max-height: 200px; /* Limiter la hauteur pour de nombreux articles */
   overflow-y: auto;
 }
 
@@ -188,7 +188,7 @@
   gap: var(--spacing-3);
 }
 
-/* Simple Header/Footer for confirmation */
+/* En-tête/Pied de page simple pour confirmation */
 .header--simple {
   padding: var(--spacing-3) 0;
   box-shadow: var(--shadow-sm);

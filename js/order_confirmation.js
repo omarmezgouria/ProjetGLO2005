@@ -4,13 +4,13 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Display order information
+  // Afficher les informations de la commande
   displayOrderInfo();
 
-  // Initialize continue shopping button
+  // Initialiser le bouton Continuer les achats
   initContinueShopping();
 
-  // Initialize order tracking
+  // Initialiser le suivi de commande
   initOrderTracking();
 });
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
  * Display order information based on orderId from URL parameter and data from localStorage.
  */
 function displayOrderInfo() {
-  const orderId = getUrlParameter("orderId"); // Use the parameter name set in checkout.js
+  const orderId = getUrlParameter("orderId"); // Utiliser le nom de paramètre défini dans checkout.js
   const confirmationBox = document.querySelector(".confirmation-box");
 
   if (!orderId || !confirmationBox) {
@@ -30,11 +30,11 @@ function displayOrderInfo() {
     return;
   }
 
-  // Retrieve orders from localStorage
+  // Récupérer les commandes depuis localStorage
   const ordersJson = localStorage.getItem("articonnect_orders");
   const orders = ordersJson ? JSON.parse(ordersJson) : [];
 
-  // Find the specific order
+  // Trouver la commande spécifique
   const order = orders.find((o) => o.id === orderId);
 
   if (!order) {
@@ -43,15 +43,15 @@ function displayOrderInfo() {
     return;
   }
 
-  // --- Populate Page Elements ---
+  // --- Remplir les éléments de la page ---
   document.getElementById("order-id").textContent = order.id;
   document.getElementById("order-date").textContent = formatDate(
     new Date(order.date)
-  ); // Format the stored date
+  ); // Formater la date stockée
 
-  // Populate items list
+  // Remplir la liste des articles
   const itemsList = document.getElementById("order-items-list");
-  itemsList.innerHTML = ""; // Clear placeholder
+  itemsList.innerHTML = ""; // Effacer l'espace réservé
   order.items.forEach((item) => {
     const li = document.createElement("li");
     li.innerHTML = `
@@ -71,7 +71,7 @@ function displayOrderInfo() {
     itemsList.appendChild(li);
   });
 
-  // Populate totals
+  // Remplir les totaux
   document.getElementById("order-subtotal").textContent = formatPrice(
     order.subtotal
   );
@@ -81,12 +81,12 @@ function displayOrderInfo() {
   if (order.discount > 0 && discountRow && discountElement) {
     let discountText = `-${formatPrice(order.discount)}`;
     if (order.discountType === "percent") {
-      discountText += ` (${order.discount}%)`; // Assuming discount value stored was percentage
+      discountText += ` (${order.discount}%)`; // En supposant que la valeur de remise stockée était un pourcentage
     }
     discountElement.textContent = discountText;
-    discountRow.style.display = ""; // Show discount row
+    discountRow.style.display = ""; // Afficher la ligne de remise
   } else if (discountRow) {
-    discountRow.style.display = "none"; // Hide if no discount
+    discountRow.style.display = "none"; // Masquer si aucune remise
   }
 
   document.getElementById("shipping-method").textContent = order.shippingMethod;
@@ -94,12 +94,12 @@ function displayOrderInfo() {
     order.shippingCost > 0 ? formatPrice(order.shippingCost) : "Gratuit";
   document.getElementById("order-total").textContent = formatPrice(order.total);
 
-  // Populate delivery address
+  // Remplir l'adresse de livraison
   document.getElementById("delivery-address").textContent =
     order.deliveryAddress;
 
-  // Cart should already be cleared by checkout.js, no need to clear here.
-  // Header count should update automatically via 'cartUpdated' event.
+  // Le panier devrait déjà être vidé par checkout.js, pas besoin de le vider ici.
+  // Le compteur de l'en-tête devrait se mettre à jour automatiquement via l'événement 'cartUpdated'.
 }
 
 /**
@@ -155,8 +155,8 @@ function initOrderTracking() {
     trackOrderBtn.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // In a real implementation, this would redirect to order tracking page
-      // For demo, redirect to order detail
+      // Dans une implémentation réelle, cela redirigerait vers la page de suivi de commande
+      // Pour la démo, rediriger vers le détail de la commande
       const orderNumber = getUrlParameter("order");
       window.location.href = `order_detail.html?id=${orderNumber}`;
     });
@@ -182,5 +182,5 @@ function getUrlParameter(name) {
  */
 function sendConfirmationEmail() {
   console.log("Confirmation email would be sent in production implementation");
-  // In a real implementation, this would be handled by the server
+  // Dans une implémentation réelle, cela serait géré par le serveur
 }

@@ -4,22 +4,22 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize form tabs
+  // Initialiser les onglets du formulaire
   initFormTabs();
 
-  // Initialize rich text editor
+  // Initialiser l'éditeur de texte riche
   initRichEditor();
 
-  // Initialize image upload
+  // Initialiser le téléversement d'images
   initImageUpload();
 
-  // Initialize form validation
+  // Initialiser la validation du formulaire
   initFormValidation();
 
-  // Initialize category subcategory dependency
+  // Initialiser la dépendance catégorie/sous-catégorie
   initCategoryDependencies();
 
-  // Initialize tag input
+  // Initialiser l'entrée des mots-clés
   initTagInput();
 });
 
@@ -34,17 +34,17 @@ function initFormTabs() {
 
   tabButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      // Get tab id
+      // Obtenir l'ID de l'onglet
       const tabId = this.dataset.tab;
 
-      // Remove active class from all buttons and contents
+      // Retirer la classe active de tous les boutons et contenus
       tabButtons.forEach((btn) => btn.classList.remove("active"));
       tabContents.forEach((content) => content.classList.remove("active"));
 
-      // Add active class to clicked button
+      // Ajouter la classe active au bouton cliqué
       this.classList.add("active");
 
-      // Show corresponding tab content
+      // Afficher le contenu de l'onglet correspondant
       const targetContent = document.getElementById(`${tabId}-content`);
       if (targetContent) {
         targetContent.classList.add("active");
@@ -61,11 +61,11 @@ function initRichEditor() {
 
   if (!richEditors.length) return;
 
-  // In a real implementation, you would integrate a rich text editor library like TinyMCE, CKEditor, etc.
-  // For this demo, we'll just add a toolbar with basic formatting buttons
+  // Dans une implémentation réelle, vous intégreriez une bibliothèque d'éditeur de texte riche comme TinyMCE, CKEditor, etc.
+  // Pour cette démo, nous ajouterons simplement une barre d'outils avec des boutons de formatage de base
 
   richEditors.forEach((editor) => {
-    // Create toolbar
+    // Créer la barre d'outils
     const toolbar = document.createElement("div");
     toolbar.className = "editor-toolbar";
     toolbar.innerHTML = `
@@ -91,10 +91,10 @@ function initRichEditor() {
             </button>
         `;
 
-    // Insert toolbar before editor
+    // Insérer la barre d'outils avant l'éditeur
     editor.parentNode.insertBefore(toolbar, editor);
 
-    // Add toolbar button functionality
+    // Ajouter la fonctionnalité des boutons de la barre d'outils
     const buttons = toolbar.querySelectorAll(".editor-btn");
     buttons.forEach((button) => {
       button.addEventListener("click", function () {
@@ -103,12 +103,12 @@ function initRichEditor() {
         if (command === "createLink") {
           const url = prompt("Entrez l'URL du lien:", "https://");
           if (url) {
-            // Focus on editor and insert link
+            // Mettre le focus sur l'éditeur et insérer le lien
             editor.focus();
             document.execCommand("createLink", false, url);
           }
         } else {
-          // Focus on editor and execute command
+          // Mettre le focus sur l'éditeur et exécuter la commande
           editor.focus();
           document.execCommand(command, false, null);
         }
@@ -116,7 +116,7 @@ function initRichEditor() {
     });
   });
 
-  // Add CSS for editor toolbar
+  // Ajouter le CSS pour la barre d'outils de l'éditeur
   const style = document.createElement("style");
   style.textContent = `
         .editor-toolbar {
@@ -172,12 +172,12 @@ function initImageUpload() {
 
   if (!imageDropzone || !fileInput || !uploadedImagesGrid) return;
 
-  // Handle file selection via input
+  // Gérer la sélection de fichiers via l'entrée
   fileInput.addEventListener("change", function (e) {
     handleFiles(this.files);
   });
 
-  // Handle drag and drop
+  // Gérer le glisser-déposer
   imageDropzone.addEventListener("dragover", function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -200,27 +200,27 @@ function initImageUpload() {
     }
   });
 
-  // Handle click on dropzone to trigger file dialog
+  // Gérer le clic sur la zone de dépôt pour déclencher la boîte de dialogue de fichier
   imageDropzone.addEventListener("click", function () {
     fileInput.click();
   });
 
-  // Process uploaded files
+  // Traiter les fichiers téléversés
   function handleFiles(files) {
     Array.from(files).forEach((file) => {
-      // Validate file type
+      // Valider le type de fichier
       if (!file.type.match("image.*")) {
         alert("Veuillez télécharger uniquement des images (JPG, PNG)");
         return;
       }
 
-      // Validate file size (max 5MB)
+      // Valider la taille du fichier (max 5 Mo)
       if (file.size > 5 * 1024 * 1024) {
         alert("La taille maximale d'image est de 5 Mo");
         return;
       }
 
-      // Create image preview
+      // Créer un aperçu de l'image
       const reader = new FileReader();
       reader.onload = function (e) {
         const imagePreview = document.createElement("div");
@@ -242,7 +242,7 @@ function initImageUpload() {
 
         uploadedImagesGrid.appendChild(imagePreview);
 
-        // Initialize delete button
+        // Initialiser le bouton de suppression
         const deleteBtn = imagePreview.querySelector(".delete-btn");
         deleteBtn.addEventListener("click", function () {
           imagePreview.classList.add("removing");
@@ -251,15 +251,15 @@ function initImageUpload() {
           }, 300);
         });
 
-        // Initialize primary image button
+        // Initialiser le bouton d'image principale
         const primaryBtn = imagePreview.querySelector(".primary-btn");
         primaryBtn.addEventListener("click", function () {
-          // Remove primary class from all images
+          // Retirer la classe principale de toutes les images
           document.querySelectorAll(".uploaded-image").forEach((img) => {
             img.classList.remove("primary");
           });
 
-          // Add primary class to this image
+          // Ajouter la classe principale à cette image
           imagePreview.classList.add("primary");
         });
       };
@@ -268,7 +268,7 @@ function initImageUpload() {
     });
   }
 
-  // Add CSS for image handling
+  // Ajouter le CSS pour la gestion des images
   const style = document.createElement("style");
   style.textContent = `
         .image-dropzone.dragover {
@@ -387,7 +387,7 @@ function initFormValidation() {
   productForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // For demo purposes, log form data
+    // À des fins de démonstration, enregistrer les données du formulaire
     const formData = new FormData(this);
     const productData = {};
 
@@ -397,11 +397,11 @@ function initFormValidation() {
 
     console.log("Form submitted with data:", productData);
 
-    // In a real implementation, this would submit the data via AJAX
-    // For demo, show success message
+    // Dans une implémentation réelle, cela soumettrait les données via AJAX
+    // Pour la démo, afficher un message de succès
     alert("Produit enregistré avec succès");
 
-    // Optionally redirect back to products page
+    // Optionnellement, rediriger vers la page des produits
     // window.location.href = 'products.html';
   });
 }
@@ -415,7 +415,7 @@ function initCategoryDependencies() {
 
   if (!categorySelect || !subcategorySelect) return;
 
-  // Define subcategories for each main category
+  // Définir les sous-catégories pour chaque catégorie principale
   const subcategories = {
     bois: [
       "Mobilier",
@@ -454,15 +454,15 @@ function initCategoryDependencies() {
     papier: ["Papeterie", "Art", "Décoration", "Autre"],
   };
 
-  // Update subcategories when main category changes
+  // Mettre à jour les sous-catégories lorsque la catégorie principale change
   categorySelect.addEventListener("change", function () {
     const category = this.value;
 
-    // Clear current options
+    // Effacer les options actuelles
     subcategorySelect.innerHTML =
       '<option value="">Sélectionner une sous-catégorie</option>';
 
-    // Add new options based on selected category
+    // Ajouter de nouvelles options en fonction de la catégorie sélectionnée
     if (category && subcategories[category]) {
       subcategories[category].forEach((subcategory) => {
         const option = document.createElement("option");
@@ -482,7 +482,7 @@ function initTagInput() {
 
   if (!tagInput) return;
 
-  // Create container for tags and hidden input
+  // Créer un conteneur pour les mots-clés et l'entrée cachée
   const tagsContainer = document.createElement("div");
   tagsContainer.className = "tags-container";
 
@@ -490,19 +490,19 @@ function initTagInput() {
   hiddenInput.type = "hidden";
   hiddenInput.name = tagInput.name;
 
-  // Replace original input with tags container
+  // Remplacer l'entrée originale par le conteneur de mots-clés
   tagInput.parentNode.insertBefore(tagsContainer, tagInput);
   tagInput.parentNode.insertBefore(hiddenInput, tagInput);
 
-  // Modify original input
+  // Modifier l'entrée originale
   tagInput.classList.add("tag-input-field");
   tagInput.placeholder = "Ajouter un mot-clé et appuyer sur Entrée";
   tagInput.name = "";
 
-  // Move original input into container
+  // Déplacer l'entrée originale dans le conteneur
   tagsContainer.appendChild(tagInput);
 
-  // Handle tag input
+  // Gérer l'entrée des mots-clés
   tagInput.addEventListener("keydown", function (e) {
     if (e.key === "Enter" || e.key === ",") {
       e.preventDefault();
@@ -516,7 +516,7 @@ function initTagInput() {
     }
   });
 
-  // Function to add a tag
+  // Fonction pour ajouter un mot-clé
   function addTag(text) {
     const tag = document.createElement("div");
     tag.className = "tag";
@@ -529,7 +529,7 @@ function initTagInput() {
 
     tagsContainer.insertBefore(tag, tagInput);
 
-    // Handle tag removal
+    // Gérer la suppression des mots-clés
     const removeBtn = tag.querySelector(".tag-remove");
     removeBtn.addEventListener("click", function () {
       tag.remove();
@@ -537,7 +537,7 @@ function initTagInput() {
     });
   }
 
-  // Update hidden input with comma-separated tags
+  // Mettre à jour l'entrée cachée avec les mots-clés séparés par des virgules
   function updateHiddenInput() {
     const tags = Array.from(
       tagsContainer.querySelectorAll(".tag .tag-text")
@@ -546,7 +546,7 @@ function initTagInput() {
     hiddenInput.value = tags.join(",");
   }
 
-  // Add CSS for tags input
+  // Ajouter le CSS pour l'entrée des mots-clés
   const style = document.createElement("style");
   style.textContent = `
         .tags-container {

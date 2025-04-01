@@ -1,11 +1,11 @@
-/* =====  PRODUCT DETAIL PAGE STYLES  ===== */
+/* ===== STYLES PAGE DÉTAIL PRODUIT ===== */
 
 .product-detail-page {
   padding: calc(var(--header-height) + var(--spacing-4)) 0 var(--spacing-8);
   background-color: var(--color-grey-100);
 }
 
-/* Breadcrumbs */
+/* Fil d'Ariane */
 .breadcrumb {
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Product Detail Container */
+/* Conteneur Détail Produit */
 .product-detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -44,7 +44,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Product Gallery */
+/* Galerie Produit */
 .product-gallery {
   display: flex;
   flex-direction: column;
@@ -68,7 +68,7 @@
 .main-image img:hover {
   transform: scale(1.05);
 }
-/* Favorite button styles removed */
+/* Styles du bouton favori supprimés */
 
 .thumbnail-gallery {
   display: flex;
@@ -102,7 +102,7 @@
   border-color: var(--color-primary);
 }
 
-/* Product Info */
+/* Informations Produit */
 .product-info {
   display: flex;
   flex-direction: column;
@@ -351,7 +351,7 @@
   color: var(--color-white);
 }
 
-/* Product Tabs */
+/* Onglets Produit */
 .product-details-tabs {
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
@@ -395,7 +395,7 @@
   display: block;
 }
 
-/* Description Tab */
+/* Onglet Description */
 .description-content h2 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
@@ -410,7 +410,7 @@
   margin-bottom: var(--spacing-4);
 }
 
-/* Specifications Tab */
+/* Onglet Spécifications */
 .specifications-content h2 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
@@ -451,7 +451,7 @@
   margin-right: var(--spacing-2);
 }
 
-/* Artisan Tab */
+/* Onglet Artisan */
 .artisan-content {
   display: flex;
   flex-direction: column;
@@ -560,7 +560,7 @@
   color: var(--color-white);
 }
 
-/* Reviews Tab */
+/* Onglet Avis */
 .reviews-content {
   display: flex;
   flex-direction: column;
@@ -764,7 +764,7 @@
   color: var(--color-white);
 }
 
-/* Similar Products */
+/* Produits similaires */
 .similar-products {
   margin-bottom: var(--spacing-8);
 }
@@ -784,7 +784,7 @@
   gap: var(--spacing-4);
 }
 
-/* Product Review Modal */
+/* Modale d'avis produit */
 .review-modal {
   display: none;
   position: fixed;
@@ -960,7 +960,7 @@
   gap: var(--spacing-3);
 }
 
-/* Image Gallery Modal */
+/* Modale Galerie d'images */
 .gallery-modal {
   display: none;
   position: fixed;
@@ -1080,7 +1080,7 @@
   opacity: 1;
 }
 
-/* Responsive Styles */
+/* Styles Adaptatifs */
 @media (max-width: 1024px) {
   .product-detail {
     grid-template-columns: 1fr 1fr;

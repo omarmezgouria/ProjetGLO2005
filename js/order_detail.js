@@ -4,13 +4,13 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Check login status first
+  // Vérifier d'abord le statut de connexion
   checkLoginStatus();
 
-  // Load order details from localStorage based on URL parameter
+  // Charger les détails de la commande depuis localStorage en fonction du paramètre URL
   loadOrderDetails();
 
-  // Initialize any interactive elements if needed
+  // Initialiser les éléments interactifs si nécessaire
   initOrderDetailActions();
 });
 
@@ -20,15 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
 function checkLoginStatus() {
   const userString = localStorage.getItem("articonnect_user");
   if (!userString) {
-    window.location.href = "../auth/login.html"; // Adjust path as needed
-    return false; // Indicate user is not logged in
+    window.location.href = "../auth/login.html"; // Ajuster le chemin si nécessaire
+    return false; // Indiquer que l'utilisateur n'est pas connecté
   }
-  // Optional: Check if user type is client
+  // Optionnel : Vérifier si le type d'utilisateur est client
   try {
     const user = JSON.parse(userString);
     if (user.type !== "client") {
       console.warn("Non-client accessing client order detail.");
-      // Redirect non-clients? Or just let loadOrderDetails handle filtering?
+      // Rediriger les non-clients ? Ou laisser loadOrderDetails gérer le filtrage ?
       // window.location.href = "../index.html";
       // return false;
     }
@@ -38,17 +38,17 @@ function checkLoginStatus() {
     window.location.href = "../auth/login.html";
     return false;
   }
-  return true; // User is logged in
+  return true; // L'utilisateur est connecté
 }
 
 /**
  * Load order details based on orderId from URL parameter and data from localStorage.
  */
 function loadOrderDetails() {
-  const orderId = getUrlParameter("orderId"); // Use the function defined below or from main.js
+  const orderId = getUrlParameter("orderId"); // Utiliser la fonction définie ci-dessous ou depuis main.js
   const orderDetailPage = document.querySelector(
     ".order-detail-page .container"
-  ); // Main container
+  ); // Conteneur principal
 
   if (!orderId || !orderDetailPage) {
     console.error("Order ID missing or order detail page container not found.");
@@ -59,11 +59,11 @@ function loadOrderDetails() {
     return;
   }
 
-  // Retrieve orders from localStorage
+  // Récupérer les commandes depuis localStorage
   const ordersJson = localStorage.getItem("articonnect_orders");
   const orders = ordersJson ? JSON.parse(ordersJson) : [];
 
-  // Find the specific order
+  // Trouver la commande spécifique
   const order = orders.find((o) => o.id === orderId);
 
   if (!order) {
@@ -72,7 +72,7 @@ function loadOrderDetails() {
     return;
   }
 
-  // Optional: Verify this order belongs to the logged-in user
+  // Optionnel : Vérifier que cette commande appartient à l'utilisateur connecté
   const userString = localStorage.getItem("articonnect_user");
   const currentUser = userString ? JSON.parse(userString) : null;
   if (!currentUser || !order.user || currentUser.email !== order.user.email) {
@@ -83,12 +83,12 @@ function loadOrderDetails() {
     return;
   }
 
-  // --- Populate Page Elements ---
+  // --- Remplir les éléments de la page ---
 
-  // Page Title
+  // Titre de la page
   document.title = `ArtiConnect - Détail Commande #${order.id}`;
 
-  // Breadcrumb & Header Title
+  // Fil d'Ariane & Titre de l'en-tête
   document.querySelectorAll(".current, .order-title h1").forEach((el) => {
     el.textContent = `Commande #${order.id}`;
   });
@@ -96,7 +96,7 @@ function loadOrderDetails() {
     new Date(order.date)
   );
 
-  // Status Badge
+  // Badge de statut
   const statusBadge = document.querySelector(".order-status .status-badge");
   if (statusBadge) {
     const statusClass = order.status
@@ -105,14 +105,14 @@ function loadOrderDetails() {
     let statusText = order.status || "Inconnu";
     if (statusClass === "completed") statusText = "Livrée";
     else if (statusClass === "processing") statusText = "En préparation";
-    // Add more statuses as needed
+    // Ajouter plus de statuts si nécessaire
     statusBadge.className = `status-badge ${statusClass}`;
     statusBadge.textContent = statusText;
   }
 
-  // Order Products
+  // Produits de la commande
   const productsContainer = document.querySelector(".order-products");
-  productsContainer.innerHTML = ""; // Clear placeholder
+  productsContainer.innerHTML = ""; // Effacer l'espace réservé
   order.items.forEach((item) => {
     const productDiv = document.createElement("div");
     productDiv.className = "order-product";
@@ -148,20 +148,20 @@ function loadOrderDetails() {
     productsContainer.appendChild(productDiv);
   });
 
-  // Order Timeline (Basic simulation based on status)
+  // Chronologie de la commande (Simulation de base basée sur le statut)
   const timelineItems = document.querySelectorAll(
     ".order-timeline .timeline-item"
   );
   let activeReached = false;
   timelineItems.forEach((item) => {
     item.classList.remove("active", "completed");
-    // Basic logic: Mark as completed up to the current status, mark current as active
+    // Logique de base : Marquer comme terminé jusqu'au statut actuel, marquer l'actuel comme actif
     const itemStatusText = item
       .querySelector(".timeline-title")
       ?.textContent.toLowerCase();
     let itemStatusClass = "unknown";
-    if (itemStatusText?.includes("confirmée")) itemStatusClass = "confirmed"; // Assuming 'Completed' status means confirmed
-    if (itemStatusText?.includes("paiement")) itemStatusClass = "paid"; // Assuming 'Completed' status means paid
+    if (itemStatusText?.includes("confirmée")) itemStatusClass = "confirmed"; // En supposant que le statut 'Completed' signifie confirmé
+    if (itemStatusText?.includes("paiement")) itemStatusClass = "paid"; // En supposant que le statut 'Completed' signifie payé
     if (itemStatusText?.includes("préparation")) itemStatusClass = "processing";
     if (itemStatusText?.includes("expédié")) itemStatusClass = "shipped";
     if (itemStatusText?.includes("livré")) itemStatusClass = "completed";
@@ -170,7 +170,7 @@ function loadOrderDetails() {
       ? order.status.toLowerCase().replace(/\s+/g, "-")
       : "unknown";
 
-    // Determine completion based on a simple assumed order of statuses
+    // Déterminer l'achèvement en fonction d'un ordre simple supposé des statuts
     const statusOrder = [
       "confirmed",
       "paid",
@@ -189,7 +189,7 @@ function loadOrderDetails() {
         activeReached = true;
       }
     }
-    // Ensure 'Commande confirmée' and 'Paiement accepté' are always completed if order status is >= processing
+    // S'assurer que 'Commande confirmée' et 'Paiement accepté' sont toujours terminés si le statut de la commande est >= processing
     if (
       (itemStatusClass === "confirmed" || itemStatusClass === "paid") &&
       currentStatusIndex >= statusOrder.indexOf("processing")
@@ -198,18 +198,18 @@ function loadOrderDetails() {
     }
   });
 
-  // Artisan Info (if available in order items - needs adjustment if stored differently)
+  // Informations sur l'artisan (si disponibles dans les articles de la commande - nécessite un ajustement si stocké différemment)
   const artisanInfoCard = document.querySelector(".artisan-info-card");
   const firstItemWithArtisan = order.items.find((item) => item.artisan);
   if (artisanInfoCard && firstItemWithArtisan) {
     artisanInfoCard.querySelector(".artisan-name").textContent =
       firstItemWithArtisan.artisan;
-    // TODO: Populate other artisan details if available
+    // TODO : Remplir les autres détails de l'artisan si disponibles
   } else if (artisanInfoCard) {
-    artisanInfoCard.style.display = "none"; // Hide if no artisan info
+    artisanInfoCard.style.display = "none"; // Masquer si aucune information sur l'artisan
   }
 
-  // Order Summary Sidebar
+  // Barre latérale du résumé de la commande
   document.querySelector(
     ".order-sidebar .summary-row:nth-child(1) .summary-value"
   ).textContent = formatPrice(order.subtotal);
@@ -220,47 +220,47 @@ function loadOrderDetails() {
 
   const summaryDiscountRow = document.querySelector(
     ".order-sidebar .summary-row.discount"
-  ); // Assuming a discount row exists
+  ); // En supposant qu'une ligne de remise existe
   const summaryDiscountValue =
     summaryDiscountRow?.querySelector(".summary-value");
   if (summaryDiscountRow && summaryDiscountValue && order.discount > 0) {
     let discountText = `-${formatPrice(order.discount)}`;
     if (order.discountType === "percent") {
-      // Need original subtotal to calculate percentage value if only percent stored
-      // Or store the calculated discount amount in the order object
-      // Assuming order.discount stores the calculated amount here
-      // discountText += ` (${order.discountPercent}%)`; // If percent was stored
+      // Besoin du sous-total original pour calculer la valeur en pourcentage si seul le pourcentage est stocké
+      // Ou stocker le montant de la remise calculé dans l'objet commande
+      // En supposant que order.discount stocke le montant calculé ici
+      // discountText += ` (${order.discountPercent}%)`; // Si le pourcentage était stocké
     }
     summaryDiscountValue.textContent = discountText;
     summaryDiscountRow.style.display = "";
   } else if (summaryDiscountRow) {
     summaryDiscountRow.style.display = "none";
   }
-  // TODO: Add Taxes row if applicable
+  // TODO : Ajouter la ligne Taxes si applicable
 
   document.querySelector(
     ".order-sidebar .summary-row.total .summary-value"
   ).textContent = formatPrice(order.total);
 
-  // Delivery Info Sidebar
+  // Barre latérale des informations de livraison
   document.querySelector(".delivery-info .delivery-address").innerHTML = `
         <h3 class="address-type">Adresse de livraison</h3>
         ${order.deliveryAddress
           .split(", ")
           .map((line) => `<p class="address-line">${line}</p>`)
           .join("")}
-    `; // Basic formatting
+    `; // Formatage de base
   document.querySelector(
     ".delivery-info .delivery-method .delivery-name"
   ).textContent = order.shippingMethod;
-  // TODO: Update estimated delivery based on order status/date
+  // TODO : Mettre à jour la livraison estimée en fonction du statut/date de la commande
 
-  // Payment Info Sidebar (Basic placeholder)
+  // Barre latérale des informations de paiement (Espace réservé de base)
   const paymentDetails = document.querySelector(
     ".payment-info .payment-details"
   );
   if (paymentDetails) {
-    // Placeholder - real app would fetch payment details securely
+    // Espace réservé - une application réelle récupérerait les détails de paiement de manière sécurisée
     paymentDetails.querySelector(".payment-card").textContent =
       "Visa se terminant par ****";
     paymentDetails.querySelector(
@@ -273,7 +273,7 @@ function loadOrderDetails() {
  * Initialize action buttons on the order detail page.
  */
 function initOrderDetailActions() {
-  // Example: Contact Artisan Button
+  // Exemple : Bouton Contacter l'artisan
   const contactBtn = document.querySelector(".contact-artisan-btn");
   if (contactBtn) {
     contactBtn.addEventListener("click", () => {
@@ -282,10 +282,10 @@ function initOrderDetailActions() {
       );
     });
   }
-  // Add handlers for other buttons like Print, Help, Reorder etc.
+  // Ajouter des gestionnaires pour d'autres boutons comme Imprimer, Aide, Recommander, etc.
 }
 
-// Helper function (copied from orders.js - move to main.js ideally)
+// Fonction utilitaire (copiée depuis orders.js - idéalement à déplacer vers main.js)
 function formatDate(date) {
   if (!date || !(date instanceof Date)) return "-";
   return date.toLocaleDateString("fr-FR", {
@@ -295,7 +295,7 @@ function formatDate(date) {
   });
 }
 
-// Helper function (copied from cart.js - move to main.js ideally)
+// Fonction utilitaire (copiée depuis cart.js - idéalement à déplacer vers main.js)
 function formatPrice(price) {
   if (typeof price !== "number") {
     price = parseFloat(price) || 0;
@@ -303,7 +303,7 @@ function formatPrice(price) {
   return price.toFixed(2).replace(".", ",") + " €";
 }
 
-// Helper function (copied from order_confirmation.js - move to main.js ideally)
+// Fonction utilitaire (copiée depuis order_confirmation.js - idéalement à déplacer vers main.js)
 function getUrlParameter(name) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
   const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");

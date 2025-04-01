@@ -10,7 +10,7 @@ function loadProductDetails() {
   const productId = parseInt(window.articonnect.getUrlParameter("id"));
   if (isNaN(productId)) {
     console.error("Invalid or missing product ID in URL");
-    // Optionally display an error message on the page
+    // Optionnellement, afficher un message d'erreur sur la page
     document.querySelector(".product-detail-page .container").innerHTML =
       '<p class="error-message">Produit non trouvé. ID invalide ou manquant.</p>';
     return;
@@ -22,31 +22,31 @@ function loadProductDetails() {
 
   if (!product) {
     console.error(`Product with ID ${productId} not found`);
-    // Optionally display an error message on the page
+    // Optionnellement, afficher un message d'erreur sur la page
     document.querySelector(".product-detail-page .container").innerHTML =
       '<p class="error-message">Produit non trouvé.</p>';
     return;
   }
 
-  // --- Populate Page Elements ---
+  // --- Remplir les éléments de la page ---
 
-  // Page Title
+  // Titre de la page
   document.title = `ArtiConnect - ${product.name}`;
 
-  // Breadcrumb
+  // Fil d'Ariane
   const breadcrumbCurrent = document.querySelector(".breadcrumb .current");
   if (breadcrumbCurrent) breadcrumbCurrent.textContent = product.name;
-  // TODO: Update category link in breadcrumb if needed
+  // TODO : Mettre à jour le lien de catégorie dans le fil d'Ariane si nécessaire
 
-  // Gallery
+  // Galerie
   const mainImage = document.getElementById("main-product-image");
   if (mainImage) {
-    mainImage.src = product.images ? product.images[0] : product.imageUrl; // Use first image or default
+    mainImage.src = product.images ? product.images[0] : product.imageUrl; // Utiliser la première image ou celle par défaut
     mainImage.alt = product.name;
   }
   const thumbnailGallery = document.querySelector(".thumbnail-gallery");
   if (thumbnailGallery) {
-    thumbnailGallery.innerHTML = ""; // Clear existing thumbnails
+    thumbnailGallery.innerHTML = ""; // Effacer les miniatures existantes
     if (product.images && product.images.length > 1) {
       product.images.forEach((imgSrc, index) => {
         const button = document.createElement("button");
@@ -58,18 +58,18 @@ function loadProductDetails() {
         thumbnailGallery.appendChild(button);
       });
     } else {
-      // Hide gallery if only one image
+      // Masquer la galerie si une seule image
       thumbnailGallery.style.display = "none";
     }
   }
 
-  // Product Info
+  // Informations sur le produit
   const titleElement = document.querySelector(".product-info .product-title");
   if (titleElement) titleElement.textContent = product.name;
 
   const artisanLink = document.querySelector(".artisan-info a");
   if (artisanLink) artisanLink.textContent = product.artisan;
-  // TODO: Update artisan avatar and link href if needed
+  // TODO : Mettre à jour l'avatar de l'artisan et le href du lien si nécessaire
 
   const priceElement = document.querySelector(".product-info .product-price");
   if (priceElement)
@@ -114,49 +114,49 @@ function loadProductDetails() {
   );
   if (shortDescElement)
     shortDescElement.textContent =
-      product.description.substring(0, 150) + "..."; // Truncate for short desc
+      product.description.substring(0, 150) + "..."; // Tronquer pour la description courte
 
-  // Quantity Input Max
+  // Quantité maximale d'entrée
   const quantityInput = document.querySelector(".quantity-input");
   if (quantityInput) quantityInput.max = product.stock > 0 ? product.stock : 1;
 
-  // Tab Content
+  // Contenu de l'onglet
   const descriptionContent = document.querySelector(
     "#description .description-content"
   );
   if (descriptionContent) {
-    // More detailed description population
+    // Remplissage plus détaillé de la description
     descriptionContent.querySelector(
       "h2"
     ).textContent = `À propos de ${product.name}`;
-    // Assuming product.description holds the full text
-    const paragraphs = product.description.split("\n\n"); // Simple split, adjust if needed
+    // En supposant que product.description contient le texte complet
+    const paragraphs = product.description.split("\n\n"); // Séparation simple, ajuster si nécessaire
     descriptionContent.querySelectorAll("p").forEach((p, index) => {
       if (paragraphs[index]) {
         p.textContent = paragraphs[index];
       } else {
-        p.remove(); // Remove extra template paragraphs
+        p.remove(); // Supprimer les paragraphes de modèle supplémentaires
       }
     });
   }
 
   const specsContent = document.querySelector("#specifications .specs-grid");
   if (specsContent && product.specs) {
-    // Clear existing template specs
+    // Effacer les spécifications de modèle existantes
     specsContent.innerHTML = "";
-    // Populate based on product.specs object
+    // Remplir en fonction de l'objet product.specs
     for (const groupName in product.specs) {
       const specGroupDiv = document.createElement("div");
       specGroupDiv.className = "spec-group";
       const title = document.createElement("h3");
-      // Simple capitalization for group name
+      // Capitalisation simple pour le nom du groupe
       title.textContent =
         groupName.charAt(0).toUpperCase() + groupName.slice(1);
       specGroupDiv.appendChild(title);
 
       const list = document.createElement("ul");
       list.className = "spec-list";
-      // Assuming specs[groupName] is an object or string
+      // En supposant que specs[groupName] est un objet ou une chaîne
       if (typeof product.specs[groupName] === "object") {
         for (const key in product.specs[groupName]) {
           const item = document.createElement("li");
@@ -175,20 +175,20 @@ function loadProductDetails() {
     }
   }
 
-  // TODO: Populate Artisan Tab
+  // TODO : Remplir l'onglet Artisan
 
-  // Store current product globally for other functions on this page
+  // Stocker le produit actuel globalement pour d'autres fonctions sur cette page
   window.currentProduct = product;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Load product data first
+  // Charger d'abord les données du produit
   loadProductDetails();
 
-  // Initialize UI components after data might be loaded
+  // Initialiser les composants UI après le chargement potentiel des données
   initProductGallery();
   initQuantitySelector();
-  initAddToCart(); // Will need modification to use loaded product ID
+  initAddToCart(); // Nécessitera une modification pour utiliser l'ID de produit chargé
   initProductTabs();
 });
 
@@ -203,11 +203,11 @@ function initProductGallery() {
 
   thumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener("click", function () {
-      // Update main image source
+      // Mettre à jour la source de l'image principale
       const imageSource = this.dataset.image;
       mainImage.src = imageSource;
 
-      // Update active state
+      // Mettre à jour l'état actif
       thumbnails.forEach((thumb) => thumb.classList.remove("active"));
       this.classList.add("active");
     });
@@ -224,7 +224,7 @@ function initQuantitySelector() {
 
   if (!minusBtn || !plusBtn || !quantityInput) return;
 
-  // Get max quantity from data attribute or stock level
+  // Obtenir la quantité maximale à partir de l'attribut de données ou du niveau de stock
   const maxQuantity = parseInt(quantityInput.getAttribute("max") || 10);
 
   minusBtn.addEventListener("click", function () {
@@ -241,7 +241,7 @@ function initQuantitySelector() {
     }
   });
 
-  // Validate direct input
+  // Valider l'entrée directe
   quantityInput.addEventListener("change", function () {
     let value = parseInt(this.value);
 
@@ -264,14 +264,14 @@ function initProductTabs() {
 
   tabButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      // Remove active class from all buttons and contents
+      // Retirer la classe active de tous les boutons et contenus
       tabButtons.forEach((btn) => btn.classList.remove("active"));
       tabContents.forEach((content) => content.classList.remove("active"));
 
-      // Add active class to current button
+      // Ajouter la classe active au bouton actuel
       this.classList.add("active");
 
-      // Show corresponding content
+      // Afficher le contenu correspondant
       const tabId = this.dataset.tab;
       const targetContent = document.getElementById(`${tabId}`);
       if (targetContent) {
@@ -285,7 +285,7 @@ function initProductTabs() {
  * Initialize add to cart functionality for the detail page
  */
 function initAddToCart() {
-  const addToCartBtn = document.querySelector(".product-actions .add-to-cart"); // More specific selector
+  const addToCartBtn = document.querySelector(".product-actions .add-to-cart"); // Sélecteur plus spécifique
   const quantityInput = document.querySelector(".quantity-input");
 
   if (!addToCartBtn || !quantityInput) return;
@@ -293,7 +293,7 @@ function initAddToCart() {
   addToCartBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
-    // Ensure product data is loaded and addToCart function exists
+    // S'assurer que les données du produit sont chargées et que la fonction addToCart existe
     if (
       !window.currentProduct ||
       !window.articonnect ||
@@ -305,36 +305,36 @@ function initAddToCart() {
     }
 
     const quantity = parseInt(quantityInput.value);
-    const variantSelect = document.querySelector("#finish"); // Assuming ID 'finish' for variant selector
+    const variantSelect = document.querySelector("#finish"); // En supposant l'ID 'finish' pour le sélecteur de variante
     const variant = variantSelect ? variantSelect.value : null;
 
-    // Prepare item to add
+    // Préparer l'article à ajouter
     const itemToAdd = {
       id: window.currentProduct.id,
       name: window.currentProduct.name,
       price: window.currentProduct.price,
-      // Use first image from array or the main imageUrl
+      // Utiliser la première image du tableau ou l'imageUrl principale
       imageUrl: window.currentProduct.images
         ? window.currentProduct.images[0]
         : window.currentProduct.imageUrl,
       quantity: quantity,
       variant: variant,
-      // Link back to this specific product page
+      // Lien retour vers cette page produit spécifique
       detailUrl: window.location.pathname + window.location.search,
-      stock: window.currentProduct.stock, // Pass stock info if available
+      stock: window.currentProduct.stock, // Passer les informations de stock si disponibles
     };
 
-    // Use the global addToCart function
+    // Utiliser la fonction globale addToCart
     window.articonnect.addToCart(itemToAdd);
 
-    // Show confirmation feedback on the button
+    // Afficher un retour de confirmation sur le bouton
     const originalText = addToCartBtn.innerHTML;
     addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Ajouté';
     addToCartBtn.disabled = true;
 
-    // Header count updates automatically via 'cartUpdated' event listener in cart.js
+    // Le compteur de l'en-tête se met à jour automatiquement via l'écouteur d'événement 'cartUpdated' dans cart.js
 
-    // Restore button after a delay
+    // Restaurer le bouton après un délai
     setTimeout(() => {
       addToCartBtn.innerHTML = originalText;
       addToCartBtn.disabled = false;
@@ -342,5 +342,5 @@ function initAddToCart() {
   });
 }
 
-// Removed dynamically added CSS for pulse animation.
-// Ensure pulse animation CSS exists in a loaded CSS file (e.g., main.css or product_detail.css).
+// CSS ajouté dynamiquement pour l'animation de pulsation supprimé.
+// S'assurer que le CSS de l'animation de pulsation existe dans un fichier CSS chargé (par ex., main.css ou product_detail.css).

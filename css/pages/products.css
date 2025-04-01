@@ -1,11 +1,11 @@
-/* =====  PRODUCTS PAGE STYLES  ===== */
+/* ===== STYLES PAGE PRODUITS ===== */
 
 .products-page {
   padding: calc(var(--header-height) + var(--spacing-4)) 0 var(--spacing-8);
   background-color: var(--color-grey-100);
 }
 
-/* Products Header */
+/* En-tête Produits */
 .products-header {
   margin-bottom: var(--spacing-6);
   text-align: center;
@@ -26,7 +26,7 @@
   margin: 0 auto;
 }
 
-/* Products Layout */
+/* Mise en page Produits */
 .products-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -34,7 +34,7 @@
   margin-top: var(--spacing-6);
 }
 
-/* Filters Sidebar */
+/* Barre latérale Filtres */
 .filters-sidebar {
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
@@ -189,7 +189,7 @@
   text-decoration: underline;
 }
 
-/* Products Content */
+/* Contenu Produits */
 .products-content {
   display: flex;
   flex-direction: column;
@@ -253,7 +253,7 @@
   color: var(--color-white);
 }
 
-/* Products Grid */
+/* Grille Produits */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -274,7 +274,7 @@
   transform: translateY(-5px);
   box-shadow: var(--shadow-md);
 }
-/* Favorite button styles removed */
+/* Styles du bouton favori supprimés */
 
 .product-image {
   position: relative;
@@ -366,7 +366,7 @@
   width: 100px;
 }
 
-/* List View */
+/* Vue Liste */
 .view-list .products-grid {
   grid-template-columns: 1fr;
 }
@@ -435,7 +435,7 @@
   cursor: not-allowed;
 }
 
-/* Mobile Filters */
+/* Filtres Mobiles */
 .mobile-filters-button {
   display: none;
   padding: var(--spacing-2) var(--spacing-4);
@@ -500,7 +500,7 @@
   flex: 1;
 }
 
-/* Empty State */
+/* État Vide */
 .empty-state {
   text-align: center;
   padding: var(--spacing-8) var(--spacing-4);
@@ -529,7 +529,7 @@
   margin-right: auto;
 }
 
-/* Responsive Styles */
+/* Styles Adaptatifs */
 @media (max-width: 1024px) {
   .products-layout {
     grid-template-columns: 240px 1fr;
@@ -603,14 +603,14 @@
     height: auto;
   }
 
-  /* ===== DYNAMICALLY ADDED STYLES (Moved from JS) ===== */
+  /* ===== STYLES AJOUTÉS DYNAMIQUEMENT (Déplacés depuis JS) ===== */
 
   .products-grid.loading {
     opacity: 0.6;
     pointer-events: none;
   }
 
-  /* Toast notification styles removed */
+  /* Styles de notification toast supprimés */
 }
 
 .toast-icon {
@@ -663,4 +663,4 @@
 .pagination {
   flex-wrap: wrap;
 }
-/* Removed extra closing brace */
+/* Accolade fermante supplémentaire supprimée */

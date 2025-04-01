@@ -3,28 +3,28 @@
  * Handles functionality for the products catalog page
  */
 
-// Sample product data moved to js/main.js and exposed via window.articonnect.sampleProducts
+// Données d'exemple de produits déplacées vers js/main.js et exposées via window.articonnect.sampleProducts
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Render initial products
-  renderProducts(sampleProducts); // Render products first
+  // Afficher les produits initiaux
+  renderProducts(sampleProducts); // Afficher d'abord les produits
 
-  // Initialize filters functionality
+  // Initialiser la fonctionnalité des filtres
   initFilters();
 
-  // Initialize view switching (grid/list)
+  // Initialiser le changement de vue (grille/liste)
   initViewSwitcher();
 
-  // Initialize sorting
+  // Initialiser le tri
   initSorting();
 
-  // Initialize add to cart using event delegation
+  // Initialiser l'ajout au panier en utilisant la délégation d'événements
   initDynamicActions();
 
-  // Initialize mobile filters
+  // Initialiser les filtres mobiles
   initMobileFilters();
 
-  // Update count based on initial render
+  // Mettre à jour le compteur basé sur le rendu initial
   updateProductCount(sampleProducts.length);
 });
 
@@ -36,7 +36,7 @@ function renderProducts(products) {
   const productsGrid = document.querySelector(".products-grid");
   if (!productsGrid) return;
 
-  // Clear existing products (except potential loading indicators)
+  // Effacer les produits existants (sauf les indicateurs de chargement potentiels)
   productsGrid.innerHTML = "";
 
   if (products.length === 0) {
@@ -48,9 +48,9 @@ function renderProducts(products) {
   products.forEach((product) => {
     const productCard = document.createElement("div");
     productCard.className = "product-card";
-    productCard.dataset.productId = product.id; // Add product ID for easier targeting
+    productCard.dataset.productId = product.id; // Ajouter l'ID du produit pour un ciblage plus facile
 
-    // Generate star rating HTML
+    // Générer le HTML de la notation par étoiles
     let starsHtml = "";
     const fullStars = Math.floor(product.rating);
     const halfStar = product.rating % 1 >= 0.5;
@@ -95,7 +95,7 @@ function renderProducts(products) {
     productsGrid.appendChild(productCard);
   });
 
-  // Update the count after rendering
+  // Mettre à jour le compteur après l'affichage
   updateProductCount(products.length);
 }
 
@@ -109,40 +109,40 @@ function initDynamicActions() {
   productsGrid.addEventListener("click", function (event) {
     const target = event.target;
 
-    // Handle Add to Cart Button Click
+    // Gérer le clic sur le bouton Ajouter au panier
     const addToCartBtn = target.closest(".add-to-cart");
     if (addToCartBtn) {
       event.preventDefault();
 
-      // Get product info
+      // Obtenir les informations du produit
       const productCard = addToCartBtn.closest(".product-card");
-      const productId = parseInt(productCard?.dataset.productId); // Ensure ID is number
+      const productId = parseInt(productCard?.dataset.productId); // S'assurer que l'ID est un nombre
 
       if (
         productId &&
         window.articonnect &&
         typeof window.articonnect.addToCart === "function"
       ) {
-        // Find the full product data from the global list
+        // Trouver les données complètes du produit dans la liste globale
         const productData = window.articonnect.sampleProducts.find(
           (p) => p.id === productId
         );
 
         if (productData) {
-          // Prepare item to add (default quantity 1 from product list)
+          // Préparer l'article à ajouter (quantité par défaut 1 depuis la liste de produits)
           const itemToAdd = {
             id: productData.id,
             name: productData.name,
             price: productData.price,
             imageUrl: productData.imageUrl,
-            quantity: 1, // Default quantity when adding from list
-            variant: null, // No variants selectable on list page
+            quantity: 1, // Quantité par défaut lors de l'ajout depuis la liste
+            variant: null, // Aucune variante sélectionnable sur la page de liste
             detailUrl: productData.detailUrl,
-            stock: productData.stock, // Pass stock info if available
+            stock: productData.stock, // Passer les informations de stock si disponibles
           };
           window.articonnect.addToCart(itemToAdd);
-          console.log(`${productData.name} ajouté au panier`); // Replaced showNotification
-          // Header count updates automatically via 'cartUpdated' event listener in cart.js
+          console.log(`${productData.name} ajouté au panier`); // Remplacé showNotification
+          // Le compteur de l'en-tête se met à jour automatiquement via l'écouteur d'événement 'cartUpdated' dans cart.js
         } else {
           console.error(`Product data not found for ID: ${productId}`);
           alert("Erreur: Impossible d'ajouter le produit.");
@@ -153,13 +153,13 @@ function initDynamicActions() {
         );
         alert("Erreur: Impossible d'ajouter le produit.");
       }
-      return; // Stop further processing if add-to-cart button was clicked
+      return; // Arrêter le traitement ultérieur si le bouton Ajouter au panier a été cliqué
     }
   });
 }
 
-// Note: The following lines (263-271 in the previous state) were removed
-// as they were erroneously duplicated/misplaced HTML fragments.
+// Note : Les lignes suivantes (263-271 dans l'état précédent) ont été supprimées
+// car il s'agissait de fragments HTML dupliqués/mal placés par erreur.
 
 /**
  * Initialize filters
@@ -177,7 +177,7 @@ function initFilters() {
   const minPriceInput = document.getElementById("min-price");
   const maxPriceInput = document.getElementById("max-price");
 
-  // Apply filters when checkboxes are changed
+  // Appliquer les filtres lorsque les cases à cocher sont modifiées
   if (filterOptions) {
     filterOptions.forEach((option) => {
       option.addEventListener("change", function () {
@@ -186,15 +186,15 @@ function initFilters() {
     });
   }
 
-  // Clear all filters
+  // Effacer tous les filtres
   if (clearFiltersBtn) {
     clearFiltersBtn.addEventListener("click", function () {
-      // Uncheck all filter checkboxes
+      // Décocher toutes les cases à cocher de filtre
       filterOptions.forEach((option) => {
         option.checked = false;
       });
 
-      // Reset price inputs
+      // Réinitialiser les entrées de prix
       if (minPriceInput) minPriceInput.value = "";
       if (maxPriceInput) maxPriceInput.value = "";
 
@@ -202,14 +202,14 @@ function initFilters() {
     });
   }
 
-  // Apply price filter
+  // Appliquer le filtre de prix
   if (priceApplyBtn) {
     priceApplyBtn.addEventListener("click", function () {
       applyFilters();
     });
   }
 
-  // See more categories or artisans
+  // Voir plus de catégories ou d'artisans
   const seeMoreLinks = document.querySelectorAll(".see-more");
   if (seeMoreLinks.length) {
     seeMoreLinks.forEach((link) => {
@@ -231,11 +231,11 @@ function initFilters() {
  * Apply active filters to products
  */
 function applyFilters() {
-  // In a real implementation, this would likely make an AJAX request to the server
-  // or filter the products in-place if they're client-side loaded
+  // Dans une implémentation réelle, cela ferait probablement une requête AJAX au serveur
+  // ou filtrer les produits sur place s'ils sont chargés côté client
   console.log("Filters applied");
 
-  // For demo purposes, simulate filter application with a loading state
+  // À des fins de démonstration, simuler l'application du filtre avec un état de chargement
   const productsGrid = document.querySelector(".products-grid");
   if (productsGrid) {
     productsGrid.classList.add("loading");
@@ -268,13 +268,13 @@ function initViewSwitcher() {
   if (viewOptions.length && productsContent) {
     viewOptions.forEach((option) => {
       option.addEventListener("click", function () {
-        // Remove active class from all options
+        // Retirer la classe active de toutes les options
         viewOptions.forEach((opt) => opt.classList.remove("active"));
 
-        // Add active class to clicked option
+        // Ajouter la classe active à l'option cliquée
         this.classList.add("active");
 
-        // Set view mode
+        // Définir le mode d'affichage
         const viewMode = this.dataset.view;
 
         if (viewMode === "grid") {
@@ -285,15 +285,15 @@ function initViewSwitcher() {
           productsContent.classList.remove("view-grid");
         }
 
-        // Save preference in localStorage
+        // Enregistrer la préférence dans localStorage
         localStorage.setItem("articonnect_product_view", viewMode);
       });
     });
 
-    // Set initial view based on saved preference
+    // Définir la vue initiale en fonction de la préférence enregistrée
     const savedView = localStorage.getItem("articonnect_product_view");
     if (savedView) {
-      // Adjusted querySelector syntax
+      // Syntaxe querySelector ajustée
       const targetOption = document.querySelector(
         '.view-option[data-view="' + savedView + '"]'
       );
@@ -313,10 +313,10 @@ function initSorting() {
   if (sortSelect) {
     sortSelect.addEventListener("change", function () {
       const sortValue = this.value;
-      console.log(`Sorting by: ${sortValue}`); // Added semicolon
+      console.log(`Sorting by: ${sortValue}`); // Point-virgule ajouté
 
-      // In a real implementation, this would make an AJAX request or sort in-place
-      // For demo purposes, simulate sorting with a loading state
+      // Dans une implémentation réelle, cela ferait une requête AJAX ou trierait sur place
+      // À des fins de démonstration, simuler le tri avec un état de chargement
       const productsGrid = document.querySelector(".products-grid");
       if (productsGrid) {
         productsGrid.classList.add("loading");
@@ -324,14 +324,14 @@ function initSorting() {
         setTimeout(() => {
           productsGrid.classList.remove("loading");
 
-          // Demo: Just move a few products around to show something happened
+          // Démo : Déplacer simplement quelques produits pour montrer que quelque chose s'est passé
           if (sortValue === "price-low" || sortValue === "price-high") {
-            // Sort by price demo - just move items
+            // Démo de tri par prix - déplacer simplement les articles
             const productCards = Array.from(
               document.querySelectorAll(".product-card")
             );
             if (productCards.length > 1) {
-              // Move the first product to the end or vice versa
+              // Déplacer le premier produit à la fin ou vice versa
               const firstCard = productCards[0];
               const lastCard = productCards[productCards.length - 1];
 
@@ -350,7 +350,7 @@ function initSorting() {
   }
 }
 
-// initFavorites function removed as its logic is now in initDynamicActions
+// Fonction initFavorites supprimée car sa logique est maintenant dans initDynamicActions
 
 /**
  * Initialize mobile filters
@@ -368,18 +368,18 @@ function initMobileFilters() {
   if (!mobileFiltesBtn || !mobileFiltersOverlay || !mobileFiltersContainer)
     return;
 
-  // Open mobile filters
+  // Ouvrir les filtres mobiles
   mobileFiltesBtn.addEventListener("click", function () {
     mobileFiltersOverlay.classList.add("active");
     mobileFiltersContainer.classList.add("active");
-    document.body.style.overflow = "hidden"; // Prevent scrolling
+    document.body.style.overflow = "hidden"; // Empêcher le défilement
   });
 
-  // Close mobile filters
+  // Fermer les filtres mobiles
   function closeMobileFilters() {
     mobileFiltersOverlay.classList.remove("active");
     mobileFiltersContainer.classList.remove("active");
-    document.body.style.overflow = ""; // Enable scrolling
+    document.body.style.overflow = ""; // Activer le défilement
   }
 
   if (closeBtn) {
@@ -388,12 +388,12 @@ function initMobileFilters() {
 
   mobileFiltersOverlay.addEventListener("click", closeMobileFilters);
 
-  // Prevent clicks inside container from closing
+  // Empêcher les clics à l'intérieur du conteneur de fermer
   mobileFiltersContainer.addEventListener("click", function (e) {
     e.stopPropagation();
   });
 
-  // Apply filters button in mobile view
+  // Bouton Appliquer les filtres en vue mobile
   const applyFiltersBtn = document.querySelector(
     ".mobile-filters-actions .apply-filters"
   );
@@ -405,7 +405,7 @@ function initMobileFilters() {
   }
 }
 
-// initAddToCart function removed as its logic is now in initDynamicActions
+// Fonction initAddToCart supprimée car sa logique est maintenant dans initDynamicActions
 
 /**
  * Update cart count in header
@@ -417,7 +417,7 @@ function updateCartCount() {
     count += 1;
     cartCount.textContent = count;
 
-    // Add animation
+    // Ajouter une animation
     cartCount.classList.add("pulse");
     setTimeout(() => {
       cartCount.classList.remove("pulse");
@@ -425,6 +425,6 @@ function updateCartCount() {
   }
 }
 
-// showNotification function removed.
+// Fonction showNotification supprimée.
 
-// Removed dynamically added CSS - styles moved to css/pages/products.css
+// CSS ajouté dynamiquement supprimé - styles déplacés vers css/pages/products.css

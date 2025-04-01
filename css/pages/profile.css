@@ -1,4 +1,4 @@
-/* ===== CLIENT PROFILE PAGE STYLES ===== */
+/* ===== STYLES PAGE PROFIL CLIENT ===== */
 
 .profile-page {
   padding: var(--spacing-6) 0;
@@ -7,23 +7,23 @@
 
 .client-dashboard {
   display: grid;
-  grid-template-columns: 280px 1fr; /* Sidebar | Content */
+  grid-template-columns: 280px 1fr; /* Barre latérale | Contenu */
   gap: var(--spacing-6);
   max-width: var(--container-max-width);
   margin: 0 auto;
 }
 
-/* --- Sidebar --- */
+/* --- Barre latérale --- */
 .dashboard-sidebar {
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   padding: var(--spacing-5);
-  height: fit-content; /* Stick to top */
+  height: fit-content; /* Coller en haut */
   position: sticky;
   top: calc(
     var(--header-height) + var(--spacing-6)
-  ); /* Adjust based on header height */
+  ); /* Ajuster en fonction de la hauteur de l'en-tête */
 }
 
 .user-info {
@@ -52,11 +52,11 @@
 .user-email {
   font-size: var(--font-size-sm);
   color: var(--color-grey-600);
-  word-break: break-all; /* Prevent long emails overflowing */
+  word-break: break-all; /* Empêcher le débordement des emails longs */
 }
 
 .dashboard-nav {
-  /* Styles for navigation */
+  /* Styles pour la navigation */
 }
 
 .dashboard-menu {
@@ -77,7 +77,7 @@
   transition: all var(--transition-fast);
 }
 .dashboard-link i {
-  width: 20px; /* Align icons */
+  width: 20px; /* Aligner les icônes */
   text-align: center;
   color: var(--color-grey-500);
   transition: color var(--transition-fast);
@@ -103,9 +103,9 @@
   color: var(--color-white);
 }
 
-/* --- Content Area --- */
+/* --- Zone de contenu --- */
 .dashboard-content {
-  /* Takes remaining space */
+  /* Prend l'espace restant */
 }
 
 .content-header {
@@ -152,7 +152,7 @@
   padding: var(--spacing-5);
 }
 
-/* View Mode */
+/* Mode Vue */
 .profile-info.view-mode {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -177,10 +177,10 @@
   word-break: break-word;
 }
 
-/* Edit Mode */
+/* Mode Édition */
 .profile-form.edit-mode,
 .profile-photo-form.edit-mode {
-  /* Styles for the forms */
+  /* Styles pour les formulaires */
 }
 
 .form-row {
@@ -206,15 +206,17 @@
   border-top: 1px solid var(--color-grey-200);
 }
 
-/* Photo Section */
+/* Section Photo */
 .profile-photo.view-mode {
-  /* Styles specific to photo view mode if needed */
+  /* Styles spécifiques au mode vue photo si nécessaire */
 }
 
 .current-photo {
   width: 100px;
   height: 100px;
-  margin-bottom: var(--spacing-4); /* Add space below photo in view mode */
+  margin-bottom: var(
+    --spacing-4
+  ); /* Ajouter de l'espace sous la photo en mode vue */
 }
 
 .large-avatar {
@@ -245,13 +247,13 @@
   width: 100%;
 }
 
-/* Responsive */
+/* Adaptatif */
 @media (max-width: 992px) {
   .client-dashboard {
-    grid-template-columns: 1fr; /* Stack sidebar and content */
+    grid-template-columns: 1fr; /* Empiler la barre latérale et le contenu */
   }
   .dashboard-sidebar {
-    position: static; /* Remove sticky */
+    position: static; /* Supprimer le positionnement collant */
     height: auto;
     margin-bottom: var(--spacing-5);
   }
@@ -279,6 +281,6 @@
     justify-content: center;
   }
   .profile-info.view-mode {
-    grid-template-columns: 1fr; /* Single column */
+    grid-template-columns: 1fr; /* Colonne unique */
   }
 }

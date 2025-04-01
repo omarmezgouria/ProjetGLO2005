@@ -1,4 +1,4 @@
-/* ===== ARTISAN ORDERS PAGE STYLES ===== */
+/* ===== STYLES PAGE COMMANDES ARTISAN ===== */
 
 .page-header {
   display: flex;
@@ -7,7 +7,7 @@
   margin-bottom: var(--spacing-6);
   padding-bottom: var(--spacing-4);
   border-bottom: 1px solid var(--color-grey-200);
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap; /* Autoriser le retour à la ligne sur les petits écrans */
   gap: var(--spacing-3);
 }
 
@@ -18,7 +18,7 @@
 }
 
 .date-range {
-  /* Styles for date range button if needed */
+  /* Styles pour le bouton de plage de dates si nécessaire */
 }
 .date-range-btn {
   display: flex;
@@ -37,7 +37,7 @@
   border-color: var(--color-primary);
 }
 
-/* Orders Summary */
+/* Résumé Commandes */
 .orders-summary {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -64,7 +64,7 @@
   border-radius: var(--radius-full);
   font-size: var(--font-size-xl);
   color: var(--color-white);
-  background-color: var(--color-primary); /* Default */
+  background-color: var(--color-primary); /* Défaut */
 }
 
 .summary-icon.new-orders {
@@ -92,12 +92,12 @@
   color: var(--color-grey-600);
 }
 
-/* Orders Filters & Tabs */
+/* Filtres & Onglets Commandes */
 .orders-filters {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Allow wrapping */
+  flex-wrap: wrap; /* Autoriser le retour à la ligne */
   gap: var(--spacing-4);
   margin-bottom: var(--spacing-5);
   background-color: var(--color-white);
@@ -109,7 +109,7 @@
 .tabs {
   display: flex;
   gap: var(--spacing-1);
-  flex-wrap: wrap; /* Allow tabs to wrap */
+  flex-wrap: wrap; /* Autoriser le retour à la ligne des onglets */
 }
 
 .tab-btn {
@@ -184,12 +184,12 @@
   color: var(--color-primary);
 }
 
-/* Orders Table */
+/* Tableau Commandes */
 .orders-table-container {
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-x: auto; /* Autoriser le défilement horizontal */
 }
 
 .orders-table {
@@ -229,7 +229,7 @@
   text-align: right;
 }
 
-/* Checkbox styling */
+/* Style Case à cocher */
 .checkbox-container {
   display: inline-block;
   position: relative;
@@ -329,7 +329,7 @@
   border: 1px solid var(--color-grey-200);
 }
 
-/* Status Badge (copied from dashboard.css) */
+/* Badge de statut (copié depuis dashboard.css) */
 .status-badge {
   display: inline-block;
   padding: 0.25rem 0.5rem;
@@ -377,7 +377,7 @@
   color: var(--color-primary);
 }
 
-/* Responsive */
+/* Adaptatif */
 @media (max-width: 768px) {
   .orders-summary {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -387,7 +387,7 @@
     align-items: stretch;
   }
   .tabs {
-    order: 2; /* Move tabs below actions on small screens */
+    order: 2; /* Déplacer les onglets sous les actions sur petits écrans */
     justify-content: center;
     margin-top: var(--spacing-3);
   }

@@ -1,10 +1,10 @@
-/* ===== CHECKOUT PAGE STYLES ===== */
+/* ===== STYLES PAGE PAIEMENT ===== */
 
-/* --- Header --- */
+/* --- En-tête --- */
 .header--checkout {
   background-color: var(--color-white);
   box-shadow: var(--shadow-md);
-  position: relative; /* Make it static for checkout */
+  position: relative; /* Rendre statique pour le paiement */
   backdrop-filter: none;
 }
 
@@ -63,7 +63,7 @@
   height: 2px;
   background-color: var(--color-grey-300);
   margin: 0 var(--spacing-2);
-  transform: translateY(-8px); /* Align with middle of numbers */
+  transform: translateY(-8px); /* Aligner avec le milieu des nombres */
 }
 
 .checkout-security {
@@ -78,7 +78,7 @@
   color: var(--color-success);
 }
 
-/* --- Main Content --- */
+/* --- Contenu Principal --- */
 .checkout-page {
   padding: var(--spacing-7) 0;
   background-color: var(--color-grey-100);
@@ -86,11 +86,11 @@
 
 .checkout-content {
   display: grid;
-  grid-template-columns: 1fr 400px; /* Form takes remaining space, summary fixed width */
+  grid-template-columns: 1fr 400px; /* Le formulaire prend l'espace restant, résumé largeur fixe */
   gap: var(--spacing-7);
 }
 
-/* --- Form Section --- */
+/* --- Section Formulaire --- */
 .checkout-form {
   background-color: var(--color-white);
   padding: var(--spacing-6);
@@ -130,7 +130,7 @@
   margin-top: var(--spacing-5);
 }
 
-/* Address Cards */
+/* Cartes Adresse */
 .saved-addresses {
   display: grid;
   gap: var(--spacing-4);
@@ -192,7 +192,7 @@
   justify-content: center;
 }
 
-/* Shipping Options */
+/* Options d'Expédition */
 .shipping-options {
   display: grid;
   gap: var(--spacing-3);
@@ -213,11 +213,11 @@
 }
 
 .shipping-option input[type="radio"] {
-  display: none; /* Hide default radio */
+  display: none; /* Masquer le bouton radio par défaut */
 }
 
 .shipping-option input[type="radio"]:checked + .option-content {
-  /* Style applied via parent label */
+  /* Style appliqué via l'étiquette parente */
 }
 
 .shipping-option input[type="radio"]:checked + .option-content::before {
@@ -241,10 +241,10 @@
 }
 
 .option-content::before {
-  /* Placeholder for radio/check */
+  /* Espace réservé pour radio/coche */
   content: "\f111"; /* Font Awesome circle */
   font-family: "Font Awesome 6 Free";
-  font-weight: 400; /* Regular */
+  font-weight: 400; /* Régulier */
   color: var(--color-grey-400);
   margin-right: var(--spacing-3);
   font-size: var(--font-size-lg);
@@ -266,7 +266,7 @@
   color: var(--color-grey-800);
 }
 
-/* Payment Section */
+/* Section Paiement */
 .payment-methods {
   border: 1px solid var(--color-grey-200);
   border-radius: var(--radius-md);
@@ -307,11 +307,11 @@
 
 .payment-content {
   padding: var(--spacing-5);
-  display: none; /* Hidden by default */
+  display: none; /* Masqué par défaut */
 }
 
 .payment-content.active {
-  display: block; /* Show active content */
+  display: block; /* Afficher le contenu actif */
 }
 
 .card-input-wrapper,
@@ -351,11 +351,11 @@
   margin-top: var(--spacing-4);
 }
 
-/* Checkbox styling */
+/* Style Case à cocher */
 .checkbox-container {
   display: block;
   position: relative;
-  padding-left: 30px; /* Space for custom checkbox */
+  padding-left: 30px; /* Espace pour case à cocher personnalisée */
   margin-bottom: var(--spacing-3);
   cursor: pointer;
   font-size: var(--font-size-base);
@@ -366,7 +366,7 @@
   color: var(--color-grey-700);
 }
 
-/* Hide the browser's default checkbox */
+/* Masquer la case à cocher par défaut du navigateur */
 .checkbox-container input {
   position: absolute;
   opacity: 0;
@@ -375,7 +375,7 @@
   width: 0;
 }
 
-/* Create a custom checkbox */
+/* Créer une case à cocher personnalisée */
 .checkmark {
   position: absolute;
   top: 0;
@@ -388,30 +388,30 @@
   transition: all var(--transition-fast);
 }
 
-/* On mouse-over, add a grey background color */
+/* Au survol, ajouter une couleur de fond grise */
 .checkbox-container:hover input ~ .checkmark {
   background-color: var(--color-grey-200);
 }
 
-/* When the checkbox is checked, add a blue background */
+/* Lorsque la case est cochée, ajouter un fond bleu */
 .checkbox-container input:checked ~ .checkmark {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
+/* Créer la coche/indicateur (masqué si non coché) */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the checkmark when checked */
+/* Afficher la coche si coché */
 .checkbox-container input:checked ~ .checkmark:after {
   display: block;
 }
 
-/* Style the checkmark/indicator */
+/* Styler la coche/indicateur */
 .checkbox-container .checkmark:after {
   left: 6px;
   top: 2px;
@@ -453,8 +453,8 @@
 .apple-pay-button {
   background-color: var(--color-black);
   color: var(--color-white);
-  font-size: 2rem; /* Make icon larger */
-  width: 150px; /* Fixed width */
+  font-size: 2rem; /* Rendre l'icône plus grande */
+  width: 150px; /* Largeur fixe */
 }
 .apple-pay-button:hover {
   opacity: 0.8;
@@ -479,17 +479,17 @@
   border-top: 1px solid var(--color-grey-200);
 }
 
-/* --- Order Summary --- */
+/* --- Résumé Commande --- */
 .checkout-summary {
   background-color: var(--color-white);
   padding: var(--spacing-6);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-base);
-  height: fit-content; /* Stick to top */
+  height: fit-content; /* Coller en haut */
   position: sticky;
   top: calc(
     var(--header-height) + var(--spacing-6)
-  ); /* Adjust based on header height */
+  ); /* Ajuster en fonction de la hauteur de l'en-tête */
 }
 
 .summary-header {
@@ -516,10 +516,10 @@
 }
 
 .summary-products {
-  max-height: 300px; /* Limit height and make scrollable */
+  max-height: 300px; /* Limiter la hauteur et rendre défilable */
   overflow-y: auto;
   margin-bottom: var(--spacing-5);
-  padding-right: var(--spacing-2); /* Space for scrollbar */
+  padding-right: var(--spacing-2); /* Espace pour la barre de défilement */
 }
 
 .summary-product {
@@ -640,27 +640,27 @@
   color: var(--color-primary);
 }
 
-/* --- Responsive Adjustments --- */
+/* --- Ajustements Adaptatifs --- */
 @media (max-width: 1024px) {
   .checkout-content {
-    grid-template-columns: 1fr; /* Stack columns */
+    grid-template-columns: 1fr; /* Empiler les colonnes */
   }
   .checkout-summary {
-    position: static; /* Remove sticky positioning */
+    position: static; /* Supprimer le positionnement collant */
     margin-top: var(--spacing-6);
   }
 }
 
 @media (max-width: 768px) {
   .header--checkout .container {
-    grid-template-columns: auto 1fr; /* Logo and progress/security */
+    grid-template-columns: auto 1fr; /* Logo et progression/sécurité */
     gap: var(--spacing-4);
   }
   .checkout-progress {
-    display: none; /* Hide progress bar on small screens */
+    display: none; /* Masquer la barre de progression sur les petits écrans */
   }
   .checkout-security {
-    grid-column: 2 / 3; /* Place security under logo */
+    grid-column: 2 / 3; /* Placer la sécurité sous le logo */
     justify-self: end;
   }
   .checkout-form,
@@ -669,16 +669,18 @@
   }
   .form-row {
     flex-direction: column;
-    gap: 0; /* Remove gap when stacking */
+    gap: 0; /* Supprimer l'écart lors de l'empilement */
   }
   .form-group.half {
-    margin-bottom: var(--spacing-4); /* Add margin back when stacked */
+    margin-bottom: var(
+      --spacing-4
+    ); /* Rajouter la marge lors de l'empilement */
   }
   .form-group.half:last-child {
     margin-bottom: 0;
   }
   .form-actions {
-    flex-direction: column-reverse; /* Stack buttons */
+    flex-direction: column-reverse; /* Empiler les boutons */
     gap: var(--spacing-3);
     align-items: stretch;
   }
@@ -687,24 +689,24 @@
     justify-content: center;
   }
   .payment-tabs {
-    flex-wrap: wrap; /* Allow tabs to wrap */
+    flex-wrap: wrap; /* Autoriser le retour à la ligne des onglets */
   }
   .payment-tab {
-    flex-basis: 50%; /* Two tabs per row */
+    flex-basis: 50%; /* Deux onglets par ligne */
     font-size: var(--font-size-sm);
   }
 }
 
 @media (max-width: 480px) {
   .payment-tab {
-    flex-basis: 100%; /* One tab per row */
+    flex-basis: 100%; /* Un onglet par ligne */
   }
   .address-card {
-    grid-template-columns: 1fr auto; /* Stack selection below details */
+    grid-template-columns: 1fr auto; /* Empiler la sélection sous les détails */
     gap: var(--spacing-2);
   }
   .address-selection {
-    grid-column: 1 / 3; /* Span full width */
+    grid-column: 1 / 3; /* S'étend sur toute la largeur */
     margin-bottom: var(--spacing-2);
   }
   .address-details {

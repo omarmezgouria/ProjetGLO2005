@@ -4,22 +4,22 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize dropdown menus
+  // Initialiser les menus déroulants
   initDropdowns();
 
-  // Initialize mobile sidebar
+  // Initialiser la barre latérale mobile
   initMobileSidebar();
 
-  // Initialize product interactions
+  // Initialiser les interactions produit
   initProductInteractions();
 
-  // Initialize checkbox functionality for todo items (if present)
+  // Initialiser la fonctionnalité des cases à cocher pour les tâches (si présentes)
   initCheckboxes();
 
-  // Handle add todo functionality (if present)
+  // Gérer la fonctionnalité d'ajout de tâche (si présente)
   initAddTodo();
 
-  // Simulate chart animations
+  // Simuler les animations de graphiques
   animateCharts();
 });
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
  * Initialize dropdown menus
  */
 function initDropdowns() {
-  // User dropdown
+  // Menu déroulant utilisateur
   const userMenu = document.querySelector(".user-menu");
   const userMenuBtn = document.querySelector(".user-menu-btn");
 
@@ -36,14 +36,14 @@ function initDropdowns() {
       e.stopPropagation();
       userMenu.classList.toggle("active");
 
-      // Close other dropdowns
+      // Fermer les autres menus déroulants
       document.querySelectorAll(".notifications").forEach((dropdown) => {
         dropdown.classList.remove("active");
       });
     });
   }
 
-  // Notifications dropdown
+  // Menu déroulant notifications
   const notifications = document.querySelector(".notifications");
   const notificationBtn = document.querySelector(".notification-btn");
 
@@ -52,14 +52,14 @@ function initDropdowns() {
       e.stopPropagation();
       notifications.classList.toggle("active");
 
-      // Close other dropdowns
+      // Fermer les autres menus déroulants
       document.querySelectorAll(".user-menu").forEach((dropdown) => {
         dropdown.classList.remove("active");
       });
     });
   }
 
-  // Close dropdowns when clicking outside
+  // Fermer les menus déroulants en cliquant à l'extérieur
   document.addEventListener("click", function (e) {
     if (
       !e.target.closest(".user-menu") &&
@@ -73,7 +73,7 @@ function initDropdowns() {
     }
   });
 
-  // Mark all notifications as read
+  // Marquer toutes les notifications comme lues
   const markAllReadBtn = document.querySelector(".mark-all-read");
 
   if (markAllReadBtn) {
@@ -85,7 +85,7 @@ function initDropdowns() {
         notification.classList.remove("unread");
       });
 
-      // Update notification badge count
+      // Mettre à jour le compteur du badge de notification
       const badge = document.querySelector(".notification-badge");
       if (badge) {
         badge.textContent = "0";
@@ -94,12 +94,12 @@ function initDropdowns() {
     });
   }
 
-  // Date range dropdown
+  // Menu déroulant plage de dates
   const dateRangeBtn = document.querySelector(".date-range-btn");
 
   if (dateRangeBtn) {
     dateRangeBtn.addEventListener("click", function () {
-      // This would normally open a date picker
+      // Cela ouvrirait normalement un sélecteur de date
       console.log("Date range picker would open here");
     });
   }
@@ -117,7 +117,7 @@ function initMobileSidebar() {
       sidebar.classList.toggle("active");
     });
 
-    // Close sidebar when clicking on a link (mobile)
+    // Fermer la barre latérale en cliquant sur un lien (mobile)
     const navLinks = document.querySelectorAll(".nav-link");
     navLinks.forEach((link) => {
       link.addEventListener("click", function () {
@@ -127,7 +127,7 @@ function initMobileSidebar() {
       });
     });
 
-    // Close sidebar when clicking outside
+    // Fermer la barre latérale en cliquant à l'extérieur
     document.addEventListener("click", function (e) {
       if (
         window.innerWidth <= 768 &&
@@ -145,7 +145,7 @@ function initMobileSidebar() {
  * Initialize product interactions
  */
 function initProductInteractions() {
-  // Product item hover effects
+  // Effets de survol des articles produit
   const productItems = document.querySelectorAll(".product-item");
 
   if (productItems.length) {
@@ -161,7 +161,7 @@ function initProductInteractions() {
     });
   }
 
-  // Quick action hover effects
+  // Effets de survol des actions rapides
   const actionItems = document.querySelectorAll(".action-item");
 
   if (actionItems.length) {
@@ -176,7 +176,7 @@ function initProductInteractions() {
     });
   }
 
-  // Simulate stock management
+  // Simuler la gestion des stocks
   const stockItems = document.querySelectorAll(".stock");
   if (stockItems.length) {
     stockItems.forEach((item) => {
@@ -184,7 +184,7 @@ function initProductInteractions() {
         e.preventDefault();
         e.stopPropagation();
 
-        // This would open a stock management modal in a real implementation
+        // Cela ouvrirait une modale de gestion des stocks dans une implémentation réelle
         alert(
           "Gestion du stock: " +
             this.closest(".product-item").querySelector("h4").textContent
@@ -201,7 +201,7 @@ function animateCharts() {
   const chartBars = document.querySelectorAll(".chart-bar");
 
   if (chartBars.length) {
-    // Add animation to chart bars
+    // Ajouter une animation aux barres du graphique
     chartBars.forEach((bar, index) => {
       setTimeout(() => {
         bar.style.height = bar.style.height || "0%";
@@ -247,10 +247,10 @@ function initAddTodo() {
  * Show modal for adding a new todo item
  */
 function showAddTodoModal() {
-  // This would normally create and show a modal
+  // Cela créerait et afficherait normalement une modale
   console.log("Add todo modal would appear here");
 
-  // Example implementation:
+  // Exemple d'implémentation :
   /*
     const modal = document.createElement('div');
     modal.className = 'modal';

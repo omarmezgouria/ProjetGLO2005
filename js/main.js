@@ -4,16 +4,16 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize mobile menu functionality
+  // Initialiser la fonctionnalité du menu mobile
   initMobileMenu();
 
-  // Initialize smooth scrolling for anchor links
+  // Initialiser le défilement doux pour les liens d'ancrage
   initSmoothScrolling();
 
-  // Initialize header scroll behavior
+  // Initialiser le comportement de défilement de l'en-tête
   initHeaderScroll();
 
-  // Update header UI based on login status
+  // Mettre à jour l'interface utilisateur de l'en-tête en fonction du statut de connexion
   updateHeaderUI();
 });
 
@@ -29,15 +29,15 @@ function initMobileMenu() {
   menuToggle.addEventListener("click", function () {
     header.classList.toggle("menu-active");
 
-    // Toggle aria-expanded for accessibility
+    // Basculer aria-expanded pour l'accessibilité
     const isExpanded = header.classList.contains("menu-active");
     menuToggle.setAttribute("aria-expanded", isExpanded);
 
-    // Toggle body scroll
+    // Basculer le défilement du corps
     document.body.style.overflow = isExpanded ? "hidden" : "";
   });
 
-  // Close the mobile menu when clicking on a nav link
+  // Fermer le menu mobile en cliquant sur un lien de navigation
   const navLinks = document.querySelectorAll(".nav__link, .header .btn");
   navLinks.forEach((link) => {
     link.addEventListener("click", function () {
@@ -49,7 +49,7 @@ function initMobileMenu() {
     });
   });
 
-  // Close menu when clicking outside
+  // Fermer le menu en cliquant à l'extérieur
   document.addEventListener("click", function (event) {
     if (
       header.classList.contains("menu-active") &&
@@ -109,7 +109,7 @@ function initHeaderScroll() {
     }
   });
 
-  // Initial check on page load
+  // Vérification initiale au chargement de la page
   if (window.scrollY > scrollThreshold) {
     header.classList.add("header--scrolled");
   }
@@ -152,10 +152,10 @@ function animateOnScroll(selector, animationClass) {
     });
   }
 
-  // Check on scroll
+  // Vérifier au défilement
   window.addEventListener("scroll", checkElements);
 
-  // Initial check
+  // Vérification initiale
   checkElements();
 }
 
@@ -168,10 +168,10 @@ function animateOnScroll(selector, animationClass) {
 function validateForm(form, rules) {
   let isValid = true;
 
-  // Remove all existing error messages
+  // Supprimer tous les messages d'erreur existants
   form.querySelectorAll(".form-error").forEach((error) => error.remove());
 
-  // Check each field against rules
+  // Vérifier chaque champ par rapport aux règles
   for (const fieldName in rules) {
     const field = form.querySelector(`[name="${fieldName}"]`);
     if (!field) continue;
@@ -179,20 +179,20 @@ function validateForm(form, rules) {
     const fieldRules = rules[fieldName];
     let fieldValue = field.value.trim();
 
-    // Required check
+    // Vérification obligatoire
     if (fieldRules.required && !fieldValue) {
       addErrorMessage(field, "Ce champ est obligatoire");
       isValid = false;
       continue;
     }
 
-    // Email validation
+    // Validation de l'email
     if (fieldRules.email && fieldValue && !isValidEmail(fieldValue)) {
       addErrorMessage(field, "Veuillez entrer une adresse email valide");
       isValid = false;
     }
 
-    // Minimum length
+    // Longueur minimale
     if (fieldRules.minLength && fieldValue.length < fieldRules.minLength) {
       addErrorMessage(
         field,
@@ -201,7 +201,7 @@ function validateForm(form, rules) {
       isValid = false;
     }
 
-    // Maximum length
+    // Longueur maximale
     if (fieldRules.maxLength && fieldValue.length > fieldRules.maxLength) {
       addErrorMessage(
         field,
@@ -210,7 +210,7 @@ function validateForm(form, rules) {
       isValid = false;
     }
 
-    // Pattern matching
+    // Correspondance de motif
     if (
       fieldRules.pattern &&
       fieldValue &&
@@ -220,7 +220,7 @@ function validateForm(form, rules) {
       isValid = false;
     }
 
-    // Custom validation
+    // Validation personnalisée
     if (fieldRules.custom && typeof fieldRules.custom === "function") {
       const customResult = fieldRules.custom(fieldValue, form);
       if (customResult !== true) {
@@ -264,19 +264,19 @@ function isValidEmail(email) {
 function checkPasswordStrength(password) {
   let score = 0;
 
-  // Length check
+  // Vérification de la longueur
   if (password.length >= 8) score++;
 
-  // Contains lowercase
+  // Contient des minuscules
   if (/[a-z]/.test(password)) score++;
 
-  // Contains uppercase
+  // Contient des majuscules
   if (/[A-Z]/.test(password)) score++;
 
-  // Contains numbers
+  // Contient des chiffres
   if (/[0-9]/.test(password)) score++;
 
-  // Contains special characters
+  // Contient des caractères spéciaux
   if (/[^A-Za-z0-9]/.test(password)) score++;
 
   return Math.min(score, 4);
@@ -296,7 +296,7 @@ function getUrlParameter(name) {
     : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-// --- Sample Product Data (Simulated Backend Response) ---
+// --- Données d'exemple de produits (Réponse simulée du backend) ---
 const sampleProducts = [
   {
     id: 1,
@@ -485,17 +485,17 @@ const sampleProducts = [
     stock: 6,
   },
 ];
-// --- End Sample Product Data ---
+// --- Fin des données d'exemple de produits ---
 
-// Export utilities and data for use in other scripts
+// Exporter les utilitaires et les données pour utilisation dans d'autres scripts
 window.articonnect = {
   validateForm,
   checkPasswordStrength,
   getUrlParameter,
   isInViewport,
   animateOnScroll,
-  sampleProducts, // Expose sample products globally
-  updateHeaderUI, // Expose header update function
+  sampleProducts, // Exposer les produits d'exemple globalement
+  updateHeaderUI, // Exposer la fonction de mise à jour de l'en-tête
 };
 
 /**
@@ -505,17 +505,17 @@ function updateHeaderUI() {
   const headerActions = document.querySelector(".header__actions");
   if (!headerActions) return;
 
-  // Determine current path context
+  // Déterminer le contexte du chemin actuel
   const currentPagePath = window.location.pathname;
 
-  // Define path prefixes based on current location relative to the 'html' directory
+  // Définir les préfixes de chemin en fonction de l'emplacement actuel par rapport au répertoire 'html'
   let clientPrefix = "";
   let artisanPrefix = "";
   let authPrefix = "";
   let indexPath = "";
-  let imagePrefix = ""; // Prefix for images like logo
+  let imagePrefix = ""; // Préfixe pour les images comme le logo
 
-  // Check if we are deep inside html/client, html/artisan, or html/auth
+  // Vérifier si nous sommes profondément dans html/client, html/artisan, ou html/auth
   if (
     currentPagePath.includes("/html/client/") ||
     currentPagePath.includes("/html/artisan/") ||
@@ -524,36 +524,36 @@ function updateHeaderUI() {
     clientPrefix = "../client/";
     artisanPrefix = "../artisan/";
     authPrefix = "../auth/";
-    indexPath = "../index.html"; // CORRECT: Go up one level from client/artisan/auth
-    imagePrefix = "../../"; // Go up two levels for images from root
+    indexPath = "../index.html"; // CORRECT : Remonter d'un niveau depuis client/artisan/auth
+    imagePrefix = "../../"; // Remonter de deux niveaux pour les images depuis la racine
   }
-  // Check if we are directly inside html/ (like html/index.html)
+  // Vérifier si nous sommes directement dans html/ (comme html/index.html)
   else if (currentPagePath.includes("/html/")) {
-    clientPrefix = "client/"; // Sibling directory
+    clientPrefix = "client/"; // Répertoire frère
     artisanPrefix = "artisan/";
     authPrefix = "auth/";
-    indexPath = "index.html"; // CORRECT: Already in html/ directory
-    imagePrefix = "../"; // Go up one level for images from root
+    indexPath = "index.html"; // CORRECT : Déjà dans le répertoire html/
+    imagePrefix = "../"; // Remonter d'un niveau pour les images depuis la racine
   }
-  // We are potentially outside /html/ (e.g., project root)
+  // Nous sommes potentiellement en dehors de /html/ (par ex., racine du projet)
   else {
-    clientPrefix = "html/client/"; // Need to go into html/ then client/
+    clientPrefix = "html/client/"; // Besoin d'aller dans html/ puis client/
     artisanPrefix = "html/artisan/";
     authPrefix = "html/auth/";
-    indexPath = "html/index.html"; // CORRECT: Path relative to project root
-    imagePrefix = ""; // Images are relative to root
+    indexPath = "html/index.html"; // CORRECT : Chemin relatif à la racine du projet
+    imagePrefix = ""; // Les images sont relatives à la racine
   }
 
-  // Construct full paths
-  const clientPath = clientPrefix; // Base path for client pages
-  const artisanPath = artisanPrefix; // Base path for artisan pages
-  const authPath = authPrefix; // Base path for auth pages
+  // Construire les chemins complets
+  const clientPath = clientPrefix; // Chemin de base pour les pages client
+  const artisanPath = artisanPrefix; // Chemin de base pour les pages artisan
+  const authPath = authPrefix; // Chemin de base pour les pages d'authentification
 
-  // Update logo path if necessary (assuming logo is always at root/images)
+  // Mettre à jour le chemin du logo si nécessaire (en supposant que le logo est toujours à la racine/images)
   const logoImg = document.querySelector(".header__logo img");
   if (logoImg) {
-    // Ensure the path starts correctly based on the calculated prefix
-    // Avoid double slashes if imagePrefix is empty
+    // S'assurer que le chemin commence correctement en fonction du préfixe calculé
+    // Éviter les doubles barres obliques si imagePrefix est vide
     logoImg.src = imagePrefix
       ? imagePrefix + "images/logo.svg"
       : "images/logo.svg";
@@ -566,54 +566,54 @@ function updateHeaderUI() {
       user = JSON.parse(userString);
     } catch (e) {
       console.error("Error parsing user data from localStorage", e);
-      localStorage.removeItem("articonnect_user"); // Clear corrupted data
+      localStorage.removeItem("articonnect_user"); // Effacer les données corrompues
     }
   }
 
-  // Clear existing actions (important to remove static links)
+  // Effacer les actions existantes (important pour supprimer les liens statiques)
   headerActions.innerHTML = "";
 
   if (user && user.email && user.type) {
-    // --- User is logged in ---
+    // --- L'utilisateur est connecté ---
     const profileUrl =
       user.type === "artisan"
         ? artisanPath + "profile.html"
         : clientPath + "profile.html";
 
-    // Add Cart Icon (visible to clients)
+    // Ajouter l'icône du panier (visible pour les clients)
     if (user.type === "client") {
       const cartLink = document.createElement("a");
-      cartLink.href = clientPath + "cart.html"; // Use dynamic path
+      cartLink.href = clientPath + "cart.html"; // Utiliser le chemin dynamique
       cartLink.classList.add("header__cart-icon");
       cartLink.setAttribute("aria-label", "Panier");
       cartLink.innerHTML =
-        '<i class="fas fa-shopping-cart"></i><span class="cart-count">0</span>'; // Add cart count span
+        '<i class="fas fa-shopping-cart"></i><span class="cart-count">0</span>'; // Ajouter l'élément span du compteur de panier
       headerActions.appendChild(cartLink);
-      // TODO: Update cart count dynamically
+      // TODO : Mettre à jour le compteur de panier dynamiquement
     }
 
-    // Add Profile/Account Link
+    // Ajouter le lien Profil/Compte
     const profileLink = document.createElement("a");
-    profileLink.href = profileUrl; // Use dynamic path
+    profileLink.href = profileUrl; // Utiliser le chemin dynamique
     profileLink.classList.add("btn", "btn--outline");
     profileLink.textContent = "Mon Compte";
     headerActions.appendChild(profileLink);
 
-    // Add Logout Button
+    // Ajouter le bouton Déconnexion
     const logoutButton = document.createElement("button");
     logoutButton.classList.add("btn", "btn--primary");
     logoutButton.textContent = "Déconnexion";
-    // Pass the correctly calculated relative index path to the logout function
+    // Passer le chemin d'index relatif correctement calculé à la fonction de déconnexion
     logoutButton.addEventListener("click", () => logout(indexPath));
     headerActions.appendChild(logoutButton);
   } else {
-    // --- User is logged out ---
-    // Add default Login/Register buttons, checking current page to avoid linking to self
+    // --- L'utilisateur est déconnecté ---
+    // Ajouter les boutons Connexion/Inscription par défaut, en vérifiant la page actuelle pour éviter de lier à soi-même
 
     if (!currentPagePath.includes("/auth/login.html")) {
-      // Use currentPagePath
+      // Utiliser currentPagePath
       const loginLink = document.createElement("a");
-      // Construct the correct href using the calculated authPath
+      // Construire le href correct en utilisant l'authPath calculé
       loginLink.href = authPath + "login.html";
       loginLink.classList.add("btn", "btn--outline");
       loginLink.textContent = "Connexion";
@@ -621,9 +621,9 @@ function updateHeaderUI() {
     }
 
     if (!currentPagePath.includes("/auth/register.html")) {
-      // Use currentPagePath
+      // Utiliser currentPagePath
       const registerLink = document.createElement("a");
-      // Construct the correct href using the calculated authPath
+      // Construire le href correct en utilisant l'authPath calculé
       registerLink.href = authPath + "register.html";
       registerLink.classList.add("btn", "btn--primary");
       registerLink.textContent = "Inscription";
@@ -638,12 +638,12 @@ function updateHeaderUI() {
  */
 function logout(indexPath) {
   localStorage.removeItem("articonnect_user");
-  // Redirect to homepage using the provided path
+  // Rediriger vers la page d'accueil en utilisant le chemin fourni
   window.location.href = indexPath;
 }
 
-// Expose updateHeaderUI globally if needed by other scripts, or rely on DOMContentLoaded
+// Exposer updateHeaderUI globalement si nécessaire pour d'autres scripts, ou se fier à DOMContentLoaded
 window.articonnect = {
-  ...window.articonnect, // Preserve existing utilities
-  updateHeaderUI, // Add the new function
+  ...window.articonnect, // Préserver les utilitaires existants
+  updateHeaderUI, // Ajouter la nouvelle fonction
 };

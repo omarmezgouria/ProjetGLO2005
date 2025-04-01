@@ -4,25 +4,25 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize checkout steps
+  // Initialiser les étapes de paiement
   initCheckoutSteps();
 
-  // Initialize address selection
+  // Initialiser la sélection d'adresse
   initAddressSelection();
 
-  // Initialize payment method tabs
+  // Initialiser les onglets de méthode de paiement
   initPaymentTabs();
 
-  // Initialize billing address toggle
+  // Initialiser la bascule d'adresse de facturation
   initBillingToggle();
 
-  // Initialize form validation
+  // Initialiser la validation du formulaire
   initFormValidation();
 
-  // Initialize order placement
+  // Initialiser la passation de commande
   initPlaceOrder();
 
-  // Initialize order summary
+  // Initialiser le résumé de la commande
   updateOrderSummary();
 });
 
@@ -36,7 +36,7 @@ function initCheckoutSteps() {
 
   if (!progressSteps.length) return;
 
-  // Handle next step buttons
+  // Gérer les boutons d'étape suivante
   nextButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const currentSection = this.closest(".checkout-section");
@@ -45,17 +45,17 @@ function initCheckoutSteps() {
 
       if (!currentSection || !nextSection) return;
 
-      // Validate current section before proceeding
+      // Valider la section actuelle avant de continuer
       if (!validateSection(currentSection)) {
         showValidationError("Veuillez remplir tous les champs obligatoires");
         return;
       }
 
-      // Hide current section and show next
+      // Masquer la section actuelle et afficher la suivante
       currentSection.classList.add("hidden");
       nextSection.classList.remove("hidden");
 
-      // Update progress steps
+      // Mettre à jour les étapes de progression
       const currentStepNumber =
         parseInt(currentSection.id.split("-")[0].replace("step", "")) || 1;
       const nextStepNumber =
@@ -63,7 +63,7 @@ function initCheckoutSteps() {
 
       updateProgressSteps(nextStepNumber);
 
-      // Scroll to top of section
+      // Faire défiler vers le haut de la section
       window.scrollTo({
         top: nextSection.offsetTop - 100,
         behavior: "smooth",
@@ -71,7 +71,7 @@ function initCheckoutSteps() {
     });
   });
 
-  // Handle previous step buttons
+  // Gérer les boutons d'étape précédente
   prevButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const currentSection = this.closest(".checkout-section");
@@ -80,16 +80,16 @@ function initCheckoutSteps() {
 
       if (!currentSection || !prevSection) return;
 
-      // Hide current section and show previous
+      // Masquer la section actuelle et afficher la précédente
       currentSection.classList.add("hidden");
       prevSection.classList.remove("hidden");
 
-      // Update progress steps
+      // Mettre à jour les étapes de progression
       const prevStepNumber =
         parseInt(prevSection.id.split("-")[0].replace("step", "")) || 1;
       updateProgressSteps(prevStepNumber);
 
-      // Scroll to top of section
+      // Faire défiler vers le haut de la section
       window.scrollTo({
         top: prevSection.offsetTop - 100,
         behavior: "smooth",
@@ -120,7 +120,7 @@ function updateProgressSteps(activeStep) {
     }
   });
 
-  // Update progress lines
+  // Mettre à jour les lignes de progression
   if (progressLines.length) {
     progressLines.forEach((line, index) => {
       if (index + 1 < activeStep) {
@@ -145,7 +145,7 @@ function initAddressSelection() {
 
   addressRadios.forEach((radio) => {
     radio.addEventListener("change", function () {
-      // Update selected address card
+      // Mettre à jour la carte d'adresse sélectionnée
       addressCards.forEach((card) => {
         const cardRadio = card.querySelector('input[type="radio"]');
         if (cardRadio === this) {
@@ -157,22 +157,22 @@ function initAddressSelection() {
     });
   });
 
-  // Initialize edit address buttons
+  // Initialiser les boutons d'édition d'adresse
   const editButtons = document.querySelectorAll(".edit-address-btn");
   editButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      // In a real implementation, this would open an address edit modal
+      // Dans une implémentation réelle, cela ouvrirait une modale d'édition d'adresse
       alert(
         "Édition d'adresse - Cette fonctionnalité serait implémentée dans la version finale"
       );
     });
   });
 
-  // Initialize add address button
+  // Initialiser le bouton d'ajout d'adresse
   const addAddressBtn = document.querySelector(".add-address-btn");
   if (addAddressBtn) {
     addAddressBtn.addEventListener("click", function () {
-      // In a real implementation, this would open an add address modal
+      // Dans une implémentation réelle, cela ouvrirait une modale d'ajout d'adresse
       alert(
         "Ajout d'adresse - Cette fonctionnalité serait implémentée dans la version finale"
       );
@@ -193,11 +193,11 @@ function initPaymentTabs() {
     tab.addEventListener("click", function () {
       const paymentMethod = this.dataset.method;
 
-      // Update active tab
+      // Mettre à jour l'onglet actif
       paymentTabs.forEach((t) => t.classList.remove("active"));
       this.classList.add("active");
 
-      // Show corresponding content
+      // Afficher le contenu correspondant
       paymentContents.forEach((content) => {
         content.classList.remove("active");
         if (content.id === `${paymentMethod}-payment`) {
@@ -230,7 +230,7 @@ function initBillingToggle() {
  * Initialize form validation
  */
 function initFormValidation() {
-  // Credit card form validation
+  // Validation du formulaire de carte de crédit
   const cardNumberInput = document.getElementById("card-number");
   const cardExpiryInput = document.getElementById("card-expiry");
   const cardCvcInput = document.getElementById("card-cvc");
@@ -238,7 +238,7 @@ function initFormValidation() {
 
   if (cardNumberInput) {
     cardNumberInput.addEventListener("input", function (e) {
-      // Format card number with spaces
+      // Formater le numéro de carte avec des espaces
       let value = this.value.replace(/\s+/g, "");
       let formattedValue = "";
 
@@ -251,13 +251,13 @@ function initFormValidation() {
 
       this.value = formattedValue;
 
-      // Validate card number (simple Luhn check would be here in real implementation)
+      // Valider le numéro de carte (une vérification simple de Luhn serait ici dans une implémentation réelle)
     });
   }
 
   if (cardExpiryInput) {
     cardExpiryInput.addEventListener("input", function (e) {
-      // Format as MM/YY
+      // Formater en MM/AA
       let value = this.value.replace(/[^0-9]/g, "");
 
       if (value.length > 2) {
@@ -270,12 +270,12 @@ function initFormValidation() {
 
   if (cardCvcInput) {
     cardCvcInput.addEventListener("input", function (e) {
-      // Only allow numbers, max 4 digits
+      // Autoriser uniquement les chiffres, max 4 chiffres
       this.value = this.value.replace(/[^0-9]/g, "").substring(0, 4);
     });
   }
 
-  // Shipping method selection
+  // Sélection de la méthode d'expédition
   const shippingOptions = document.querySelectorAll(".shipping-option input");
   if (shippingOptions.length) {
     shippingOptions.forEach((option) => {
@@ -297,7 +297,7 @@ function validateSection(section) {
     typeof window.articonnect.validateForm !== "function"
   ) {
     console.error("validateForm utility not found.");
-    // Fallback to basic required check if utility is missing
+    // Solution de repli vers la vérification de base des champs requis si l'utilitaire est manquant
     const requiredFields = section.querySelectorAll(
       "input[required], select[required]"
     );
@@ -309,28 +309,28 @@ function validateSection(section) {
   }
 
   let rules = {};
-  let formToValidate = section; // Assume section itself is the form or contains relevant inputs directly
+  let formToValidate = section; // Supposer que la section elle-même est le formulaire ou contient directement les entrées pertinentes
 
-  // Define rules based on section ID
+  // Définir les règles en fonction de l'ID de la section
   if (section.id === "delivery-section") {
-    // Assuming inputs for a *new* address might be added dynamically and have names
-    // For now, we'll just check if a shipping method is selected
+    // En supposant que les entrées pour une *nouvelle* adresse pourraient être ajoutées dynamiquement et avoir des noms
+    // Pour l'instant, nous vérifierons simplement si une méthode d'expédition est sélectionnée
     const shippingSelected = section.querySelector(
       'input[name="shipping-method"]:checked'
     );
     if (!shippingSelected) {
       showValidationError("Veuillez sélectionner une méthode de livraison.");
-      return false; // Special case not handled by generic validator
+      return false; // Cas spécial non géré par le validateur générique
     }
-    // Add rules for any *new* address fields if they exist and are visible
+    // Ajouter des règles pour les champs de *nouvelle* adresse s'ils existent et sont visibles
     // Example: rules.newAddressName = { required: true, minLength: 2 };
   } else if (section.id === "payment-section") {
     const activePaymentMethod = section.querySelector(".payment-tab.active")
       ?.dataset.method;
 
     if (activePaymentMethod === "card") {
-      formToValidate = section.querySelector("#card-payment"); // Validate inputs within the card payment div
-      if (!formToValidate) return true; // Should not happen, but prevents errors
+      formToValidate = section.querySelector("#card-payment"); // Valider les entrées dans la div de paiement par carte
+      if (!formToValidate) return true; // Ne devrait pas arriver, mais prévient les erreurs
 
       rules = {
         "card-number": {
@@ -354,11 +354,11 @@ function validateSection(section) {
       activePaymentMethod === "paypal" ||
       activePaymentMethod === "apple-pay"
     ) {
-      // No form fields to validate for these methods in this simulation
+      // Aucun champ de formulaire à valider pour ces méthodes dans cette simulation
       return true;
     }
 
-    // Add billing address validation if 'different-billing' is visible
+    // Ajouter la validation de l'adresse de facturation si 'different-billing' est visible
     const billingCheckbox = section.querySelector("#same-address");
     const differentBillingSection = section.querySelector(".different-billing");
     if (
@@ -367,15 +367,15 @@ function validateSection(section) {
       differentBillingSection &&
       !differentBillingSection.classList.contains("hidden")
     ) {
-      // Add rules for billing address fields here
+      // Ajouter les règles pour les champs d'adresse de facturation ici
       // Example: rules.billingName = { required: true };
     }
   }
 
-  // Perform validation using the global utility
+  // Effectuer la validation en utilisant l'utilitaire global
   const isValid = window.articonnect.validateForm(formToValidate, rules);
 
-  // Scroll to the first invalid field if validation fails
+  // Faire défiler jusqu'au premier champ invalide si la validation échoue
   if (!isValid) {
     const firstInvalid = formToValidate.querySelector(".is-invalid");
     if (firstInvalid) {
@@ -397,29 +397,29 @@ function initPlaceOrder() {
   placeOrderBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
-    // Validate payment section first
+    // Valider d'abord la section de paiement
     const paymentSection = document.getElementById("payment-section");
     if (!validateSection(paymentSection)) {
-      // Error message shown by validateSection
+      // Message d'erreur affiché par validateSection
       return;
     }
 
-    // Disable button and show loading state
+    // Désactiver le bouton et afficher l'état de chargement
     this.disabled = true;
     this.innerHTML =
       '<i class="fas fa-spinner fa-spin"></i> Traitement en cours...';
 
-    // --- Simulate Order Processing ---
+    // --- Simuler le traitement de la commande ---
     setTimeout(() => {
       try {
-        // 1. Get Cart Items
+        // 1. Obtenir les articles du panier
         const cartItems = window.articonnect.getCart();
         if (cartItems.length === 0) {
           alert("Votre panier est vide.");
-          throw new Error("Cart is empty"); // Stop processing
+          throw new Error("Cart is empty"); // Arrêter le traitement
         }
 
-        // 2. Get Final Total (re-calculate based on summary)
+        // 2. Obtenir le total final (recalculer en fonction du résumé)
         const totalValueElement = document.querySelector(
           ".summary-row.total .summary-value"
         );
@@ -430,26 +430,26 @@ function initPlaceOrder() {
               .replace(",", ".")
           ) || 0;
         if (finalTotal <= 0 && cartItems.length > 0) {
-          // Allow zero total if cart has items (e.g., 100% discount)
+          // Autoriser un total nul si le panier contient des articles (par ex., remise de 100%)
           console.warn("Order total is zero or less, but cart has items.");
         } else if (finalTotal <= 0) {
           alert("Impossible de passer une commande avec un total nul.");
           throw new Error("Order total is zero");
         }
 
-        // 3. Get User Info (from localStorage)
+        // 3. Obtenir les informations utilisateur (depuis localStorage)
         const userString = localStorage.getItem("articonnect_user");
         const user = userString
           ? JSON.parse(userString)
-          : { name: "Guest", email: "guest@example.com" }; // Fallback for guest checkout
+          : { name: "Guest", email: "guest@example.com" }; // Solution de repli pour le paiement invité
 
-        // 4. Get Selected Addresses & Shipping
+        // 4. Obtenir les adresses sélectionnées & l'expédition
         const selectedAddressCard = document.querySelector(
           ".address-card.selected .address-details"
         );
         const deliveryAddress = selectedAddressCard
           ? selectedAddressCard.innerText
-          : "Non spécifiée"; // Simple text representation
+          : "Non spécifiée"; // Représentation textuelle simple
         const selectedShipping = document.querySelector(
           ".shipping-option input:checked"
         );
@@ -466,47 +466,47 @@ function initPlaceOrder() {
             shippingCostText.replace(/[^0-9.,]/g, "").replace(",", ".")
           ) || 0;
 
-        // 5. Create Order Object
+        // 5. Créer l'objet Commande
         const orderId =
-          "AC-" + Date.now() + "-" + Math.floor(100 + Math.random() * 900); // Simple unique ID
+          "AC-" + Date.now() + "-" + Math.floor(100 + Math.random() * 900); // ID unique simple
         const order = {
           id: orderId,
           date: new Date().toISOString(),
           user: { name: user.name, email: user.email },
           items: cartItems,
-          deliveryAddress: deliveryAddress.replace(/\n+/g, ", "), // Format address string
+          deliveryAddress: deliveryAddress.replace(/\n+/g, ", "), // Formater la chaîne d'adresse
           shippingMethod: shippingMethod,
           shippingCost: shippingCost,
           subtotal: window.articonnect.getCartSubtotal(),
-          discount: window.appliedPromo?.value || 0, // Store discount value/percent
+          discount: window.appliedPromo?.value || 0, // Stocker la valeur/pourcentage de la remise
           discountType: window.appliedPromo?.type || null,
           total: finalTotal,
-          status: "Completed", // Simulation assumes success
+          status: "Completed", // La simulation suppose un succès
         };
 
-        // 6. Save Order to localStorage (append to existing orders)
+        // 6. Enregistrer la commande dans localStorage (ajouter aux commandes existantes)
         const ordersJson = localStorage.getItem("articonnect_orders");
         const orders = ordersJson ? JSON.parse(ordersJson) : [];
         orders.push(order);
         localStorage.setItem("articonnect_orders", JSON.stringify(orders));
         console.log("Order saved:", order);
 
-        // 7. Clear Cart
+        // 7. Vider le panier
         window.articonnect.clearCart();
-        window.appliedPromo = null; // Clear applied promo code
+        window.appliedPromo = null; // Effacer le code promo appliqué
 
-        // 8. Redirect to Confirmation Page
+        // 8. Rediriger vers la page de confirmation
         window.location.href = `order_confirmation.html?orderId=${orderId}`;
       } catch (error) {
         console.error("Error placing order:", error);
         alert(
           "Une erreur est survenue lors du traitement de votre commande. Veuillez réessayer."
         );
-        // Restore button state on error
+        // Restaurer l'état du bouton en cas d'erreur
         placeOrderBtn.disabled = false;
         placeOrderBtn.innerHTML = "Commander";
       }
-    }, 1500); // Shorter delay for simulation
+    }, 1500); // Délai plus court pour la simulation
   });
 }
 
@@ -540,8 +540,8 @@ function updateOrderSummary() {
     return;
   }
 
-  // 1. Render Summary Products
-  summaryProductsContainer.innerHTML = ""; // Clear existing
+  // 1. Afficher les produits du résumé
+  summaryProductsContainer.innerHTML = ""; // Effacer l'existant
   cart.forEach((item) => {
     const productDiv = document.createElement("div");
     productDiv.className = "summary-product";
@@ -567,15 +567,15 @@ function updateOrderSummary() {
     summaryProductsContainer.appendChild(productDiv);
   });
 
-  // 2. Calculate Subtotal
+  // 2. Calculer le sous-total
   const subtotal = window.articonnect?.getCartSubtotal
     ? window.articonnect.getCartSubtotal()
     : 0;
   subtotalValueElement.textContent = formatPrice(subtotal);
 
-  // 3. Calculate Discount (using logic similar to cart.js)
+  // 3. Calculer la remise (en utilisant une logique similaire à cart.js)
   let discount = 0;
-  const appliedPromo = window.appliedPromo || { type: "percent", value: 0 }; // Get applied promo info
+  const appliedPromo = window.appliedPromo || { type: "percent", value: 0 }; // Obtenir les informations du code promo appliqué
   if (discountRow && discountValueElement && subtotal > 0) {
     if (appliedPromo.type === "percent" && appliedPromo.value > 0) {
       discount = subtotal * (appliedPromo.value / 100);
@@ -592,10 +592,10 @@ function updateOrderSummary() {
       discountRow.style.display = "none";
     }
   } else if (discountRow) {
-    discountRow.style.display = "none"; // Hide if subtotal is 0 or row doesn't exist
+    discountRow.style.display = "none"; // Masquer si le sous-total est 0 ou si la ligne n'existe pas
   }
 
-  // 4. Get Selected Shipping Cost
+  // 4. Obtenir le coût d'expédition sélectionné
   const selectedShipping = document.querySelector(
     ".shipping-option input:checked"
   );
@@ -613,7 +613,7 @@ function updateOrderSummary() {
   shippingValueElement.textContent =
     shippingCost > 0 ? formatPrice(shippingCost) : "Gratuit";
 
-  // 5. Calculate and Update Total
+  // 5. Calculer et mettre à jour le total
   const total = Math.max(0, subtotal - discount + shippingCost);
   totalValueElement.textContent = formatPrice(total);
 }
@@ -632,27 +632,27 @@ function formatPrice(price) {
  * @param {string} message - Error message to display
  */
 function showValidationError(message) {
-  // Remove any existing error messages
+  // Supprimer tous les messages d'erreur existants
   const existingErrors = document.querySelectorAll(".checkout-error");
   existingErrors.forEach((error) => error.remove());
 
-  // Create error message
+  // Créer un message d'erreur
   const errorElement = document.createElement("div");
   errorElement.className = "checkout-error";
   errorElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
 
-  // Insert at the top of the current section
+  // Insérer en haut de la section actuelle
   const currentSection = document.querySelector(
     ".checkout-section:not(.hidden)"
   );
   if (currentSection) {
     currentSection.insertBefore(errorElement, currentSection.firstChild);
 
-    // Scroll to error
+    // Faire défiler jusqu'à l'erreur
     errorElement.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  // Auto-remove error after 5 seconds
+  // Supprimer automatiquement l'erreur après 5 secondes
   setTimeout(() => {
     if (errorElement.parentNode) {
       errorElement.classList.add("fading");

@@ -1,11 +1,11 @@
-/* =====  CART PAGE STYLES  ===== */
+/* ===== STYLES PAGE PANIER ===== */
 
 .cart-page {
   padding: calc(var(--header-height) + var(--spacing-4)) 0 var(--spacing-8);
   background-color: var(--color-grey-100);
 }
 
-/* Page Header */
+/* En-tête Page */
 .page-header {
   text-align: center;
   margin-bottom: var(--spacing-6);
@@ -24,14 +24,14 @@
   color: var(--color-grey-600);
 }
 
-/* Cart Layout */
+/* Mise en page Panier */
 .cart-content {
   display: grid;
   grid-template-columns: 1fr 350px;
   gap: var(--spacing-6);
 }
 
-/* Cart Items Section */
+/* Section Articles Panier */
 .cart-items {
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
@@ -201,7 +201,7 @@
   gap: var(--spacing-2);
 }
 
-/* Cart Summary Section */
+/* Section Résumé Panier */
 .cart-summary {
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
@@ -317,7 +317,7 @@
   color: var(--color-grey-500);
 }
 
-/* Empty Cart */
+/* Panier Vide */
 .cart-empty {
   padding: var(--spacing-8) var(--spacing-4);
   text-align: center;
@@ -347,7 +347,7 @@
   margin-right: auto;
 }
 
-/* Recommended Products */
+/* Produits Recommandés */
 .recommended-products {
   margin-top: var(--spacing-8);
 }

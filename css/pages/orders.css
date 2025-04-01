@@ -1,14 +1,14 @@
-/* ===== CLIENT ORDERS PAGE STYLES ===== */
+/* ===== STYLES PAGE COMMANDES CLIENT ===== */
 
 .orders-page {
   padding: var(--spacing-6) 0;
   background-color: var(--color-grey-100);
 }
 
-/* Use profile page styles for the basic dashboard layout */
-@import url("profile.css"); /* Import shared dashboard layout styles */
+/* Utiliser les styles de la page profil pour la mise en page de base du tableau de bord */
+@import url("profile.css"); /* Importer les styles de mise en page partagés du tableau de bord */
 
-/* Specific overrides or additions for orders page */
+/* Surcharges ou ajouts spécifiques pour la page des commandes */
 
 .content-header {
   margin-bottom: var(--spacing-5);
@@ -23,7 +23,7 @@
   color: var(--color-grey-600);
 }
 
-/* Order Tabs */
+/* Onglets Commandes */
 .orders-tabs {
   display: flex;
   gap: var(--spacing-1);
@@ -54,7 +54,7 @@
   border-bottom-color: var(--color-primary);
 }
 
-/* Search and Filter */
+/* Recherche et Filtre */
 .orders-search {
   display: flex;
   justify-content: space-between;
@@ -122,10 +122,10 @@
   padding: var(--spacing-3);
   z-index: 10;
   min-width: 200px;
-  display: none; /* Hidden by default, shown by JS */
+  display: none; /* Masqué par défaut, affiché par JS */
 }
 .filter-dropdown.active .filter-options {
-  /* Add 'active' class via JS */
+  /* Ajouter la classe 'active' via JS */
   display: block;
 }
 
@@ -140,7 +140,7 @@
   margin-right: var(--spacing-2);
 }
 
-/* Orders List */
+/* Liste Commandes */
 .orders-list {
   display: grid;
   gap: var(--spacing-4);
@@ -191,7 +191,7 @@
   border-radius: var(--radius-full);
 }
 
-/* Status colors */
+/* Couleurs de statut */
 .order-status.nouvelle .status-dot {
   background-color: var(--color-info);
 }
@@ -208,7 +208,7 @@
 
 .order-status.expediee .status-dot {
   background-color: #9b59b6;
-} /* Purple */
+} /* Violet */
 .order-status.expediee .status-text {
   color: #9b59b6;
 }
@@ -244,7 +244,7 @@
 }
 
 .order-products .product-thumbnail {
-  /* Style for individual product in list */
+  /* Style pour produit individuel dans la liste */
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
@@ -274,7 +274,7 @@
 
 .order-total {
   text-align: right;
-  min-width: 100px; /* Ensure total doesn't wrap too easily */
+  min-width: 100px; /* S'assurer que le total ne passe pas à la ligne trop facilement */
 }
 
 .order-total .total-label {
@@ -317,7 +317,7 @@
   gap: var(--spacing-2);
 }
 
-/* Responsive */
+/* Adaptatif */
 @media (max-width: 768px) {
   .orders-tabs {
     font-size: var(--font-size-sm);

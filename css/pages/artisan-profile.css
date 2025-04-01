@@ -1,4 +1,4 @@
-/* ===== ARTISAN PROFILE PAGE STYLES ===== */
+/* ===== STYLES PAGE PROFIL ARTISAN ===== */
 
 .page-header {
   display: flex;
@@ -24,7 +24,7 @@
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  overflow: hidden; /* Ensure border-radius applies */
+  overflow: hidden; /* S'assurer que le border-radius s'applique */
 }
 
 .section-header {
@@ -33,7 +33,7 @@
   align-items: center;
   padding: var(--spacing-4);
   border-bottom: 1px solid var(--color-grey-200);
-  background-color: var(--color-grey-100); /* Light background for header */
+  background-color: var(--color-grey-100); /* Fond clair pour l'en-tête */
 }
 
 .section-header h2 {
@@ -46,12 +46,12 @@
   padding: var(--spacing-5);
 }
 
-/* --- Basic Info Section --- */
+/* --- Section Informations de Base --- */
 
-/* View Mode */
+/* Mode Vue */
 .basic-info.view-mode {
   display: grid;
-  grid-template-columns: auto 1fr; /* Photo | Details */
+  grid-template-columns: auto 1fr; /* Photo | Détails */
   gap: var(--spacing-6);
   align-items: start;
 }
@@ -75,7 +75,7 @@
   grid-template-columns: repeat(
     auto-fit,
     minmax(200px, 1fr)
-  ); /* Responsive columns */
+  ); /* Colonnes adaptatives */
   gap: var(--spacing-4) var(--spacing-6);
 }
 
@@ -94,12 +94,12 @@
 .info-value {
   font-size: var(--font-size-base);
   color: var(--color-grey-800);
-  word-break: break-word; /* Prevent long values overflowing */
+  word-break: break-word; /* Empêcher le débordement des valeurs longues */
 }
 
-/* Edit Mode */
+/* Mode Édition */
 .basic-info-form.edit-mode {
-  /* Styles for the form itself */
+  /* Styles pour le formulaire lui-même */
 }
 
 .form-row {
@@ -113,14 +113,16 @@
 
 .form-group.half {
   flex: 1;
-  min-width: calc(50% - var(--spacing-2)); /* Ensure wrapping works well */
+  min-width: calc(
+    50% - var(--spacing-2)
+  ); /* S'assurer que le retour à la ligne fonctionne bien */
 }
 
 .photo-upload {
   display: flex;
   align-items: center;
   gap: var(--spacing-4);
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap; /* Autoriser le retour à la ligne sur les petits écrans */
 }
 
 .current-photo {
@@ -143,7 +145,7 @@
   font-size: var(--font-size-xs);
   color: var(--color-grey-600);
   margin-top: var(--spacing-2);
-  width: 100%; /* Ensure it takes full width below actions */
+  width: 100%; /* S'assurer qu'il prend toute la largeur sous les actions */
 }
 
 .form-actions {
@@ -155,17 +157,17 @@
   border-top: 1px solid var(--color-grey-200);
 }
 
-/* --- Responsive --- */
+/* --- Adaptatif --- */
 @media (max-width: 768px) {
   .basic-info.view-mode {
-    grid-template-columns: 1fr; /* Stack photo and details */
+    grid-template-columns: 1fr; /* Empiler photo et détails */
     text-align: center;
   }
   .profile-photo {
     margin: 0 auto var(--spacing-4);
   }
   .profile-details {
-    grid-template-columns: 1fr; /* Single column for details */
+    grid-template-columns: 1fr; /* Colonne unique pour les détails */
     text-align: left;
   }
   .form-row {
