@@ -1,114 +1,362 @@
-<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8" /> <meta
-name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ArtiConnect - Inscription</title> <link rel="stylesheet"
-href="../../css/main.css" /> <link rel="stylesheet"
-href="../../css/pages/auth.css" /> <!-- Font Awesome for icons --> <link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/> <!-- Google Fonts --> <link rel="preconnect"
-href="https://fonts.googleapis.com" /> <link rel="preconnect"
-href="https://fonts.gstatic.com" crossorigin /> <link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
-rel="stylesheet" /> </head> <body> <header class="header"> <div
-class="container"> <div class="header__logo"> <a href="../index.html"> <img
-src="../../images/logo.svg" alt="ArtiConnect Logo" class="logo__img" /> <span
-class="logo__text">ArtiConnect</span> </a> </div> <nav class="header__nav"> <ul
-class="nav__list"> <li class="nav__item"> <a href="../index.html#how-it-works"
-class="nav__link" >Comment ça marche</a > </li> <li class="nav__item"> <a
-href="../index.html#artisans" class="nav__link" >Pour les artisans</a > </li>
-<li class="nav__item"> <a href="../index.html#clients" class="nav__link" >Pour
-les clients</a > </li> <li class="nav__item"> <a
-href="../index.html#testimonials" class="nav__link" >Témoignages</a > </li>
-</ul> </nav> <div class="header__actions"> <a href="login.html" class="btn
-btn--outline">Connexion</a> </div> <button class="menu-toggle"
-aria-label="Toggle menu"> <span class="menu-toggle__bar"></span> <span
-class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
-</button> </div> </header> <main class="auth-page"> <div class="container"> <div
-class="auth-container"> <div class="auth-content"> <h1 class="auth-title">Créer
-un compte</h1> <p class="auth-subtitle"> Rejoignez ArtiConnect et commencez à
-explorer le monde de l'artisanat </p> <div class="user-type-selector"> <h2
-class="selector-title">Je suis un...</h2> <div class="selector-options"> <div
-class="selector-option" data-type="client"> <div class="selector-icon"> <i
-class="fas fa-user"></i> </div> <h3>Client</h3> <p> Je souhaite découvrir et
-acheter des produits artisanaux </p> </div> <div class="selector-option"
-data-type="artisan"> <div class="selector-icon"> <i class="fas fa-tools"></i>
-</div> <h3>Artisan</h3> <p>Je souhaite vendre mes créations artisanales</p>
-</div> </div> </div> <form id="register-form" class="auth-form"> <div
-class="form-group"> <label for="first-name" class="form-label">Prénom</label>
-<input type="text" id="first-name" name="firstName" class="form-control"
-required /> </div> <div class="form-group"> <label for="last-name"
-class="form-label">Nom</label> <input type="text" id="last-name" name="lastName"
-class="form-control" required /> </div> <div class="form-group"> <label
-for="email" class="form-label">Email</label> <input type="email" id="email"
-name="email" class="form-control" required /> </div> <div class="form-group">
-<label for="password" class="form-label">Mot de passe</label> <div
-class="password-container"> <input type="password" id="password" name="password"
-class="form-control" required /> <button type="button" class="password-toggle"
-aria-label="Toggle password visibility" > <i class="far fa-eye"></i> </button>
-</div> <div class="password-strength"> <div class="strength-meter"> <div
-class="strength-meter-fill" data-strength="0"></div> </div> <small
-class="strength-text">Force du mot de passe</small> </div> </div> <div
-class="form-group"> <label for="confirm-password" class="form-label" >Confirmer
-le mot de passe</label > <div class="password-container"> <input type="password"
-id="confirm-password" name="confirmPassword" class="form-control" required />
-<button type="button" class="password-toggle" aria-label="Toggle password
-visibility" > <i class="far fa-eye"></i> </button> </div> </div> <!-- Additional
-fields for artisans (hidden by default) --> <div class="artisan-fields"
-style="display: none"> <div class="form-group"> <label for="business-name"
-class="form-label" >Nom de l'entreprise ou atelier</label > <input type="text"
-id="business-name" name="businessName" class="form-control" /> </div> <div
-class="form-group"> <label for="craft-category" class="form-label" >Catégorie
-principale</label > <select id="craft-category" name="craftCategory"
-class="form-control" > <option value="">Sélectionner une catégorie</option>
-<option value="bois">Travail du bois</option> <option
-value="ceramique">Céramique</option> <option value="textile">Textile et
-couture</option> <option value="bijoux">Bijouterie</option> <option
-value="cuir">Maroquinerie</option> <option value="verre">Verrerie</option>
-<option value="metal">Métallerie</option> <option value="papier">Art du
-papier</option> <option value="autre">Autre</option> </select> </div> <div
-class="form-group"> <label for="artisan-description" class="form-label"
->Description de votre travail</label > <textarea id="artisan-description"
-name="artisanDescription" class="form-control" rows="3" placeholder="Décrivez
-brièvement votre travail et vos créations..." ></textarea> </div> <div
-class="form-group"> <label for="shipping-regions" class="form-label" >Régions de
-livraison</label > <select id="shipping-regions" name="shippingRegions"
-class="form-control" multiple > <option value="local">Locale</option> <option
-value="national">Nationale</option> <option
-value="international">Internationale</option> </select> <small class="form-text"
->Vous pourrez modifier ces informations ultérieurement</small > </div> </div>
-<div class="form-group"> <div class="checkbox-container"> <input type="checkbox"
-id="terms" name="terms" required /> <label for="terms" class="checkbox-label"
->J'accepte les <a href="../legal/terms.html" target="_blank" >conditions
-d'utilisation</a > et la <a href="../legal/privacy.html" target="_blank"
->politique de confidentialité</a ></label > </div> </div> <button type="submit"
-class="btn btn--primary btn--large btn--full" > Créer mon compte </button>
-</form> <div class="auth-footer"> Vous avez déjà un compte? <a
-href="login.html">Connectez-vous</a> </div> </div> <div class="auth-image"> <img
-src="../../images/auth-image.jpg" alt="Artisan au travail" class="auth-img" />
-<div class="auth-image-overlay"> <div class="auth-image-content">
-<h2>Connectez-vous avec les meilleurs artisans</h2> <p> ArtiConnect vous offre
-une plateforme unique pour découvrir des produits authentiques et des services
-de qualité. </p> </div> </div> </div> </div> </div> </main> <footer
-class="footer"> <div class="container"> <div class="footer__grid"> <div
-class="footer__column"> <div class="footer__logo"> <img
-src="../../images/logo-white.svg" alt="ArtiConnect Logo" class="logo__img" />
-<span class="logo__text">ArtiConnect</span> </div> <p
-class="footer__description"> La plateforme qui connecte artisans et clients pour
-des projets uniques et authentiques. </p> </div> <div class="footer__column">
-<h3 class="footer__title">Liens utiles</h3> <ul class="footer__links"> <li> <a
-href="../index.html#how-it-works" class="footer__link" >Comment ça marche</a >
-</li> <li> <a href="../index.html#artisans" class="footer__link" >Pour les
-artisans</a > </li> <li> <a href="../index.html#clients" class="footer__link"
->Pour les clients</a > </li> <li> <a href="../index.html#testimonials"
-class="footer__link" >Témoignages</a > </li> </ul> </div> <div
-class="footer__column"> <h3 class="footer__title">Contact</h3> <ul
-class="footer__contact"> <li class="footer__contact-item"> <i class="fas
-fa-envelope"></i> <a href="mailto:contact@articonnect.com"
->contact@articonnect.com</a > </li> <li class="footer__contact-item"> <i
-class="fas fa-phone"></i> <a href="tel:+18005551234">+1 (800) 555-1234</a> </li>
-<li class="footer__contact-item"> <i class="fas fa-map-marker-alt"></i>
-<span>123 Rue de l'Innovation, Québec, QC G1V 0A6</span> </li> </ul> </div>
-</div> <div class="footer__bottom"> <p class="footer__copyright"> &copy; 2025
-ArtiConnect. Tous droits réservés. </p> </div> </div> </footer> <script
-src="../../js/main.js"></script> <script src="../../js/auth.js"></script>
-</body> </html>]]>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtiConnect - Inscription</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/pages/auth.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__logo">
+          <a href="../index.html">
+            <img
+              src="../../images/logo.svg"
+              alt="ArtiConnect Logo"
+              class="logo__img"
+            />
+            <span class="logo__text">ArtiConnect</span>
+          </a>
+        </div>
+        <nav class="header__nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="../index.html#how-it-works" class="nav__link"
+                >Comment ça marche</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#artisans" class="nav__link"
+                >Pour les artisans</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#clients" class="nav__link"
+                >Pour les clients</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#testimonials" class="nav__link"
+                >Témoignages</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="header__actions">
+          <a href="login.html" class="btn btn--outline">Connexion</a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="auth-page">
+      <div class="container">
+        <div class="auth-container">
+          <div class="auth-content">
+            <h1 class="auth-title">Créer un compte</h1>
+            <p class="auth-subtitle">
+              Rejoignez ArtiConnect et commencez à explorer le monde de
+              l'artisanat
+            </p>
+            <div class="user-type-selector">
+              <h2 class="selector-title">Je suis un...</h2>
+              <div class="selector-options">
+                <div class="selector-option" data-type="client">
+                  <div class="selector-icon">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <h3>Client</h3>
+                  <p>
+                    Je souhaite découvrir et acheter des produits artisanaux
+                  </p>
+                </div>
+                <div class="selector-option" data-type="artisan">
+                  <div class="selector-icon">
+                    <i class="fas fa-tools"></i>
+                  </div>
+                  <h3>Artisan</h3>
+                  <p>Je souhaite vendre mes créations artisanales</p>
+                </div>
+              </div>
+            </div>
+            <form id="register-form" class="auth-form">
+              <div class="form-group">
+                <label for="first-name" class="form-label">Prénom</label>
+                <input
+                  type="text"
+                  id="first-name"
+                  name="firstName"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="last-name" class="form-label">Nom</label>
+                <input
+                  type="text"
+                  id="last-name"
+                  name="lastName"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password" class="form-label">Mot de passe</label>
+                <div class="password-container">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    aria-label="Toggle password visibility"
+                  >
+                    <i class="far fa-eye"></i>
+                  </button>
+                </div>
+                <div class="password-strength">
+                  <div class="strength-meter">
+                    <div class="strength-meter-fill" data-strength="0"></div>
+                  </div>
+                  <small class="strength-text">Force du mot de passe</small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="confirm-password" class="form-label"
+                  >Confirmer le mot de passe</label
+                >
+                <div class="password-container">
+                  <input
+                    type="password"
+                    id="confirm-password"
+                    name="confirmPassword"
+                    class="form-control"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    aria-label="Toggle password visibility"
+                  >
+                    <i class="far fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- Additional fields for artisans (hidden by default) -->
+              <div class="artisan-fields" style="display: none">
+                <div class="form-group">
+                  <label for="business-name" class="form-label"
+                    >Nom de l'entreprise ou atelier</label
+                  >
+                  <input
+                    type="text"
+                    id="business-name"
+                    name="businessName"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="craft-category" class="form-label"
+                    >Catégorie principale</label
+                  >
+                  <select
+                    id="craft-category"
+                    name="craftCategory"
+                    class="form-control"
+                  >
+                    <option value="">Sélectionner une catégorie</option>
+                    <option value="bois">Travail du bois</option>
+                    <option value="ceramique">Céramique</option>
+                    <option value="textile">Textile et couture</option>
+                    <option value="bijoux">Bijouterie</option>
+                    <option value="cuir">Maroquinerie</option>
+                    <option value="verre">Verrerie</option>
+                    <option value="metal">Métallerie</option>
+                    <option value="papier">Art du papier</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="artisan-description" class="form-label"
+                    >Description de votre travail</label
+                  >
+                  <textarea
+                    id="artisan-description"
+                    name="artisanDescription"
+                    class="form-control"
+                    rows="3"
+                    placeholder="Décrivez brièvement votre travail et vos créations..."
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="shipping-regions" class="form-label"
+                    >Régions de livraison</label
+                  >
+                  <select
+                    id="shipping-regions"
+                    name="shippingRegions"
+                    class="form-control"
+                    multiple
+                  >
+                    <option value="local">Locale</option>
+                    <option value="national">Nationale</option>
+                    <option value="international">Internationale</option>
+                  </select>
+                  <small class="form-text"
+                    >Vous pourrez modifier ces informations
+                    ultérieurement</small
+                  >
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="terms" name="terms" required />
+                  <label for="terms" class="checkbox-label"
+                    >J'accepte les
+                    <a href="../legal/terms.html" target="_blank"
+                      >conditions d'utilisation</a
+                    >
+                    et la
+                    <a href="../legal/privacy.html" target="_blank"
+                      >politique de confidentialité</a
+                    ></label
+                  >
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn--primary btn--large btn--full"
+              >
+                Créer mon compte
+              </button>
+            </form>
+            <div class="auth-footer">
+              Vous avez déjà un compte? <a href="login.html">Connectez-vous</a>
+            </div>
+          </div>
+          <div class="auth-image">
+            <img
+              src="../../images/auth-image.jpg"
+              alt="Artisan au travail"
+              class="auth-img"
+            />
+            <div class="auth-image-overlay">
+              <div class="auth-image-content">
+                <h2>Connectez-vous avec les meilleurs artisans</h2>
+                <p>
+                  ArtiConnect vous offre une plateforme unique pour découvrir
+                  des produits authentiques et des services de qualité.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__column">
+            <div class="footer__logo">
+              <img
+                src="../../images/logo-white.svg"
+                alt="ArtiConnect Logo"
+                class="logo__img"
+              />
+              <span class="logo__text">ArtiConnect</span>
+            </div>
+            <p class="footer__description">
+              La plateforme qui connecte artisans et clients pour des projets
+              uniques et authentiques.
+            </p>
+          </div>
+          <div class="footer__column">
+            <h3 class="footer__title">Liens utiles</h3>
+            <ul class="footer__links">
+              <li>
+                <a href="../index.html#how-it-works" class="footer__link"
+                  >Comment ça marche</a
+                >
+              </li>
+              <li>
+                <a href="../index.html#artisans" class="footer__link"
+                  >Pour les artisans</a
+                >
+              </li>
+              <li>
+                <a href="../index.html#clients" class="footer__link"
+                  >Pour les clients</a
+                >
+              </li>
+              <li>
+                <a href="../index.html#testimonials" class="footer__link"
+                  >Témoignages</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <h3 class="footer__title">Contact</h3>
+            <ul class="footer__contact">
+              <li class="footer__contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:contact@articonnect.com"
+                  >contact@articonnect.com</a
+                >
+              </li>
+              <li class="footer__contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+18005551234">+1 (800) 555-1234</a>
+              </li>
+              <li class="footer__contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>123 Rue de l'Innovation, Québec, QC G1V 0A6</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__copyright">
+            &copy; 2025 ArtiConnect. Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/auth.js"></script>
+  </body>
+</html>

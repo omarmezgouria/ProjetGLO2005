@@ -1,123 +1,356 @@
-<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8" /> <meta
-name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ArtiConnect - Table basse en chêne massif</title> <link rel="stylesheet"
-href="../../css/main.css" /> <link rel="stylesheet"
-href="../../css/pages/product_detail.css" /> <!-- Font Awesome for icons -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/> <!-- Google Fonts --> <link rel="preconnect"
-href="https://fonts.googleapis.com" /> <link rel="preconnect"
-href="https://fonts.gstatic.com" crossorigin /> <link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
-rel="stylesheet" /> </head> <body> <header class="header"> <div
-class="container"> <div class="header__logo"> <a href="../index.html"> <img
-src="../../images/logo.svg" alt="ArtiConnect Logo" class="logo__img" /> <span
-class="logo__text">ArtiConnect</span> </a> </div> <nav class="header__nav"> <ul
-class="nav__list"> <li class="nav__item"> <a href="../index.html#how-it-works"
-class="nav__link" >Comment ça marche</a > </li> <li class="nav__item"> <a
-href="../index.html#artisans" class="nav__link" >Pour les artisans</a > </li>
-<li class="nav__item"> <a href="../index.html#clients" class="nav__link" >Pour
-les clients</a > </li> <li class="nav__item"> <a
-href="../index.html#testimonials" class="nav__link" >Témoignages</a > </li>
-</ul> </nav> <div class="header__actions"> <!-- Actions dynamically populated by
-js/main.js --> </div> <button class="menu-toggle" aria-label="Toggle menu">
-<span class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
-<span class="menu-toggle__bar"></span> </button> </div> </header> <main
-class="product-detail-page"> <div class="container"> <div class="breadcrumb"> <a
-href="products.html">Produits</a> <span class="separator"><i class="fas
-fa-chevron-right"></i></span> <a href="products.html?category=bois">Travail du
-bois</a> <span class="separator"><i class="fas fa-chevron-right"></i></span>
-<span class="current">Table basse en chêne massif</span> </div> <div
-class="product-detail"> <div class="product-gallery"> <div class="main-image">
-<img src="../../images/product-1.jpg" alt="Table basse en chêne massif"
-id="main-product-image" /> <!-- Favorite button removed --> </div> <div
-class="thumbnail-gallery"> <button class="thumbnail active"
-data-image="../../images/product-1.jpg" > <img src="../../images/product-1.jpg"
-alt="Table basse en chêne massif - Vue 1" /> </button> <button class="thumbnail"
-data-image="../../images/product-1-2.jpg" > <img
-src="../../images/product-1-2.jpg" alt="Table basse en chêne massif - Vue 2" />
-</button> <button class="thumbnail" data-image="../../images/product-1-3.jpg" >
-<img src="../../images/product-1-3.jpg" alt="Table basse en chêne massif - Vue
-3" /> </button> <button class="thumbnail"
-data-image="../../images/product-1-4.jpg" > <img
-src="../../images/product-1-4.jpg" alt="Table basse en chêne massif - Vue 4" />
-</button> </div> </div> <div class="product-info"> <h1
-class="product-title">Table basse en chêne massif</h1> <div
-class="product-meta"> <div class="artisan-info"> <img
-src="../../images/artisan-avatar.jpg" alt="Sophie Dupont" class="artisan-avatar"
-/> <span class="by-artisan" >Par <a href="#">Sophie Dupont</a></span > </div>
-<div class="product-rating"> <div class="stars"> <i class="fas fa-star"></i> <i
-class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i> </div> </div> </div> <div
-class="product-price">620,00 €</div> <div class="product-availability in-stock">
-<i class="fas fa-check-circle"></i> En stock (3 disponibles) </div> <div
-class="product-short-description"> <p> Table basse en chêne massif fabriquée à
-la main. Finition à l'huile naturelle qui met en valeur les veines du bois.
-Design élégant et minimaliste qui s'intègre dans tout type d'intérieur. </p>
-</div> <div class="product-options"> <div class="option-group"> <label
-for="finish">Finition</label> <select id="finish" class="option-select"> <option
-value="naturel">Naturel (Huile)</option> <option value="clair">Chêne
-clair</option> <option value="fonce">Chêne foncé</option> </select> </div>
-</div> <div class="product-actions"> <div class="quantity-selector"> <button
-class="quantity-btn minus"> <i class="fas fa-minus"></i> </button> <input
-type="number" value="1" min="1" max="3" class="quantity-input" /> <button
-class="quantity-btn plus"> <i class="fas fa-plus"></i> </button> </div> <button
-class="btn btn--primary btn--large add-to-cart"> <i class="fas
-fa-shopping-cart"></i> Ajouter au panier </button> </div> <div
-class="product-delivery"> <div class="delivery-info"> <i class="fas
-fa-truck"></i> <div class="delivery-text"> <p> Livraison estimée: <strong>10-15
-jours ouvrables</strong> </p> <p class="delivery-note"> Chaque pièce est
-fabriquée sur commande </p> </div> </div> <div class="delivery-info"> <i
-class="fas fa-shield-alt"></i> <div class="delivery-text"> <p><strong>Garantie 2
-ans</strong></p> <p class="delivery-note">Sur les défauts de fabrication</p>
-</div> </div> </div> <div class="product-share"> <span>Partager:</span> <div
-class="share-buttons"> <a href="#" class="share-btn" ><i class="fab
-fa-facebook-f"></i ></a> <a href="#" class="share-btn"><i class="fab
-fa-twitter"></i></a> <a href="#" class="share-btn" ><i class="fab
-fa-pinterest-p"></i ></a> <a href="#" class="share-btn" ><i class="fas
-fa-envelope"></i ></a> </div> </div> </div> </div> <div
-class="product-details-tabs"> <div class="tabs"> <button class="tab-btn active"
-data-tab="description"> Description </button> <button class="tab-btn"
-data-tab="specifications"> Caractéristiques </button> <button class="tab-btn"
-data-tab="artisan">L'artisan</button> </div> <div class="tab-content active"
-id="description"> <div class="description-content"> <h2>À propos de cette table
-basse en chêne massif</h2> <p> Cette table basse contemporaine est fabriquée à
-partir de chêne français massif soigneusement sélectionné pour sa qualité et son
-grain. Chaque pièce est unique car je travaille avec les veines naturelles du
-bois pour créer un meuble qui a sa propre personnalité. </p> <p> Le plateau est
-composé de plusieurs planches de chêne massif assemblées avec précision. Les
-pieds sont fabriqués dans le même bois et ont été conçus pour offrir à la fois
-stabilité et élégance. Ils sont fixés au plateau par un système d'assemblage
-traditionnel qui garantit la longévité du meuble. </p> <p> La table est finie
-avec plusieurs couches d'huile naturelle qui pénètrent profondément dans le bois
-pour le protéger tout en préservant son aspect naturel et sa texture. Cette
-finition est non toxique et met en valeur la beauté du chêne tout en offrant une
-protection efficace contre les taches et l'humidité. </p> <p> Ce meuble
-s'intègrera parfaitement dans un salon moderne ou une décoration de style
-scandinave. Sa taille est idéale pour un salon ou un petit espace de vie. </p>
-</div> </div> <div class="tab-content" id="specifications"> <div
-class="specifications-content"> <h2>Caractéristiques techniques</h2> <div
-class="specs-grid"> <div class="spec-group"> <h3>Dimensions</h3> <ul
-class="spec-list"> <li><strong>Longueur:</strong> 120 cm</li>
-<li><strong>Largeur:</strong> 60 cm</li> <li><strong>Hauteur:</strong> 45
-cm</li> <li><strong>Poids:</strong> 32 kg</li> </ul> </div> <div
-class="spec-group"> <h3>Matériaux</h3> <ul class="spec-list">
-<li><strong>Structure:</strong> Chêne massif français</li> <li>
-<strong>Finition:</strong> Huile naturelle écologique </li>
-<li><strong>Pieds:</strong> Chêne massif</li> </ul> </div> <div
-class="spec-group"> <h3>Fabrication</h3> <ul class="spec-list"> <li>
-<strong>Origine:</strong> Fabriqué en France (Québec) </li>
-<li><strong>Type:</strong> Fabrication artisanale</li>
-<li><strong>Assemblage:</strong> Traditionnel</li> </ul> </div> <div
-class="spec-group"> <h3>Entretien</h3> <ul class="spec-list"> <li>Nettoyer avec
-un chiffon légèrement humide</li> <li>Éviter l'exposition prolongée au
-soleil</li> <li> Réappliquer de l'huile tous les 6-12 mois selon l'usage </li>
-</ul> </div> </div> </div> </div> <div class="tab-content" id="artisan"> <div
-class="artisan-content"> <div class="artisan-profile"> <div
-class="artisan-header"> <img src="../../images/artisan-large.jpg" alt="Sophie
-Dupont" class="artisan-large-avatar" /> <div class="artisan-header-info">
-<h2>Sophie Dupont</h2> <p class="artisan-location"> <i class="fas
-fa-map-marker-alt"></i> Québec, Canada </p> <p class="artisan-since">Artisan
-depuis</p> </div> </div> </div> </div> </div> </div> </div> </main> <script
-src="../../js/main.js"></script> <script
-src="../../js/product_detail.js"></script> </body> </html> ]]>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtiConnect - Table basse en chêne massif</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/pages/product_detail.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__logo">
+          <a href="../index.html">
+            <img
+              src="../../images/logo.svg"
+              alt="ArtiConnect Logo"
+              class="logo__img"
+            />
+            <span class="logo__text">ArtiConnect</span>
+          </a>
+        </div>
+        <nav class="header__nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="../index.html#how-it-works" class="nav__link"
+                >Comment ça marche</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#artisans" class="nav__link"
+                >Pour les artisans</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#clients" class="nav__link"
+                >Pour les clients</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#testimonials" class="nav__link"
+                >Témoignages</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="header__actions">
+          <!-- Actions dynamically populated by js/main.js -->
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="product-detail-page">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="products.html">Produits</a>
+          <span class="separator"><i class="fas fa-chevron-right"></i></span>
+          <a href="products.html?category=bois">Travail du bois</a>
+          <span class="separator"><i class="fas fa-chevron-right"></i></span>
+          <span class="current">Table basse en chêne massif</span>
+        </div>
+
+        <div class="product-detail">
+          <div class="product-gallery">
+            <div class="main-image">
+              <img
+                src="../../images/product-1.jpg"
+                alt="Table basse en chêne massif"
+                id="main-product-image"
+              />
+              <!-- Favorite button removed -->
+            </div>
+            <div class="thumbnail-gallery">
+              <button
+                class="thumbnail active"
+                data-image="../../images/product-1.jpg"
+              >
+                <img
+                  src="../../images/product-1.jpg"
+                  alt="Table basse en chêne massif - Vue 1"
+                />
+              </button>
+              <button
+                class="thumbnail"
+                data-image="../../images/product-1-2.jpg"
+              >
+                <img
+                  src="../../images/product-1-2.jpg"
+                  alt="Table basse en chêne massif - Vue 2"
+                />
+              </button>
+              <button
+                class="thumbnail"
+                data-image="../../images/product-1-3.jpg"
+              >
+                <img
+                  src="../../images/product-1-3.jpg"
+                  alt="Table basse en chêne massif - Vue 3"
+                />
+              </button>
+              <button
+                class="thumbnail"
+                data-image="../../images/product-1-4.jpg"
+              >
+                <img
+                  src="../../images/product-1-4.jpg"
+                  alt="Table basse en chêne massif - Vue 4"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <h1 class="product-title">Table basse en chêne massif</h1>
+            <div class="product-meta">
+              <div class="artisan-info">
+                <img
+                  src="../../images/artisan-avatar.jpg"
+                  alt="Sophie Dupont"
+                  class="artisan-avatar"
+                />
+                <span class="by-artisan"
+                  >Par <a href="#">Sophie Dupont</a></span
+                >
+              </div>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <!-- Removed review count -->
+              </div>
+            </div>
+            <div class="product-price">620,00 €</div>
+            <div class="product-availability in-stock">
+              <i class="fas fa-check-circle"></i> En stock (3 disponibles)
+            </div>
+            <div class="product-short-description">
+              <p>
+                Table basse en chêne massif fabriquée à la main. Finition à
+                l'huile naturelle qui met en valeur les veines du bois. Design
+                élégant et minimaliste qui s'intègre dans tout type d'intérieur.
+              </p>
+            </div>
+            <div class="product-options">
+              <div class="option-group">
+                <label for="finish">Finition</label>
+                <select id="finish" class="option-select">
+                  <option value="naturel">Naturel (Huile)</option>
+                  <option value="clair">Chêne clair</option>
+                  <option value="fonce">Chêne foncé</option>
+                </select>
+              </div>
+            </div>
+            <div class="product-actions">
+              <div class="quantity-selector">
+                <button class="quantity-btn minus">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <input
+                  type="number"
+                  value="1"
+                  min="1"
+                  max="3"
+                  class="quantity-input"
+                />
+                <button class="quantity-btn plus">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <button class="btn btn--primary btn--large add-to-cart">
+                <i class="fas fa-shopping-cart"></i> Ajouter au panier
+              </button>
+            </div>
+            <div class="product-delivery">
+              <div class="delivery-info">
+                <i class="fas fa-truck"></i>
+                <div class="delivery-text">
+                  <p>
+                    Livraison estimée: <strong>10-15 jours ouvrables</strong>
+                  </p>
+                  <p class="delivery-note">
+                    Chaque pièce est fabriquée sur commande
+                  </p>
+                </div>
+              </div>
+              <div class="delivery-info">
+                <i class="fas fa-shield-alt"></i>
+                <div class="delivery-text">
+                  <p><strong>Garantie 2 ans</strong></p>
+                  <p class="delivery-note">Sur les défauts de fabrication</p>
+                </div>
+              </div>
+            </div>
+            <div class="product-share">
+              <span>Partager:</span>
+              <div class="share-buttons">
+                <a href="#" class="share-btn"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" class="share-btn"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-btn"
+                  ><i class="fab fa-pinterest-p"></i
+                ></a>
+                <a href="#" class="share-btn"
+                  ><i class="fas fa-envelope"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-details-tabs">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="description">
+              Description
+            </button>
+            <button class="tab-btn" data-tab="specifications">
+              Caractéristiques
+            </button>
+            <button class="tab-btn" data-tab="artisan">L'artisan</button>
+            <!-- Reviews tab removed -->
+          </div>
+          <div class="tab-content active" id="description">
+            <div class="description-content">
+              <h2>À propos de cette table basse en chêne massif</h2>
+              <p>
+                Cette table basse contemporaine est fabriquée à partir de chêne
+                français massif soigneusement sélectionné pour sa qualité et son
+                grain. Chaque pièce est unique car je travaille avec les veines
+                naturelles du bois pour créer un meuble qui a sa propre
+                personnalité.
+              </p>
+              <p>
+                Le plateau est composé de plusieurs planches de chêne massif
+                assemblées avec précision. Les pieds sont fabriqués dans le même
+                bois et ont été conçus pour offrir à la fois stabilité et
+                élégance. Ils sont fixés au plateau par un système d'assemblage
+                traditionnel qui garantit la longévité du meuble.
+              </p>
+              <p>
+                La table est finie avec plusieurs couches d'huile naturelle qui
+                pénètrent profondément dans le bois pour le protéger tout en
+                préservant son aspect naturel et sa texture. Cette finition est
+                non toxique et met en valeur la beauté du chêne tout en offrant
+                une protection efficace contre les taches et l'humidité.
+              </p>
+              <p>
+                Ce meuble s'intègrera parfaitement dans un salon moderne ou une
+                décoration de style scandinave. Sa taille est idéale pour un
+                salon ou un petit espace de vie.
+              </p>
+            </div>
+          </div>
+          <div class="tab-content" id="specifications">
+            <div class="specifications-content">
+              <h2>Caractéristiques techniques</h2>
+              <div class="specs-grid">
+                <div class="spec-group">
+                  <h3>Dimensions</h3>
+                  <ul class="spec-list">
+                    <li><strong>Longueur:</strong> 120 cm</li>
+                    <li><strong>Largeur:</strong> 60 cm</li>
+                    <li><strong>Hauteur:</strong> 45 cm</li>
+                    <li><strong>Poids:</strong> 32 kg</li>
+                  </ul>
+                </div>
+                <div class="spec-group">
+                  <h3>Matériaux</h3>
+                  <ul class="spec-list">
+                    <li><strong>Structure:</strong> Chêne massif français</li>
+                    <li>
+                      <strong>Finition:</strong> Huile naturelle écologique
+                    </li>
+                    <li><strong>Pieds:</strong> Chêne massif</li>
+                  </ul>
+                </div>
+                <div class="spec-group">
+                  <h3>Fabrication</h3>
+                  <ul class="spec-list">
+                    <li>
+                      <strong>Origine:</strong> Fabriqué en France (Québec)
+                    </li>
+                    <li><strong>Type:</strong> Fabrication artisanale</li>
+                    <li><strong>Assemblage:</strong> Traditionnel</li>
+                  </ul>
+                </div>
+                <div class="spec-group">
+                  <h3>Entretien</h3>
+                  <ul class="spec-list">
+                    <li>Nettoyer avec un chiffon légèrement humide</li>
+                    <li>Éviter l'exposition prolongée au soleil</li>
+                    <li>
+                      Réappliquer de l'huile tous les 6-12 mois selon l'usage
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-content" id="artisan">
+            <div class="artisan-content">
+              <div class="artisan-profile">
+                <div class="artisan-header">
+                  <img
+                    src="../../images/artisan-large.jpg"
+                    alt="Sophie Dupont"
+                    class="artisan-large-avatar"
+                  />
+                  <div class="artisan-header-info">
+                    <h2>Sophie Dupont</h2>
+                    <p class="artisan-location">
+                      <i class="fas fa-map-marker-alt"></i> Québec, Canada
+                    </p>
+                    <p class="artisan-since">Artisan depuis 2018</p>
+                    <!-- Corrected -->
+                    <!-- Removed rating and link to profile -->
+                  </div>
+                </div>
+                <!-- Removed artisan description and products -->
+              </div>
+            </div>
+          </div>
+          <!-- Reviews tab content removed -->
+        </div>
+
+        <!-- Related products section removed -->
+      </div>
+    </main>
+
+    <!-- Footer would typically go here -->
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/product_detail.js"></script>
+  </body>
+</html>

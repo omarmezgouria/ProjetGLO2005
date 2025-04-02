@@ -1,72 +1,226 @@
-<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8" /> <meta
-name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ArtiConnect - Connexion</title> <link rel="stylesheet"
-href="../../css/main.css" /> <link rel="stylesheet"
-href="../../css/pages/auth.css" /> <!-- Font Awesome for icons --> <link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/> <!-- Google Fonts --> <link rel="preconnect"
-href="https://fonts.googleapis.com" /> <link rel="preconnect"
-href="https://fonts.gstatic.com" crossorigin /> <link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
-rel="stylesheet" /> </head> <body> <header class="header"> <div
-class="container"> <div class="header__logo"> <a href="../index.html"> <img
-src="../../images/logo.svg" alt="ArtiConnect Logo" class="logo__img" /> <span
-class="logo__text">ArtiConnect</span> </a> </div> <nav class="header__nav"> <ul
-class="nav__list"> <li class="nav__item"> <a href="../index.html#how-it-works"
-class="nav__link" >Comment ça marche</a > </li> <li class="nav__item"> <a
-href="../index.html#artisans" class="nav__link" >Pour les artisans</a > </li>
-<li class="nav__item"> <a href="../index.html#clients" class="nav__link" >Pour
-les clients</a > </li> <li class="nav__item"> <a
-href="../index.html#testimonials" class="nav__link" >Témoignages</a > </li>
-</ul> </nav> <div class="header__actions"> <a href="register.html" class="btn
-btn--primary">Inscription</a> </div> <button class="menu-toggle"
-aria-label="Toggle menu"> <span class="menu-toggle__bar"></span> <span
-class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
-</button> </div> </header> <main class="auth-page"> <div class="container"> <div
-class="auth-container"> <div class="auth-content"> <h1
-class="auth-title">Connexion</h1> <p class="auth-subtitle"> Bienvenue sur
-ArtiConnect! Connectez-vous pour accéder à votre compte. </p> <form
-id="login-form" class="auth-form"> <div class="form-group"> <label for="email"
-class="form-label">Email</label> <input type="email" id="email" name="email"
-class="form-control" required /> </div> <div class="form-group"> <div
-class="form-helper"> <label for="password" class="form-label">Mot de
-passe</label> <a href="forgot-password.html" class="forgot-password" >Mot de
-passe oublié?</a > </div> <div class="password-container"> <input
-type="password" id="password" name="password" class="form-control" required />
-<button type="button" class="password-toggle" aria-label="Toggle password
-visibility" > <i class="far fa-eye"></i> </button> </div> </div> <div
-class="form-group"> <label class="checkbox-container"> <input type="checkbox"
-id="remember-me" name="remember" /> <span class="checkmark"></span> <span>Se
-souvenir de moi</span> </label> </div> <button type="submit" class="btn
-btn--primary btn--large btn--full" > Se connecter </button> </form> <div
-class="auth-footer"> Vous n'avez pas de compte? <a
-href="register.html">Inscrivez-vous</a> </div> </div> <div class="auth-image">
-<img src="../../images/auth-image.jpg" alt="Artisan au travail" class="auth-img"
-/> <div class="auth-image-overlay"> <div class="auth-image-content">
-<h2>Connectez-vous avec les meilleurs artisans</h2> <p> ArtiConnect vous offre
-une plateforme unique pour découvrir des produits authentiques et des services
-de qualité. </p> </div> </div> </div> </div> </div> </main> <footer
-class="footer"> <div class="container"> <div class="footer__grid"> <div
-class="footer__column"> <div class="footer__logo"> <img
-src="../../images/logo-white.svg" alt="ArtiConnect Logo" class="logo__img" />
-<span class="logo__text">ArtiConnect</span> </div> <p
-class="footer__description"> La plateforme qui connecte artisans et clients pour
-des projets uniques et authentiques. </p> </div> <div class="footer__column">
-<h3 class="footer__title">Liens utiles</h3> <ul class="footer__links"> <li> <a
-href="../index.html#how-it-works" class="footer__link" >Comment ça marche</a >
-</li> <li> <a href="../index.html#artisans" class="footer__link" >Pour les
-artisans</a > </li> <li> <a href="../index.html#clients" class="footer__link"
->Pour les clients</a > </li> <li> <a href="../index.html#testimonials"
-class="footer__link" >Témoignages</a > </li> </ul> </div> <div
-class="footer__column"> <h3 class="footer__title">Contact</h3> <ul
-class="footer__contact"> <li class="footer__contact-item"> <i class="fas
-fa-envelope"></i> <a href="mailto:contact@articonnect.com"
->contact@articonnect.com</a > </li> <li class="footer__contact-item"> <i
-class="fas fa-phone"></i> <a href="tel:+18005551234">+1 (800) 555-1234</a> </li>
-<li class="footer__contact-item"> <i class="fas fa-map-marker-alt"></i>
-<span>123 Rue de l'Innovation, Québec, QC G1V 0A6</span> </li> </ul> </div>
-</div> <div class="footer__bottom"> <p class="footer__copyright"> &copy; 2025
-ArtiConnect. Tous droits réservés. </p> </div> </div> </footer> <script
-src="../../js/main.js"></script> <script src="../../js/auth.js"></script>
-</body> </html>]]>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtiConnect - Connexion</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/pages/auth.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__logo">
+          <a href="../index.html">
+            <img
+              src="../../images/logo.svg"
+              alt="ArtiConnect Logo"
+              class="logo__img"
+            />
+            <span class="logo__text">ArtiConnect</span>
+          </a>
+        </div>
+        <nav class="header__nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="../index.html#how-it-works" class="nav__link"
+                >Comment ça marche</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#artisans" class="nav__link"
+                >Pour les artisans</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#clients" class="nav__link"
+                >Pour les clients</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#testimonials" class="nav__link"
+                >Témoignages</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="header__actions">
+          <a href="register.html" class="btn btn--primary">Inscription</a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="auth-page">
+      <div class="container">
+        <div class="auth-container">
+          <div class="auth-content">
+            <h1 class="auth-title">Connexion</h1>
+            <p class="auth-subtitle">
+              Bienvenue sur ArtiConnect! Connectez-vous pour accéder à votre
+              compte.
+            </p>
+            <form id="login-form" class="auth-form">
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <div class="form-helper">
+                  <label for="password" class="form-label">Mot de passe</label>
+                  <a href="forgot-password.html" class="forgot-password"
+                    >Mot de passe oublié?</a
+                  >
+                </div>
+                <div class="password-container">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    aria-label="Toggle password visibility"
+                  >
+                    <i class="far fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="checkbox-container">
+                  <input type="checkbox" id="remember-me" name="remember" />
+                  <span class="checkmark"></span>
+                  <span>Se souvenir de moi</span>
+                </label>
+              </div>
+              <button
+                type="submit"
+                class="btn btn--primary btn--large btn--full"
+              >
+                Se connecter
+              </button>
+            </form>
+            <div class="auth-footer">
+              Vous n'avez pas de compte?
+              <a href="register.html">Inscrivez-vous</a>
+            </div>
+          </div>
+          <div class="auth-image">
+            <img
+              src="../../images/auth-image.jpg"
+              alt="Artisan au travail"
+              class="auth-img"
+            />
+            <div class="auth-image-overlay">
+              <div class="auth-image-content">
+                <h2>Connectez-vous avec les meilleurs artisans</h2>
+                <p>
+                  ArtiConnect vous offre une plateforme unique pour découvrir
+                  des produits authentiques et des services de qualité.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__column">
+            <div class="footer__logo">
+              <img
+                src="../../images/logo-white.svg"
+                alt="ArtiConnect Logo"
+                class="logo__img"
+              />
+              <span class="logo__text">ArtiConnect</span>
+            </div>
+            <p class="footer__description">
+              La plateforme qui connecte artisans et clients pour des projets
+              uniques et authentiques.
+            </p>
+          </div>
+          <div class="footer__column">
+            <h3 class="footer__title">Liens utiles</h3>
+            <ul class="footer__links">
+              <li>
+                <a href="../index.html#how-it-works" class="footer__link"
+                  >Comment ça marche</a
+                >
+              </li>
+              <li>
+                <a href="../index.html#artisans" class="footer__link"
+                  >Pour les artisans</a
+                >
+              </li>
+              <li>
+                <a href="../index.html#clients" class="footer__link"
+                  >Pour les clients</a
+                >
+              </li>
+              <li>
+                <a href="../index.html#testimonials" class="footer__link"
+                  >Témoignages</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <h3 class="footer__title">Contact</h3>
+            <ul class="footer__contact">
+              <li class="footer__contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:contact@articonnect.com"
+                  >contact@articonnect.com</a
+                >
+              </li>
+              <li class="footer__contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+18005551234">+1 (800) 555-1234</a>
+              </li>
+              <li class="footer__contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>123 Rue de l'Innovation, Québec, QC G1V 0A6</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__copyright">
+            &copy; 2025 ArtiConnect. Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/auth.js"></script>
+  </body>
+</html>

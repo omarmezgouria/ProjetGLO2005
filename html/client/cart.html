@@ -1,115 +1,365 @@
-<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8" /> <meta
-name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ArtiConnect - Votre Panier</title> <link rel="stylesheet"
-href="../../css/main.css" /> <link rel="stylesheet"
-href="../../css/pages/cart.css" /> <!-- Font Awesome for icons --> <link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/> <!-- Google Fonts --> <link rel="preconnect"
-href="https://fonts.googleapis.com" /> <link rel="preconnect"
-href="https://fonts.gstatic.com" crossorigin /> <link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
-rel="stylesheet" /> </head> <body> <header class="header"> <div
-class="container"> <div class="header__logo"> <a href="../index.html"> <img
-src="../../images/logo.svg" alt="ArtiConnect Logo" class="logo__img" /> <span
-class="logo__text">ArtiConnect</span> </a> </div> <nav class="header__nav"> <ul
-class="nav__list"> <li class="nav__item"> <a href="../index.html#how-it-works"
-class="nav__link" >Comment ça marche</a > </li> <li class="nav__item"> <a
-href="../index.html#artisans" class="nav__link" >Pour les artisans</a > </li>
-<li class="nav__item"> <a href="../index.html#clients" class="nav__link" >Pour
-les clients</a > </li> <li class="nav__item"> <a
-href="../index.html#testimonials" class="nav__link" >Témoignages</a > </li>
-</ul> </nav> <div class="header__actions"> <!-- Actions dynamically populated by
-js/main.js --> </div> <button class="menu-toggle" aria-label="Toggle menu">
-<span class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
-<span class="menu-toggle__bar"></span> </button> </div> </header> <main
-class="cart-page"> <div class="container"> <div class="page-header"> <h1>Votre
-Panier</h1> <p>Vérifiez vos articles et procédez au paiement</p> </div> <div
-class="cart-content"> <div class="cart-items"> <div class="cart-header"> <span
-class="item-col">Produit</span> <span class="price-col">Prix unitaire</span>
-<span class="quantity-col">Quantité</span> <span class="total-col">Total</span>
-<span class="remove-col"></span> </div> <!-- Produit 1 --> <div
-class="cart-item"> <div class="item-col"> <div class="item-info"> <div
-class="item-image"> <a href="product_detail.html"> <img
-src="../../images/product-1.jpg" alt="Table basse en chêne massif" /> </a>
-</div> <div class="item-details"> <h3 class="item-title"> <a
-href="product_detail.html" >Table basse en chêne massif</a > </h3> <div
-class="item-meta"> <span class="item-artisan">Par Sophie Dupont</span> <span
-class="item-variant" >Finition: Naturel (Huile)</span > </div> </div> </div>
-</div> <div class="price-col">620,00 €</div> <div class="quantity-col"> <div
-class="quantity-selector"> <button class="quantity-btn minus"> <i class="fas
-fa-minus"></i> </button> <input type="number" value="1" min="1" max="10"
-class="quantity-input" /> <button class="quantity-btn plus"> <i class="fas
-fa-plus"></i> </button> </div> </div> <div class="total-col">620,00 €</div> <div
-class="remove-col"> <button class="remove-item-btn"> <i class="fas
-fa-trash-alt"></i> </button> </div> </div> <!-- Produit 2 --> <div
-class="cart-item"> <div class="item-col"> <div class="item-info"> <div
-class="item-image"> <a href="product_detail.html"> <img
-src="../../images/product-2.jpg" alt="Étagère murale sur mesure" /> </a> </div>
-<div class="item-details"> <h3 class="item-title"> <a href="product_detail.html"
->Étagère murale sur mesure</a > </h3> <div class="item-meta"> <span
-class="item-artisan">Par Lucas Morin</span> <span class="item-variant">Finition:
-Bois brut</span> </div> </div> </div> </div> <div class="price-col">345,00
-€</div> <div class="quantity-col"> <div class="quantity-selector"> <button
-class="quantity-btn minus"> <i class="fas fa-minus"></i> </button> <input
-type="number" value="2" min="1" max="10" class="quantity-input" /> <button
-class="quantity-btn plus"> <i class="fas fa-plus"></i> </button> </div> </div>
-<div class="total-col">690,00 €</div> <div class="remove-col"> <button
-class="remove-item-btn"> <i class="fas fa-trash-alt"></i> </button> </div>
-</div> <!-- Produit 3 --> <div class="cart-item"> <div class="item-col"> <div
-class="item-info"> <div class="item-image"> <a href="product_detail.html"> <img
-src="../../images/product-3.jpg" alt="Bol en céramique artisanal" /> </a> </div>
-<div class="item-details"> <h3 class="item-title"> <a href="product_detail.html"
->Bol en céramique artisanal</a > </h3> <div class="item-meta"> <span
-class="item-artisan">Par Emma Bernard</span> <span class="item-variant">Couleur:
-Bleu océan</span> </div> </div> </div> </div> <div class="price-col">45,00
-€</div> <div class="quantity-col"> <div class="quantity-selector"> <button
-class="quantity-btn minus"> <i class="fas fa-minus"></i> </button> <input
-type="number" value="1" min="1" max="10" class="quantity-input" /> <button
-class="quantity-btn plus"> <i class="fas fa-plus"></i> </button> </div> </div>
-<div class="total-col">45,00 €</div> <div class="remove-col"> <button
-class="remove-item-btn"> <i class="fas fa-trash-alt"></i> </button> </div>
-</div> <div class="cart-actions"> <button class="btn btn--outline
-continue-shopping"> <i class="fas fa-arrow-left"></i> Continuer les achats
-</button> <button class="btn btn--outline clear-cart"> <i class="fas
-fa-trash"></i> Vider le panier </button> </div> </div> <div
-class="cart-summary"> <h2 class="summary-title">Récapitulatif</h2> <div
-class="summary-details"> <div class="summary-row"> <span
-class="summary-label">Sous-total</span> <span class="summary-value">1 355,00
-€</span> </div> <div class="summary-row"> <span class="summary-label">Frais de
-livraison</span> <span class="summary-value">Calculés à l'étape suivante</span>
-</div> <div class="summary-row total"> <span class="summary-label">Total</span>
-<span class="summary-value">1 355,00 €</span> </div> </div> <div
-class="promo-code"> <div class="promo-form"> <input type="text"
-placeholder="Code promo" class="promo-input" /> <button class="btn btn--primary
-btn--small apply-promo"> Appliquer </button> </div> </div> <div
-class="checkout-btn-wrapper"> <a href="checkout.html" class="btn btn--primary
-btn--large btn--full" > Procéder au paiement </a> </div> <div
-class="payment-methods"> <p>Nous acceptons</p> <div class="payment-icons"> <i
-class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i class="fab
-fa-cc-amex"></i> <i class="fab fa-cc-paypal"></i> </div> </div> <div
-class="cart-guarantees"> <div class="guarantee-item"> <i class="fas
-fa-shield-alt"></i> <span>Paiement sécurisé</span> </div> <div
-class="guarantee-item"> <i class="fas fa-truck"></i> <span>Expédition
-suivie</span> </div> <div class="guarantee-item"> <i class="fas
-fa-exchange-alt"></i> <span>Retour sous 14 jours</span> </div> </div> </div>
-</div> <div class="recommended-products"> <h2>Vous pourriez aussi aimer</h2>
-<div class="products-slider"> <!-- Produit Recommandé 1 --> <div
-class="product-card"> <!-- Favorite button removed --> <a
-href="product_detail.html" class="product-image"> <img
-src="../../images/product-4.jpg" alt="Lampe de table artisanale" /> </a> <div
-class="product-info"> <div class="product-category">Luminaires</div> <h3
-class="product-title"> <a href="product_detail.html">Lampe de table
-artisanale</a> </h3> <div class="product-artisan"> <a href="#">Par Thomas
-Petit</a> </div> <div class="product-price">180,00 €</div> <div
-class="product-actions"> <button class="btn btn--primary
-add-to-cart">Ajouter</button> </div> </div> </div> <!-- Produit Recommandé 2 -->
-<div class="product-card"> <!-- Favorite button removed --> <a
-href="product_detail.html" class="product-image"> <img
-src="../../images/product-5.jpg" alt="Ensemble d'assiettes en céramique" /> </a>
-<div class="product-info"> <div class="product-category">Céramique</div> <h3
-class="product-title"> <a href="product_detail.html" >Ensemble d'assiettes en
-céramique</a > </h3> <div class="product-artisan"> <a href="#">Par Emma
-Bernard</a> </div> </div> </div> </div> </div> </div> </main> <script
-src="../../js/main.js"></script> <script src="../../js/cart.js"></script>
-</body> </html> ]]>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtiConnect - Votre Panier</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/pages/cart.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__logo">
+          <a href="../index.html">
+            <img
+              src="../../images/logo.svg"
+              alt="ArtiConnect Logo"
+              class="logo__img"
+            />
+            <span class="logo__text">ArtiConnect</span>
+          </a>
+        </div>
+        <nav class="header__nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="../index.html#how-it-works" class="nav__link"
+                >Comment ça marche</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#artisans" class="nav__link"
+                >Pour les artisans</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#clients" class="nav__link"
+                >Pour les clients</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="../index.html#testimonials" class="nav__link"
+                >Témoignages</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="header__actions">
+          <!-- Actions dynamically populated by js/main.js -->
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="cart-page">
+      <div class="container">
+        <div class="page-header">
+          <h1>Votre Panier</h1>
+          <p>Vérifiez vos articles et procédez au paiement</p>
+        </div>
+        <div class="cart-content">
+          <div class="cart-items">
+            <div class="cart-header">
+              <span class="item-col">Produit</span>
+              <span class="price-col">Prix unitaire</span>
+              <span class="quantity-col">Quantité</span>
+              <span class="total-col">Total</span>
+              <span class="remove-col"></span>
+            </div>
+            <!-- Produit 1 -->
+            <div class="cart-item">
+              <div class="item-col">
+                <div class="item-info">
+                  <div class="item-image">
+                    <a href="product_detail.html">
+                      <img
+                        src="../../images/product-1.jpg"
+                        alt="Table basse en chêne massif"
+                      />
+                    </a>
+                  </div>
+                  <div class="item-details">
+                    <h3 class="item-title">
+                      <a href="product_detail.html"
+                        >Table basse en chêne massif</a
+                      >
+                    </h3>
+                    <div class="item-meta">
+                      <span class="item-artisan">Par Sophie Dupont</span>
+                      <span class="item-variant"
+                        >Finition: Naturel (Huile)</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="price-col">620,00 €</div>
+              <div class="quantity-col">
+                <div class="quantity-selector">
+                  <button class="quantity-btn minus">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input
+                    type="number"
+                    value="1"
+                    min="1"
+                    max="10"
+                    class="quantity-input"
+                  />
+                  <button class="quantity-btn plus">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="total-col">620,00 €</div>
+              <div class="remove-col">
+                <button class="remove-item-btn">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Produit 2 -->
+            <div class="cart-item">
+              <div class="item-col">
+                <div class="item-info">
+                  <div class="item-image">
+                    <a href="product_detail.html">
+                      <img
+                        src="../../images/product-2.jpg"
+                        alt="Étagère murale sur mesure"
+                      />
+                    </a>
+                  </div>
+                  <div class="item-details">
+                    <h3 class="item-title">
+                      <a href="product_detail.html"
+                        >Étagère murale sur mesure</a
+                      >
+                    </h3>
+                    <div class="item-meta">
+                      <span class="item-artisan">Par Lucas Morin</span>
+                      <span class="item-variant">Finition: Bois brut</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="price-col">345,00 €</div>
+              <div class="quantity-col">
+                <div class="quantity-selector">
+                  <button class="quantity-btn minus">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input
+                    type="number"
+                    value="2"
+                    min="1"
+                    max="10"
+                    class="quantity-input"
+                  />
+                  <button class="quantity-btn plus">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="total-col">690,00 €</div>
+              <div class="remove-col">
+                <button class="remove-item-btn">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Produit 3 -->
+            <div class="cart-item">
+              <div class="item-col">
+                <div class="item-info">
+                  <div class="item-image">
+                    <a href="product_detail.html">
+                      <img
+                        src="../../images/product-3.jpg"
+                        alt="Bol en céramique artisanal"
+                      />
+                    </a>
+                  </div>
+                  <div class="item-details">
+                    <h3 class="item-title">
+                      <a href="product_detail.html"
+                        >Bol en céramique artisanal</a
+                      >
+                    </h3>
+                    <div class="item-meta">
+                      <span class="item-artisan">Par Emma Bernard</span>
+                      <span class="item-variant">Couleur: Bleu océan</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="price-col">45,00 €</div>
+              <div class="quantity-col">
+                <div class="quantity-selector">
+                  <button class="quantity-btn minus">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input
+                    type="number"
+                    value="1"
+                    min="1"
+                    max="10"
+                    class="quantity-input"
+                  />
+                  <button class="quantity-btn plus">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="total-col">45,00 €</div>
+              <div class="remove-col">
+                <button class="remove-item-btn">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="cart-actions">
+              <button class="btn btn--outline continue-shopping">
+                <i class="fas fa-arrow-left"></i> Continuer les achats
+              </button>
+              <button class="btn btn--outline clear-cart">
+                <i class="fas fa-trash"></i> Vider le panier
+              </button>
+            </div>
+          </div>
+          <div class="cart-summary">
+            <h2 class="summary-title">Récapitulatif</h2>
+            <div class="summary-details">
+              <div class="summary-row">
+                <span class="summary-label">Sous-total</span>
+                <span class="summary-value">1 355,00 €</span>
+              </div>
+              <div class="summary-row">
+                <span class="summary-label">Frais de livraison</span>
+                <span class="summary-value">Calculés à l'étape suivante</span>
+              </div>
+              <div class="summary-row total">
+                <span class="summary-label">Total</span>
+                <span class="summary-value">1 355,00 €</span>
+              </div>
+            </div>
+            <div class="promo-code">
+              <div class="promo-form">
+                <input
+                  type="text"
+                  placeholder="Code promo"
+                  class="promo-input"
+                />
+                <button class="btn btn--primary btn--small apply-promo">
+                  Appliquer
+                </button>
+              </div>
+            </div>
+            <div class="checkout-btn-wrapper">
+              <a
+                href="checkout.html"
+                class="btn btn--primary btn--large btn--full"
+                >Procéder au paiement</a
+              >
+            </div>
+            <div class="payment-methods">
+              <p>Nous acceptons</p>
+              <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+              </div>
+            </div>
+            <div class="cart-guarantees">
+              <div class="guarantee-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Paiement sécurisé</span>
+              </div>
+              <div class="guarantee-item">
+                <i class="fas fa-truck"></i>
+                <span>Expédition suivie</span>
+              </div>
+              <div class="guarantee-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Retour sous 14 jours</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="recommended-products">
+          <h2>Vous pourriez aussi aimer</h2>
+          <div class="products-slider">
+            <!-- Produit Recommandé 1 -->
+            <div class="product-card">
+              <!-- Favorite button removed -->
+              <a href="product_detail.html" class="product-image">
+                <img
+                  src="../../images/product-4.jpg"
+                  alt="Lampe de table artisanale"
+                />
+              </a>
+              <div class="product-info">
+                <div class="product-category">Luminaires</div>
+                <h3 class="product-title">
+                  <a href="product_detail.html">Lampe de table artisanale</a>
+                </h3>
+                <div class="product-artisan">
+                  <a href="#">Par Thomas Petit</a>
+                </div>
+                <div class="product-price">180,00 €</div>
+                <div class="product-actions">
+                  <button class="btn btn--primary add-to-cart">Ajouter</button>
+                </div>
+              </div>
+            </div>
+            <!-- Produit Recommandé 2 -->
+            <div class="product-card">
+              <!-- Favorite button removed -->
+              <a href="product_detail.html" class="product-image">
+                <img
+                  src="../../images/product-5.jpg"
+                  alt="Ensemble d'assiettes en céramique"
+                />
+              </a>
+              <div class="product-info">
+                <div class="product-category">Céramique</div>
+                <h3 class="product-title">
+                  <a href="product_detail.html"
+                    >Ensemble d'assiettes en céramique</a
+                  >
+                </h3>
+                <div class="product-artisan">
+                  <a href="#">Par Emma Bernard</a>
+                </div>
+                <!-- Price and Add to Cart button removed for this example -->
+              </div>
+            </div>
+            <!-- Add more recommended products here -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer would typically go here -->
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/cart.js"></script>
+  </body>
+</html>

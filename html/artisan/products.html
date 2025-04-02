@@ -1,110 +1,321 @@
-<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8"> <meta
-name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ArtiConnect - Gestion des Produits</title> <link rel="stylesheet"
-href="../../css/main.css"> <link rel="stylesheet"
-href="../../css/pages/dashboard.css"> <link rel="stylesheet"
-href="../../css/pages/artisan-products.css"> <!-- Font Awesome for icons -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Google Fonts --> <link rel="preconnect"
-href="https://fonts.googleapis.com"> <link rel="preconnect"
-href="https://fonts.gstatic.com" crossorigin> <link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
-rel="stylesheet"> </head> <body class="dashboard-body"> <header
-class="dashboard-header"> <div class="container"> <div class="header__logo"> <a
-href="../index.html"> <img src="../../images/logo.svg" alt="ArtiConnect Logo"
-class="logo__img"> <span class="logo__text">ArtiConnect</span> </a> </div> <div
-class="header__search"> <div class="search-container"> <i class="fas fa-search
-search-icon"></i> <input type="text" placeholder="Rechercher un produit..."
-class="search-input"> </div> </div> <div class="header__actions"> <!-- Actions
-dynamically populated by js/main.js --> </div> <button class="menu-toggle"
-aria-label="Toggle menu"> <span class="menu-toggle__bar"></span> <span
-class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span>
-</button> </div> </header> <div class="dashboard-container"> <aside
-class="sidebar"> <nav class="sidebar-nav"> <ul class="nav-menu"> <li
-class="nav-item"> <a href="dashboard.html" class="nav-link"> <i class="fas
-fa-tachometer-alt"></i> <span>Tableau de bord</span> </a> </li> <li
-class="nav-item"> <a href="orders.html" class="nav-link"> <i class="fas
-fa-shopping-cart"></i> <span>Commandes</span> <span class="nav-badge">5</span>
-</a> </li> <li class="nav-item active"> <a href="products.html"
-class="nav-link"> <i class="fas fa-box"></i> <span>Mes produits</span> </a>
-</li> <li class="nav-item"> <a href="inventory.html" class="nav-link"> <i
-class="fas fa-warehouse"></i> <span>Inventaire</span> </a> </li> <!-- Removed
-links to non-existent portfolio.html, analytics.html, settings.html --> <li
-class="nav-item"> <a href="profile.html" class="nav-link"> <i class="fas
-fa-user-circle"></i> <span>Mon profil</span> </a> </li> </ul> </nav> <div
-class="sidebar-footer"> <div class="sidebar-footer-content"> <!-- Artisan status
-removed previously --> </div> </div> </aside> <main class="dashboard-content">
-<div class="page-header"> <h1>Mes produits</h1> <a href="add_products.html"
-class="btn btn--primary"> <!-- Corrected link --> <i class="fas fa-plus"></i>
-Ajouter un produit </a> </div> <div class="products-filters"> <div
-class="filters-group"> <div class="search-wrapper"> <i class="fas
-fa-search"></i> <input type="text" placeholder="Rechercher un produit"
-class="filter-search"> </div> <div class="filter-select-wrapper"> <select
-class="filter-select" id="category-filter"> <option value="">Toutes les
-catégories</option> <option value="bois">Travail du bois</option> <option
-value="ceramique">Céramique</option> <option value="textile">Textile</option>
-<option value="bijoux">Bijouterie</option> <option value="cuir">Cuir</option>
-<option value="verre">Verrerie</option> </select> </div> <div
-class="filter-select-wrapper"> <select class="filter-select" id="status-filter">
-<option value="">Tous les statuts</option> <option value="active">Actif</option>
-<option value="inactive">Inactif</option> <option
-value="out-of-stock">Épuisé</option> </select> </div> </div> <div
-class="view-controls"> <button class="view-btn active" data-view="grid"><i
-class="fas fa-th-large"></i></button> <button class="view-btn"
-data-view="list"><i class="fas fa-list"></i></button> </div> </div> <div
-class="products-summary"> <div class="summary-card"> <div class="summary-icon">
-<i class="fas fa-boxes"></i> </div> <div class="summary-content"> <h3>42</h3>
-<p>Total des produits</p> </div> </div> <div class="summary-card"> <div
-class="summary-icon active"> <i class="fas fa-check-circle"></i> </div> <div
-class="summary-content"> <h3>36</h3> <p>Produits actifs</p> </div> </div> <div
-class="summary-card"> <div class="summary-icon inactive"> <i class="fas
-fa-times-circle"></i> </div> <div class="summary-content"> <h3>6</h3>
-<p>Produits inactifs</p> </div> </div> <div class="summary-card"> <div
-class="summary-icon"> <i class="fas fa-shopping-cart"></i> </div> <div
-class="summary-content"> <h3>214</h3> <p>Ventes totales</p> </div> </div> </div>
-<div class="products-grid view-grid"> <!-- Produit 1 --> <div
-class="product-item"> <div class="product-actions"> <button class="action-btn
-edit-btn" title="Modifier"><i class="fas fa-edit"></i></button> <button
-class="action-btn duplicate-btn" title="Dupliquer"><i class="fas
-fa-copy"></i></button> <button class="action-btn delete-btn"
-title="Supprimer"><i class="fas fa-trash-alt"></i></button> </div> <div
-class="product-status active" title="Produit actif"></div> <div
-class="product-image"> <img src="../../images/product-1.jpg" alt="Table basse en
-chêne"> </div> <div class="product-info"> <h3 class="product-title">Table basse
-en chêne massif</h3> <div class="product-category">Travail du bois</div> <div
-class="product-price">620,00 €</div> <div class="product-stats"> <div
-class="stat"> <i class="fas fa-box"></i> <span class="stock-amount">3</span>
-</div> <div class="stat"> <i class="fas fa-eye"></i> <span>216</span> </div>
-<div class="stat"> <i class="fas fa-shopping-cart"></i> <span>18</span> </div>
-</div> </div> </div> <!-- Produit 2 --> <div class="product-item"> <div
-class="product-actions"> <button class="action-btn edit-btn" title="Modifier"><i
-class="fas fa-edit"></i></button> <button class="action-btn duplicate-btn"
-title="Dupliquer"><i class="fas fa-copy"></i></button> <button class="action-btn
-delete-btn" title="Supprimer"><i class="fas fa-trash-alt"></i></button> </div>
-<div class="product-status active" title="Produit actif"></div> <div
-class="product-image"> <img src="../../images/product-2.jpg" alt="Étagère murale
-sur mesure"> </div> <div class="product-info"> <h3 class="product-title">Étagère
-murale sur mesure</h3> <div class="product-category">Travail du bois</div> <div
-class="product-price">345,00 €</div> <div class="product-stats"> <div
-class="stat"> <i class="fas fa-box"></i> <span class="stock-amount">5</span>
-</div> <div class="stat"> <i class="fas fa-eye"></i> <span>184</span> </div>
-<div class="stat"> <i class="fas fa-shopping-cart"></i> <span>12</span> </div>
-</div> </div> </div> <!-- Produit 3 --> <div class="product-item"> <div
-class="product-actions"> <button class="action-btn edit-btn" title="Modifier"><i
-class="fas fa-edit"></i></button> <button class="action-btn duplicate-btn"
-title="Dupliquer"><i class="fas fa-copy"></i></button> <button class="action-btn
-delete-btn" title="Supprimer"><i class="fas fa-trash-alt"></i></button> </div>
-<div class="product-status inactive" title="Produit inactif"></div> <!-- Example
-inactive --> <div class="product-image"> <img src="../../images/product-3.jpg"
-alt="Banc en bois recyclé"> </div> <div class="product-info"> <h3
-class="product-title">Banc en bois recyclé</h3> <div
-class="product-category">Travail du bois</div> <div class="product-price">280,00
-€</div> <div class="product-stats"> <div class="stat"> <i class="fas
-fa-box"></i> <span class="stock-amount">1</span> </div> <div class="stat"> <i
-class="fas fa-eye"></i> <span>152</span> </div> <div class="stat"> <i class="fas
-fa-shopping-cart"></i> <span>9</span> </div> </div> </div> </div> <!-- Add more
-product items here --> </div> </main> </div> <script
-src="../../js/main.js"></script> <script
-src="../../js/artisan_dashboard.js"></script> <!-- Assuming artisan_dashboard.js
-handles products --> </body> </html> ]]>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtiConnect - Gestion des Produits</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/pages/dashboard.css" />
+    <link rel="stylesheet" href="../../css/pages/artisan-products.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="dashboard-body">
+    <header class="dashboard-header">
+      <div class="container">
+        <div class="header__logo">
+          <a href="../index.html">
+            <img
+              src="../../images/logo.svg"
+              alt="ArtiConnect Logo"
+              class="logo__img"
+            />
+            <span class="logo__text">ArtiConnect</span>
+          </a>
+        </div>
+        <div class="header__search">
+          <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              placeholder="Rechercher un produit..."
+              class="search-input"
+            />
+          </div>
+        </div>
+        <div class="header__actions">
+          <!-- Actions dynamically populated by js/main.js -->
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <nav class="sidebar-nav">
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Tableau de bord</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="orders.html" class="nav-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Commandes</span>
+                <span class="nav-badge">5</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a href="products.html" class="nav-link">
+                <i class="fas fa-box"></i>
+                <span>Mes produits</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="inventory.html" class="nav-link">
+                <i class="fas fa-warehouse"></i>
+                <span>Inventaire</span>
+              </a>
+            </li>
+            <!-- Removed links to non-existent portfolio.html, analytics.html, settings.html -->
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
+                <i class="fas fa-user-circle"></i>
+                <span>Mon profil</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="sidebar-footer-content">
+            <!-- Artisan status removed previously -->
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-content">
+        <div class="page-header">
+          <h1>Mes produits</h1>
+          <a href="add_products.html" class="btn btn--primary">
+            <!-- Corrected link -->
+            <i class="fas fa-plus"></i> Ajouter un produit
+          </a>
+        </div>
+
+        <div class="products-filters">
+          <div class="filters-group">
+            <div class="search-wrapper">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Rechercher un produit"
+                class="filter-search"
+              />
+            </div>
+            <div class="filter-select-wrapper">
+              <select class="filter-select" id="category-filter">
+                <option value="">Toutes les catégories</option>
+                <option value="bois">Travail du bois</option>
+                <option value="ceramique">Céramique</option>
+                <option value="textile">Textile</option>
+                <option value="bijoux">Bijouterie</option>
+                <option value="cuir">Cuir</option>
+                <option value="verre">Verrerie</option>
+              </select>
+            </div>
+            <div class="filter-select-wrapper">
+              <select class="filter-select" id="status-filter">
+                <option value="">Tous les statuts</option>
+                <option value="active">Actif</option>
+                <option value="inactive">Inactif</option>
+                <option value="out-of-stock">Épuisé</option>
+              </select>
+            </div>
+          </div>
+          <div class="view-controls">
+            <button class="view-btn active" data-view="grid">
+              <i class="fas fa-th-large"></i>
+            </button>
+            <button class="view-btn" data-view="list">
+              <i class="fas fa-list"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="products-summary">
+          <div class="summary-card">
+            <div class="summary-icon">
+              <i class="fas fa-boxes"></i>
+            </div>
+            <div class="summary-content">
+              <h3>42</h3>
+              <p>Total des produits</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon active">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="summary-content">
+              <h3>36</h3>
+              <p>Produits actifs</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon inactive">
+              <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="summary-content">
+              <h3>6</h3>
+              <p>Produits inactifs</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="summary-content">
+              <h3>214</h3>
+              <p>Ventes totales</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="products-grid view-grid">
+          <!-- Produit 1 -->
+          <div class="product-item">
+            <div class="product-actions">
+              <button class="action-btn edit-btn" title="Modifier">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="action-btn duplicate-btn" title="Dupliquer">
+                <i class="fas fa-copy"></i>
+              </button>
+              <button class="action-btn delete-btn" title="Supprimer">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+            <div class="product-status active" title="Produit actif"></div>
+            <div class="product-image">
+              <img
+                src="../../images/product-1.jpg"
+                alt="Table basse en chêne"
+              />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Table basse en chêne massif</h3>
+              <div class="product-category">Travail du bois</div>
+              <div class="product-price">620,00 €</div>
+              <div class="product-stats">
+                <div class="stat">
+                  <i class="fas fa-box"></i>
+                  <span class="stock-amount">3</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-eye"></i>
+                  <span>216</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span>18</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Produit 2 -->
+          <div class="product-item">
+            <div class="product-actions">
+              <button class="action-btn edit-btn" title="Modifier">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="action-btn duplicate-btn" title="Dupliquer">
+                <i class="fas fa-copy"></i>
+              </button>
+              <button class="action-btn delete-btn" title="Supprimer">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+            <div class="product-status active" title="Produit actif"></div>
+            <div class="product-image">
+              <img
+                src="../../images/product-2.jpg"
+                alt="Étagère murale sur mesure"
+              />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Étagère murale sur mesure</h3>
+              <div class="product-category">Travail du bois</div>
+              <div class="product-price">345,00 €</div>
+              <div class="product-stats">
+                <div class="stat">
+                  <i class="fas fa-box"></i>
+                  <span class="stock-amount">5</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-eye"></i>
+                  <span>184</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span>12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Produit 3 -->
+          <div class="product-item">
+            <div class="product-actions">
+              <button class="action-btn edit-btn" title="Modifier">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="action-btn duplicate-btn" title="Dupliquer">
+                <i class="fas fa-copy"></i>
+              </button>
+              <button class="action-btn delete-btn" title="Supprimer">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+            <div class="product-status inactive" title="Produit inactif"></div>
+            <!-- Example inactive -->
+            <div class="product-image">
+              <img
+                src="../../images/product-3.jpg"
+                alt="Banc en bois recyclé"
+              />
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Banc en bois recyclé</h3>
+              <div class="product-category">Travail du bois</div>
+              <div class="product-price">280,00 €</div>
+              <div class="product-stats">
+                <div class="stat">
+                  <i class="fas fa-box"></i>
+                  <span class="stock-amount">1</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-eye"></i>
+                  <span>152</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span>9</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Add more product items here -->
+        </div>
+      </main>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/artisan_dashboard.js"></script>
+    <!-- Assuming artisan_dashboard.js handles products -->
+  </body>
+</html>

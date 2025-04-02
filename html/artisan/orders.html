@@ -1,111 +1,347 @@
-<![CDATA[<!DOCTYPE html> <html lang="fr"> <head> <meta charset="UTF-8" /> <meta
-name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ArtiConnect - Gestion des Commandes</title> <link rel="stylesheet"
-href="../../css/main.css" /> <link rel="stylesheet"
-href="../../css/pages/dashboard.css" /> <link rel="stylesheet"
-href="../../css/pages/artisan-orders.css" /> <!-- Font Awesome for icons -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/> <!-- Google Fonts --> <link rel="preconnect"
-href="https://fonts.googleapis.com" /> <link rel="preconnect"
-href="https://fonts.gstatic.com" crossorigin /> <link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
-rel="stylesheet" /> </head> <body class="dashboard-body"> <header
-class="dashboard-header"> <div class="container"> <div class="header__logo"> <a
-href="../index.html"> <img src="../../images/logo.svg" alt="ArtiConnect Logo"
-class="logo__img" /> <span class="logo__text">ArtiConnect</span> </a> </div>
-<div class="header__search"> <div class="search-container"> <i class="fas
-fa-search search-icon"></i> <input type="text" placeholder="Rechercher une
-commande..." class="search-input" /> </div> </div> <div class="header__actions">
-<!-- Actions dynamically populated by js/main.js --> </div> <button
-class="menu-toggle" aria-label="Toggle menu"> <span
-class="menu-toggle__bar"></span> <span class="menu-toggle__bar"></span> <span
-class="menu-toggle__bar"></span> </button> </div> </header> <div
-class="dashboard-container"> <aside class="sidebar"> <nav class="sidebar-nav">
-<ul class="nav-menu"> <li class="nav-item"> <a href="dashboard.html"
-class="nav-link"> <i class="fas fa-tachometer-alt"></i> <span>Tableau de
-bord</span> </a> </li> <li class="nav-item active"> <a href="orders.html"
-class="nav-link"> <i class="fas fa-shopping-cart"></i> <span>Commandes</span>
-<span class="nav-badge">5</span> </a> </li> <li class="nav-item"> <a
-href="products.html" class="nav-link"> <i class="fas fa-box"></i> <span>Mes
-produits</span> </a> </li> <li class="nav-item"> <a href="inventory.html"
-class="nav-link"> <i class="fas fa-warehouse"></i> <span>Inventaire</span> </a>
-</li> <!-- Removed links to non-existent portfolio.html, analytics.html,
-settings.html --> <li class="nav-item"> <a href="profile.html" class="nav-link">
-<i class="fas fa-user-circle"></i> <span>Mon profil</span> </a> </li> </ul>
-</nav> <div class="sidebar-footer"> <div class="sidebar-footer-content"> <!--
-Artisan status removed previously --> </div> </div> </aside> <main
-class="dashboard-content"> <div class="page-header"> <h1>Gestion des
-commandes</h1> <div class="date-range"> <button class="date-range-btn"> <i
-class="far fa-calendar-alt"></i> <span>Ce mois-ci</span> <i class="fas
-fa-chevron-down"></i> </button> </div> </div> <div class="orders-summary"> <div
-class="summary-card"> <div class="summary-icon"> <i class="fas
-fa-shopping-cart"></i> </div> <div class="summary-content"> <h3>152</h3>
-<p>Commandes totales</p> </div> </div> <div class="summary-card"> <div
-class="summary-icon new-orders"> <i class="fas fa-inbox"></i> </div> <div
-class="summary-content"> <h3>5</h3> <p>Nouvelles commandes</p> </div> </div>
-<div class="summary-card"> <div class="summary-icon in-progress"> <i class="fas
-fa-spinner"></i> </div> <div class="summary-content"> <h3>8</h3> <p>En
-préparation</p> </div> </div> <div class="summary-card"> <div
-class="summary-icon completed"> <i class="fas fa-check-circle"></i> </div> <div
-class="summary-content"> <h3>134</h3> <p>Terminées</p> </div> </div> <div
-class="summary-card"> <div class="summary-icon cancelled"> <i class="fas
-fa-times-circle"></i> </div> <div class="summary-content"> <h3>5</h3>
-<p>Annulées</p> </div> </div> </div> <div class="orders-filters"> <div
-class="tabs"> <button class="tab-btn active" data-status="all"> Toutes (152)
-</button> <button class="tab-btn" data-status="new">Nouvelles (5)</button>
-<button class="tab-btn" data-status="in-progress"> En préparation (8) </button>
-<button class="tab-btn" data-status="shipped">Expédiées (3)</button> <button
-class="tab-btn" data-status="completed"> Terminées (134) </button> <button
-class="tab-btn" data-status="cancelled"> Annulées (5) </button> </div> <div
-class="filters-actions"> <div class="search-wrapper"> <i class="fas
-fa-search"></i> <input type="text" placeholder="Rechercher une commande"
-class="filter-search" /> </div> <button class="filter-btn"> <i class="fas
-fa-filter"></i> <span>Filtres</span> </button> <button class="export-btn"> <i
-class="fas fa-download"></i> <span>Exporter</span> </button> </div> </div> <div
-class="orders-table-container"> <table class="orders-table"> <thead> <tr> <th>
-<label class="checkbox-container"> <input type="checkbox" id="select-all-orders"
-/> <span class="checkmark"></span> </label> </th> <th>Commande</th>
-<th>Date</th> <th>Client</th> <th>Produits</th> <th>Total</th> <th>Statut</th>
-<th>Actions</th> </tr> </thead> <tbody> <!-- Commande 1 --> <tr
-data-status="new"> <td> <label class="checkbox-container"> <input
-type="checkbox" name="order-select" /> <span class="checkmark"></span> </label>
-</td> <td class="order-id"> <a
-href="order_detail.html?orderId=AC-2025-1842">#AC-2025-1842</a> <!-- Corrected
-param --> </td> <td class="order-date">15 mars 2025</td> <td
-class="order-client"> <div class="client-info"> <img
-src="../../images/client-1.jpg" alt="Marie Lavoie" class="client-avatar" />
-<span>Marie Lavoie</span> </div> </td> <td class="order-products"> <div
-class="product-info"> <div class="product-thumbnail"> <img
-src="../../images/product-1.jpg" alt="Table basse en chêne massif" /> </div>
-<span>Table basse en chêne massif</span> </div> </td> <td
-class="order-total">620,00 €</td> <td class="order-status"> <span
-class="status-badge new">Nouvelle</span> </td> <td class="order-actions"> <div
-class="action-buttons"> <button class="action-btn view-btn" title="Voir le
-détail"> <i class="fas fa-eye"></i> </button> <button class="action-btn
-process-btn" title="Traiter la commande" > <i class="fas fa-check"></i>
-</button> <button class="action-btn more-btn" title="Plus d'actions"> <i
-class="fas fa-ellipsis-v"></i> </button> </div> </td> </tr> <!-- Commande 2 -->
-<tr data-status="in-progress"> <td> <label class="checkbox-container"> <input
-type="checkbox" name="order-select" /> <span class="checkmark"></span> </label>
-</td> <td class="order-id"> <a
-href="order_detail.html?orderId=AC-2025-1835">#AC-2025-1835</a> <!-- Corrected
-param --> </td> <td class="order-date">10 mars 2025</td> <!-- Corrected date -->
-<td class="order-client"> <div class="client-info"> <img
-src="../../images/client-2.jpg" alt="Thomas Martin" class="client-avatar" />
-<span>Thomas Martin</span> </div> </td> <td class="order-products"> <div
-class="product-info"> <div class="product-thumbnail"> <img
-src="../../images/product-2.jpg" alt="Étagère murale sur mesure" /> </div>
-<span>Étagère murale sur mesure</span> </div> </td> <td
-class="order-total">345,00 €</td> <!-- Assuming price from other files --> <td
-class="order-status"> <span class="status-badge in-progress">En
-préparation</span> <!-- Assuming status --> </td> <td class="order-actions">
-<div class="action-buttons"> <button class="action-btn view-btn" title="Voir le
-détail"> <i class="fas fa-eye"></i> </button> <button class="action-btn
-process-btn" title="Traiter la commande" > <i class="fas fa-check"></i>
-</button> <button class="action-btn more-btn" title="Plus d'actions"> <i
-class="fas fa-ellipsis-v"></i> </button> </div> </td> </tr> <!-- Add more order
-rows here --> </tbody> </table> </div> </main> </div> <script
-src="../../js/main.js"></script> <script
-src="../../js/artisan_dashboard.js"></script> <!-- Assuming artisan_dashboard.js
-handles orders --> </body> </html> ]]>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtiConnect - Gestion des Commandes</title>
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/pages/dashboard.css" />
+    <link rel="stylesheet" href="../../css/pages/artisan-orders.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="dashboard-body">
+    <header class="dashboard-header">
+      <div class="container">
+        <div class="header__logo">
+          <a href="../index.html">
+            <img
+              src="../../images/logo.svg"
+              alt="ArtiConnect Logo"
+              class="logo__img"
+            />
+            <span class="logo__text">ArtiConnect</span>
+          </a>
+        </div>
+        <div class="header__search">
+          <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              placeholder="Rechercher une commande..."
+              class="search-input"
+            />
+          </div>
+        </div>
+        <div class="header__actions">
+          <!-- Actions dynamically populated by js/main.js -->
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <nav class="sidebar-nav">
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Tableau de bord</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a href="orders.html" class="nav-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Commandes</span>
+                <span class="nav-badge">5</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="products.html" class="nav-link">
+                <i class="fas fa-box"></i>
+                <span>Mes produits</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="inventory.html" class="nav-link">
+                <i class="fas fa-warehouse"></i>
+                <span>Inventaire</span>
+              </a>
+            </li>
+            <!-- Removed links to non-existent portfolio.html, analytics.html, settings.html -->
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
+                <i class="fas fa-user-circle"></i>
+                <span>Mon profil</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="sidebar-footer-content">
+            <!-- Artisan status removed previously -->
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard-content">
+        <div class="page-header">
+          <h1>Gestion des commandes</h1>
+          <div class="date-range">
+            <button class="date-range-btn">
+              <i class="far fa-calendar-alt"></i>
+              <span>Ce mois-ci</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="orders-summary">
+          <div class="summary-card">
+            <div class="summary-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="summary-content">
+              <h3>152</h3>
+              <p>Commandes totales</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon new-orders">
+              <i class="fas fa-inbox"></i>
+            </div>
+            <div class="summary-content">
+              <h3>5</h3>
+              <p>Nouvelles commandes</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon in-progress">
+              <i class="fas fa-spinner"></i>
+            </div>
+            <div class="summary-content">
+              <h3>8</h3>
+              <p>En préparation</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon completed">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="summary-content">
+              <h3>134</h3>
+              <p>Terminées</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon cancelled">
+              <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="summary-content">
+              <h3>5</h3>
+              <p>Annulées</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="orders-filters">
+          <div class="tabs">
+            <button class="tab-btn active" data-status="all">
+              Toutes (152)
+            </button>
+            <button class="tab-btn" data-status="new">Nouvelles (5)</button>
+            <button class="tab-btn" data-status="in-progress">
+              En préparation (8)
+            </button>
+            <button class="tab-btn" data-status="shipped">Expédiées (3)</button>
+            <button class="tab-btn" data-status="completed">
+              Terminées (134)
+            </button>
+            <button class="tab-btn" data-status="cancelled">
+              Annulées (5)
+            </button>
+          </div>
+          <div class="filters-actions">
+            <div class="search-wrapper">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Rechercher une commande"
+                class="filter-search"
+              />
+            </div>
+            <button class="filter-btn">
+              <i class="fas fa-filter"></i>
+              <span>Filtres</span>
+            </button>
+            <button class="export-btn">
+              <i class="fas fa-download"></i>
+              <span>Exporter</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="orders-table-container">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>
+                  <label class="checkbox-container">
+                    <input type="checkbox" id="select-all-orders" />
+                    <span class="checkmark"></span>
+                  </label>
+                </th>
+                <th>Commande</th>
+                <th>Date</th>
+                <th>Client</th>
+                <th>Produits</th>
+                <th>Total</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Commande 1 -->
+              <tr data-status="new">
+                <td>
+                  <label class="checkbox-container">
+                    <input type="checkbox" name="order-select" />
+                    <span class="checkmark"></span>
+                  </label>
+                </td>
+                <td class="order-id">
+                  <a href="order_detail.html?orderId=AC-2025-1842"
+                    >#AC-2025-1842</a
+                  >
+                  <!-- Corrected param -->
+                </td>
+                <td class="order-date">15 mars 2025</td>
+                <td class="order-client">
+                  <div class="client-info">
+                    <img
+                      src="../../images/client-1.jpg"
+                      alt="Marie Lavoie"
+                      class="client-avatar"
+                    />
+                    <span>Marie Lavoie</span>
+                  </div>
+                </td>
+                <td class="order-products">
+                  <div class="product-info">
+                    <div class="product-thumbnail">
+                      <img
+                        src="../../images/product-1.jpg"
+                        alt="Table basse en chêne massif"
+                      />
+                    </div>
+                    <span>Table basse en chêne massif</span>
+                  </div>
+                </td>
+                <td class="order-total">620,00 €</td>
+                <td class="order-status">
+                  <span class="status-badge new">Nouvelle</span>
+                </td>
+                <td class="order-actions">
+                  <div class="action-buttons">
+                    <button class="action-btn view-btn" title="Voir le détail">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button
+                      class="action-btn process-btn"
+                      title="Traiter la commande"
+                    >
+                      <i class="fas fa-check"></i>
+                    </button>
+                    <button class="action-btn more-btn" title="Plus d'actions">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- Commande 2 -->
+              <tr data-status="in-progress">
+                <td>
+                  <label class="checkbox-container">
+                    <input type="checkbox" name="order-select" />
+                    <span class="checkmark"></span>
+                  </label>
+                </td>
+                <td class="order-id">
+                  <a href="order_detail.html?orderId=AC-2025-1835"
+                    >#AC-2025-1835</a
+                  >
+                  <!-- Corrected param -->
+                </td>
+                <td class="order-date">10 mars 2025</td>
+                <!-- Corrected date -->
+                <td class="order-client">
+                  <div class="client-info">
+                    <img
+                      src="../../images/client-2.jpg"
+                      alt="Thomas Martin"
+                      class="client-avatar"
+                    />
+                    <span>Thomas Martin</span>
+                  </div>
+                </td>
+                <td class="order-products">
+                  <div class="product-info">
+                    <div class="product-thumbnail">
+                      <img
+                        src="../../images/product-2.jpg"
+                        alt="Étagère murale sur mesure"
+                      />
+                    </div>
+                    <span>Étagère murale sur mesure</span>
+                  </div>
+                </td>
+                <td class="order-total">345,00 €</td>
+                <!-- Assuming price from other files -->
+                <td class="order-status">
+                  <span class="status-badge in-progress">En préparation</span>
+                  <!-- Assuming status -->
+                </td>
+                <td class="order-actions">
+                  <div class="action-buttons">
+                    <button class="action-btn view-btn" title="Voir le détail">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button
+                      class="action-btn process-btn"
+                      title="Traiter la commande"
+                    >
+                      <i class="fas fa-check"></i>
+                    </button>
+                    <button class="action-btn more-btn" title="Plus d'actions">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- Add more order rows here -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/artisan_dashboard.js"></script>
+    <!-- Assuming artisan_dashboard.js handles orders -->
+  </body>
+</html>
