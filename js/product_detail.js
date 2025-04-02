@@ -3,64 +3,104 @@
  * Handles functionality for the product detail page
  */
 
+// Define the base URL for the API (ensure this is consistent)
+const API_BASE_URL = "http://127.0.0.1:5000/api"; // Adjust if needed
+
 /**
- * Load product details based on URL parameter
+ * Fetches and loads product details from the API based on URL parameter
  */
-function loadProductDetails() {
-  const productId = parseInt(window.articonnect.getUrlParameter("id"));
+async function loadProductDetails() {
+  // Assume window.articonnect.getUrlParameter exists
+  const getUrlParameter =
+    window.articonnect?.getUrlParameter ||
+    function (name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    };
+
+  const productId = parseInt(getUrlParameter("id"));
+  const container = document.querySelector(".product-detail-page .container"); // Get container for error messages
+
   if (isNaN(productId)) {
     console.error("Invalid or missing product ID in URL");
-    // Optionnellement, afficher un message d'erreur sur la page
-    document.querySelector(".product-detail-page .container").innerHTML =
-      '<p class="error-message">Produit non trouvé. ID invalide ou manquant.</p>';
-    return;
+    if (container)
+      container.innerHTML =
+        '<p class="error-message">Produit non trouvé. ID invalide ou manquant.</p>';
+    return; // Stop execution
   }
 
-  const product = window.articonnect.sampleProducts.find(
-    (p) => p.id === productId
-  );
+  try {
+    const response = await fetch(`${API_BASE_URL}/products/${productId}`);
 
-  if (!product) {
-    console.error(`Product with ID ${productId} not found`);
-    // Optionnellement, afficher un message d'erreur sur la page
-    document.querySelector(".product-detail-page .container").innerHTML =
-      '<p class="error-message">Produit non trouvé.</p>';
-    return;
+    if (!response.ok) {
+      // Handle non-successful responses (like 404 Not Found)
+      const errorData = await response.json().catch(() => ({})); // Try to parse error, default to empty object
+      console.error(
+        `Error fetching product ${productId}: ${response.status} ${response.statusText}`,
+        errorData
+      );
+      if (container)
+        container.innerHTML = `<p class="error-message">Produit non trouvé (ID: ${productId}). ${
+          errorData.error || ""
+        }</p>`;
+      return; // Stop execution
+    }
+
+    const product = await response.json(); // Parse the successful JSON response
+
+    if (!product) {
+      // Should be caught by !response.ok, but as a fallback
+      console.error(`Product data empty for ID ${productId}`);
+      if (container)
+        container.innerHTML =
+          '<p class="error-message">Données du produit non trouvées.</p>';
+      return;
+    }
+
+    // Store product globally for other functions (like add to cart)
+    window.currentProduct = product;
+
+    // --- Populate page elements using fetched data ---
+    populatePage(product);
+
+    // --- Initialize UI components AFTER data is loaded ---
+    initProductGallery();
+    initQuantitySelector();
+    initAddToCart();
+    initProductTabs();
+  } catch (error) {
+    console.error(`Network error fetching product ${productId}:`, error);
+    if (container)
+      container.innerHTML =
+        '<p class="error-message">Erreur réseau lors du chargement du produit. Veuillez réessayer.</p>';
   }
+}
 
-  // --- Remplir les éléments de la page ---
-
+/**
+ * Populates the HTML elements with the fetched product data
+ * @param {object} product - The product data object from the API
+ */
+function populatePage(product) {
   // Titre de la page
   document.title = `ArtiConnect - ${product.name}`;
 
   // Fil d'Ariane
   const breadcrumbCurrent = document.querySelector(".breadcrumb .current");
   if (breadcrumbCurrent) breadcrumbCurrent.textContent = product.name;
-  // TODO : Mettre à jour le lien de catégorie dans le fil d'Ariane si nécessaire
+  // TODO: Update category link in breadcrumb if needed, using product.category
 
-  // Galerie
+  // Galerie (Assuming API provides imageUrl, maybe an array later)
   const mainImage = document.getElementById("main-product-image");
   if (mainImage) {
-    mainImage.src = product.images ? product.images[0] : product.imageUrl; // Utiliser la première image ou celle par défaut
+    mainImage.src = product.imageUrl || "../images/placeholder.jpg"; // Use API image or placeholder
     mainImage.alt = product.name;
   }
   const thumbnailGallery = document.querySelector(".thumbnail-gallery");
   if (thumbnailGallery) {
-    thumbnailGallery.innerHTML = ""; // Effacer les miniatures existantes
-    if (product.images && product.images.length > 1) {
-      product.images.forEach((imgSrc, index) => {
-        const button = document.createElement("button");
-        button.className = `thumbnail ${index === 0 ? "active" : ""}`;
-        button.dataset.image = imgSrc;
-        button.innerHTML = `<img src="${imgSrc}" alt="${product.name} - Vue ${
-          index + 1
-        }" />`;
-        thumbnailGallery.appendChild(button);
-      });
-    } else {
-      // Masquer la galerie si une seule image
-      thumbnailGallery.style.display = "none";
-    }
+    thumbnailGallery.innerHTML = ""; // Clear existing thumbnails
+    // TODO: Adapt if API provides multiple images in an array (e.g., product.images)
+    // For now, hide if only one image
+    thumbnailGallery.style.display = "none";
   }
 
   // Informations sur le produit
@@ -68,8 +108,23 @@ function loadProductDetails() {
   if (titleElement) titleElement.textContent = product.name;
 
   const artisanLink = document.querySelector(".artisan-info a");
-  if (artisanLink) artisanLink.textContent = product.artisan;
-  // TODO : Mettre à jour l'avatar de l'artisan et le href du lien si nécessaire
+  const artisanNameElement = document.querySelector(
+    ".artisan-info .artisan-name"
+  ); // Assuming separate element for name
+  if (product.artisan) {
+    if (artisanLink) {
+      artisanLink.href = `../artisan/profile.html?id=${product.artisan.id}`; // TODO: Verify artisan profile page URL
+      // Maybe set avatar here too if available: artisanLink.querySelector('img').src = product.artisan.photo_url || default_avatar;
+    }
+    if (artisanNameElement)
+      artisanNameElement.textContent =
+        product.artisan.nom_entreprise ||
+        `${product.artisan.prenom || ""} ${product.artisan.nom}`;
+  } else {
+    // Hide or show default artisan info
+    const artisanInfoDiv = document.querySelector(".artisan-info");
+    if (artisanInfoDiv) artisanInfoDiv.style.display = "none";
+  }
 
   const priceElement = document.querySelector(".product-info .product-price");
   if (priceElement)
@@ -77,123 +132,130 @@ function loadProductDetails() {
       .toFixed(2)
       .replace(".", ",")} €`;
 
-  const ratingStars = document.querySelector(".product-rating .stars");
-  if (ratingStars) {
-    let starsHtml = "";
-    const fullStars = Math.floor(product.rating);
-    const halfStar = product.rating % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-    for (let i = 0; i < fullStars; i++)
-      starsHtml += '<i class="fas fa-star"></i>';
-    if (halfStar) starsHtml += '<i class="fas fa-star-half-alt"></i>';
-    for (let i = 0; i < emptyStars; i++)
-      starsHtml += '<i class="far fa-star"></i>';
-    ratingStars.innerHTML = starsHtml;
-  }
-  const ratingCountLink = document.querySelector(
-    ".product-rating .rating-count"
-  );
-  if (ratingCountLink)
-    ratingCountLink.textContent = `${product.ratingCount} avis`;
+  // Rating (Assuming API doesn't provide rating yet, hide or show default)
+  const ratingElement = document.querySelector(".product-rating");
+  if (ratingElement) ratingElement.style.display = "none"; // Hide for now
+  // TODO: Update rating display when API provides rating data
 
+  // Availability
   const availabilityElement = document.querySelector(".product-availability");
   if (availabilityElement) {
-    if (product.stock > 0) {
+    if (
+      product.type === "produit" &&
+      product.stock !== null &&
+      product.stock > 0
+    ) {
       availabilityElement.className = "product-availability in-stock";
       availabilityElement.innerHTML = `<i class="fas fa-check-circle"></i> En stock (${
         product.stock
       } disponible${product.stock > 1 ? "s" : ""})`;
-    } else {
+    } else if (
+      product.type === "produit" &&
+      (product.stock === null || product.stock <= 0)
+    ) {
       availabilityElement.className = "product-availability out-of-stock";
       availabilityElement.innerHTML = `<i class="fas fa-times-circle"></i> Hors stock`;
+    } else if (product.type === "service") {
+      availabilityElement.className = "product-availability service";
+      availabilityElement.innerHTML = `<i class="fas fa-calendar-check"></i> Service (Vérifier disponibilité)`; // Or similar text
+    } else {
+      availabilityElement.style.display = "none"; // Hide if type unknown or stock irrelevant
     }
   }
 
+  // Short Description
   const shortDescElement = document.querySelector(
     ".product-short-description p"
   );
-  if (shortDescElement)
-    shortDescElement.textContent =
-      product.description.substring(0, 150) + "..."; // Tronquer pour la description courte
+  if (shortDescElement) {
+    shortDescElement.textContent = product.description
+      ? product.description.substring(0, 150) +
+        (product.description.length > 150 ? "..." : "")
+      : "";
+  }
 
-  // Quantité maximale d'entrée
+  // Quantity Input Max (only relevant for products with stock)
   const quantityInput = document.querySelector(".quantity-input");
-  if (quantityInput) quantityInput.max = product.stock > 0 ? product.stock : 1;
+  if (quantityInput) {
+    if (
+      product.type === "produit" &&
+      product.stock !== null &&
+      product.stock > 0
+    ) {
+      quantityInput.max = product.stock;
+      quantityInput.parentElement.style.display = ""; // Show quantity selector
+    } else {
+      quantityInput.parentElement.style.display = "none"; // Hide quantity for services or out-of-stock
+    }
+  }
 
-  // Contenu de l'onglet
+  // Tab Content: Description
   const descriptionContent = document.querySelector(
     "#description .description-content"
   );
   if (descriptionContent) {
-    // Remplissage plus détaillé de la description
-    descriptionContent.querySelector(
-      "h2"
-    ).textContent = `À propos de ${product.name}`;
-    // En supposant que product.description contient le texte complet
-    const paragraphs = product.description.split("\n\n"); // Séparation simple, ajuster si nécessaire
-    descriptionContent.querySelectorAll("p").forEach((p, index) => {
-      if (paragraphs[index]) {
-        p.textContent = paragraphs[index];
-      } else {
-        p.remove(); // Supprimer les paragraphes de modèle supplémentaires
-      }
-    });
+    const descTitle = descriptionContent.querySelector("h2");
+    if (descTitle) descTitle.textContent = `À propos de ${product.name}`;
+    // Replace existing paragraphs or create new ones
+    const descParas = descriptionContent.querySelectorAll("p");
+    descParas.forEach((p) => p.remove()); // Remove template paragraphs
+    const descDiv = document.createElement("div");
+    // Basic handling of newlines, could be improved with markdown parser later
+    descDiv.innerHTML = product.description
+      ? product.description.replace(/\n/g, "<br>")
+      : "Aucune description disponible.";
+    descriptionContent.appendChild(descDiv);
   }
 
+  // Tab Content: Specifications (Assuming API doesn't provide specs yet)
   const specsContent = document.querySelector("#specifications .specs-grid");
-  if (specsContent && product.specs) {
-    // Effacer les spécifications de modèle existantes
-    specsContent.innerHTML = "";
-    // Remplir en fonction de l'objet product.specs
-    for (const groupName in product.specs) {
-      const specGroupDiv = document.createElement("div");
-      specGroupDiv.className = "spec-group";
-      const title = document.createElement("h3");
-      // Capitalisation simple pour le nom du groupe
-      title.textContent =
-        groupName.charAt(0).toUpperCase() + groupName.slice(1);
-      specGroupDiv.appendChild(title);
+  if (specsContent)
+    specsContent.innerHTML =
+      "<p>Aucune spécification technique disponible.</p>"; // Placeholder
+  // TODO: Populate specs when API provides them
 
-      const list = document.createElement("ul");
-      list.className = "spec-list";
-      // En supposant que specs[groupName] est un objet ou une chaîne
-      if (typeof product.specs[groupName] === "object") {
-        for (const key in product.specs[groupName]) {
-          const item = document.createElement("li");
-          item.innerHTML = `<strong>${
-            key.charAt(0).toUpperCase() + key.slice(1)
-          }:</strong> ${product.specs[groupName][key]}`;
-          list.appendChild(item);
-        }
-      } else {
-        const item = document.createElement("li");
-        item.textContent = product.specs[groupName];
-        list.appendChild(item);
-      }
-      specGroupDiv.appendChild(list);
-      specsContent.appendChild(specGroupDiv);
-    }
+  // Tab Content: Artisan (Populate with fetched artisan info)
+  const artisanTabContent = document.querySelector(
+    "#artisan-info .artisan-tab-content"
+  );
+  if (artisanTabContent && product.artisan) {
+    artisanTabContent.innerHTML = `
+            <div class="artisan-tab-header">
+                <img src="${
+                  product.artisan.photo_url || "../images/default-avatar.png"
+                }" alt="Artisan ${
+      product.artisan.nom
+    }" class="artisan-tab-avatar">
+                <h3>${
+                  product.artisan.nom_entreprise ||
+                  `${product.artisan.prenom || ""} ${product.artisan.nom}`
+                }</h3>
+                </div>
+            <p>${product.artisan.bio || "Aucune biographie disponible."}</p>
+            <a href="../artisan/profile.html?id=${
+              product.artisan.id
+            }" class="btn btn-secondary">Voir le profil de l'artisan</a>
+            `;
+    // TODO: Add more artisan details if needed (website, etc.)
+  } else if (artisanTabContent) {
+    artisanTabContent.innerHTML =
+      "<p>Informations sur l'artisan non disponibles.</p>";
   }
 
-  // TODO : Remplir l'onglet Artisan
-
-  // Stocker le produit actuel globalement pour d'autres fonctions sur cette page
-  window.currentProduct = product;
+  // Tab Content: Reviews (Placeholder)
+  const reviewsContent = document.querySelector("#reviews .reviews-list");
+  if (reviewsContent)
+    reviewsContent.innerHTML = "<p>Aucun avis pour le moment.</p>"; // Placeholder
+  // TODO: Fetch and display reviews separately if needed
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Charger d'abord les données du produit
+  // Load product details from API - this now handles subsequent initializations
   loadProductDetails();
-
-  // Initialiser les composants UI après le chargement potentiel des données
-  initProductGallery();
-  initQuantitySelector();
-  initAddToCart(); // Nécessitera une modification pour utiliser l'ID de produit chargé
-  initProductTabs();
 });
 
 /**
- * Initialize product image gallery
+ * Initialize product image gallery (Keep as is, assuming structure remains)
  */
 function initProductGallery() {
   const mainImage = document.getElementById("main-product-image");
@@ -203,11 +265,8 @@ function initProductGallery() {
 
   thumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener("click", function () {
-      // Mettre à jour la source de l'image principale
       const imageSource = this.dataset.image;
       mainImage.src = imageSource;
-
-      // Mettre à jour l'état actif
       thumbnails.forEach((thumb) => thumb.classList.remove("active"));
       this.classList.add("active");
     });
@@ -215,7 +274,7 @@ function initProductGallery() {
 }
 
 /**
- * Initialize quantity selector
+ * Initialize quantity selector (Keep as is, max value set during populatePage)
  */
 function initQuantitySelector() {
   const minusBtn = document.querySelector(".quantity-btn.minus");
@@ -224,8 +283,7 @@ function initQuantitySelector() {
 
   if (!minusBtn || !plusBtn || !quantityInput) return;
 
-  // Obtenir la quantité maximale à partir de l'attribut de données ou du niveau de stock
-  const maxQuantity = parseInt(quantityInput.getAttribute("max") || 10);
+  const maxQuantity = parseInt(quantityInput.getAttribute("max") || 1); // Default to 1 if max not set
 
   minusBtn.addEventListener("click", function () {
     let currentValue = parseInt(quantityInput.value);
@@ -236,25 +294,26 @@ function initQuantitySelector() {
 
   plusBtn.addEventListener("click", function () {
     let currentValue = parseInt(quantityInput.value);
+    // Use the maxQuantity derived from stock
     if (currentValue < maxQuantity) {
       quantityInput.value = currentValue + 1;
     }
   });
 
-  // Valider l'entrée directe
   quantityInput.addEventListener("change", function () {
     let value = parseInt(this.value);
+    const currentMax = parseInt(this.getAttribute("max") || 1); // Re-check max on change
 
     if (isNaN(value) || value < 1) {
       this.value = 1;
-    } else if (value > maxQuantity) {
-      this.value = maxQuantity;
+    } else if (value > currentMax) {
+      this.value = currentMax;
     }
   });
 }
 
 /**
- * Initialize product tabs
+ * Initialize product tabs (Keep as is)
  */
 function initProductTabs() {
   const tabButtons = document.querySelectorAll(".tab-btn");
@@ -262,16 +321,19 @@ function initProductTabs() {
 
   if (!tabButtons.length || !tabContents.length) return;
 
+  // Ensure first tab is active by default if none are
+  if (!document.querySelector(".tab-btn.active") && tabButtons.length > 0) {
+    tabButtons[0].classList.add("active");
+    const firstTabId = tabButtons[0].dataset.tab;
+    const firstTabContent = document.getElementById(firstTabId);
+    if (firstTabContent) firstTabContent.classList.add("active");
+  }
+
   tabButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      // Retirer la classe active de tous les boutons et contenus
       tabButtons.forEach((btn) => btn.classList.remove("active"));
       tabContents.forEach((content) => content.classList.remove("active"));
-
-      // Ajouter la classe active au bouton actuel
       this.classList.add("active");
-
-      // Afficher le contenu correspondant
       const tabId = this.dataset.tab;
       const targetContent = document.getElementById(`${tabId}`);
       if (targetContent) {
@@ -285,62 +347,60 @@ function initProductTabs() {
  * Initialize add to cart functionality for the detail page
  */
 function initAddToCart() {
-  const addToCartBtn = document.querySelector(".product-actions .add-to-cart"); // Sélecteur plus spécifique
+  const addToCartBtn = document.querySelector(".product-actions .add-to-cart");
   const quantityInput = document.querySelector(".quantity-input");
 
-  if (!addToCartBtn || !quantityInput) return;
+  if (!addToCartBtn) return; // Quantity input might be hidden for services
 
   addToCartBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
-    // S'assurer que les données du produit sont chargées et que la fonction addToCart existe
-    if (
-      !window.currentProduct ||
-      !window.articonnect ||
-      typeof window.articonnect.addToCart !== "function"
-    ) {
+    // Ensure product data is loaded and addToCart function exists
+    if (!window.currentProduct || !window.articonnect?.addToCart) {
       console.error("Product data not loaded or addToCart function missing.");
       alert("Erreur: Impossible d'ajouter le produit au panier.");
       return;
     }
 
-    const quantity = parseInt(quantityInput.value);
-    const variantSelect = document.querySelector("#finish"); // En supposant l'ID 'finish' pour le sélecteur de variante
-    const variant = variantSelect ? variantSelect.value : null;
+    // Get quantity only if input is visible/relevant
+    const quantity =
+      quantityInput && quantityInput.offsetParent !== null
+        ? parseInt(quantityInput.value)
+        : 1; // Default to 1 if hidden
 
-    // Préparer l'article à ajouter
+    // Prepare item using data fetched from API
     const itemToAdd = {
       id: window.currentProduct.id,
       name: window.currentProduct.name,
       price: window.currentProduct.price,
-      // Utiliser la première image du tableau ou l'imageUrl principale
-      imageUrl: window.currentProduct.images
-        ? window.currentProduct.images[0]
-        : window.currentProduct.imageUrl,
+      imageUrl: window.currentProduct.imageUrl || "../images/placeholder.jpg",
       quantity: quantity,
-      variant: variant,
-      // Lien retour vers cette page produit spécifique
+      variant: null, // Add variant logic if/when implemented
       detailUrl: window.location.pathname + window.location.search,
-      stock: window.currentProduct.stock, // Passer les informations de stock si disponibles
+      stock: window.currentProduct.stock, // Pass stock info
+      type: window.currentProduct.type, // Pass type
     };
 
-    // Utiliser la fonction globale addToCart
+    // Use the global addToCart function (assumed to exist in main.js or cart.js)
     window.articonnect.addToCart(itemToAdd);
 
-    // Afficher un retour de confirmation sur le bouton
+    // --- Button Feedback ---
     const originalText = addToCartBtn.innerHTML;
     addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Ajouté';
     addToCartBtn.disabled = true;
 
-    // Le compteur de l'en-tête se met à jour automatiquement via l'écouteur d'événement 'cartUpdated' dans cart.js
-
-    // Restaurer le bouton après un délai
+    // Restore button after delay
     setTimeout(() => {
-      addToCartBtn.innerHTML = originalText;
-      addToCartBtn.disabled = false;
+      // Check if button still exists before restoring
+      const currentBtn = document.querySelector(
+        ".product-actions .add-to-cart"
+      );
+      if (currentBtn) {
+        currentBtn.innerHTML = originalText;
+        currentBtn.disabled = false;
+      }
     }, 1500);
   });
 }
 
-// CSS ajouté dynamiquement pour l'animation de pulsation supprimé.
-// S'assurer que le CSS de l'animation de pulsation existe dans un fichier CSS chargé (par ex., main.css ou product_detail.css).
+// Ensure CSS for animations/styles exists elsewhere

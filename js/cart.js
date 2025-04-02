@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initCartInteractions(); // Combine quantity and remove listeners
 
   // Initialize promo code functionality
-  initPromoCode();
+  // initPromoCode(); // Call removed
 
   // Initialize clear cart functionality
   initClearCart();
@@ -425,142 +425,7 @@ function showEmptyCart() {
     `;
 }
 
-/**
- * Initialize promo code functionality
- */
-function initPromoCode() {
-  const promoForm = document.querySelector(".promo-form");
-
-  if (!promoForm) return;
-
-  promoForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const promoInput = this.querySelector(".promo-input");
-    const applyBtn = this.querySelector(".apply-promo");
-
-    if (!promoInput || !applyBtn) return;
-
-    const promoCode = promoInput.value.trim();
-
-    if (!promoCode) {
-      showPromoError("Veuillez entrer un code promo");
-      return;
-    }
-
-    // Simulate API call to validate promo code
-    applyBtn.disabled = true;
-    applyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-
-    setTimeout(() => {
-      // For demo purposes, let's accept "WELCOME10" as a valid code
-      if (promoCode.toUpperCase() === "WELCOME10") {
-        applyPromoDiscount(10);
-        showPromoSuccess("Code promo appliqué : -10%");
-      } else {
-        showPromoError("Code promo invalide");
-      }
-
-      applyBtn.disabled = false;
-      applyBtn.innerHTML = "Appliquer";
-    }, 1000);
-  });
-}
-
-/**
- * Apply promo discount
- * @param {number} discountPercent - Discount percentage
- */
-function applyPromoDiscount(discountPercent) {
-  // Add discount row to summary
-  const summaryDetails = document.querySelector(".summary-details");
-  const totalRow = document.querySelector(".summary-row.total");
-
-  if (!summaryDetails || !totalRow) return;
-
-  // Check if discount row already exists
-  let discountRow = document.querySelector(".summary-row.discount");
-
-  if (!discountRow) {
-    // Create new discount row
-    discountRow = document.createElement("div");
-    discountRow.className = "summary-row discount";
-    discountRow.innerHTML = `
-            <span class="summary-label">Réduction</span>
-            <span class="summary-value discount-value"></span>
-        `;
-
-    // Insert before total row
-    summaryDetails.insertBefore(discountRow, totalRow);
-  }
-
-  // Calculate discount
-  const subtotalText = document.querySelector(
-    ".summary-row:first-child .summary-value"
-  ).textContent;
-  const subtotal = parseFloat(
-    subtotalText.replace(/[^0-9.,]/g, "").replace(",", ".")
-  );
-
-  if (isNaN(subtotal)) return;
-
-  const discount = subtotal * (discountPercent / 100);
-
-  // Update discount and total values
-  const discountValue = discountRow.querySelector(".discount-value");
-  const totalValue = totalRow.querySelector(".summary-value");
-
-  discountValue.textContent = "-" + formatPrice(discount);
-  totalValue.textContent = formatPrice(subtotal - discount);
-}
-
-/**
- * Show promo code success message
- * @param {string} message - Success message
- */
-function showPromoSuccess(message) {
-  const promoForm = document.querySelector(".promo-form");
-  if (!promoForm) return;
-
-  // Remove any existing messages
-  removePromoMessages();
-
-  // Create success message
-  const successMessage = document.createElement("div");
-  successMessage.className = "promo-message success";
-  successMessage.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
-
-  // Insert after form
-  promoForm.parentNode.insertBefore(successMessage, promoForm.nextSibling);
-}
-
-/**
- * Show promo code error message
- * @param {string} message - Error message
- */
-function showPromoError(message) {
-  const promoForm = document.querySelector(".promo-form");
-  if (!promoForm) return;
-
-  // Remove any existing messages
-  removePromoMessages();
-
-  // Create error message
-  const errorMessage = document.createElement("div");
-  errorMessage.className = "promo-message error";
-  errorMessage.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-
-  // Insert after form
-  promoForm.parentNode.insertBefore(errorMessage, promoForm.nextSibling);
-}
-
-/**
- * Remove promo messages
- */
-function removePromoMessages() {
-  const messages = document.querySelectorAll(".promo-message");
-  messages.forEach((message) => message.remove());
-}
+// Promo code functions (initPromoCode, applyPromoDiscount, showPromoSuccess, showPromoError, removePromoMessages) removed.
 
 /**
  * Initialize clear cart functionality

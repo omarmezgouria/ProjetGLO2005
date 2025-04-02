@@ -478,8 +478,8 @@ function initPlaceOrder() {
           shippingMethod: shippingMethod,
           shippingCost: shippingCost,
           subtotal: window.articonnect.getCartSubtotal(),
-          discount: window.appliedPromo?.value || 0, // Stocker la valeur/pourcentage de la remise
-          discountType: window.appliedPromo?.type || null,
+          discount: 0, // Promo code logic removed
+          discountType: null, // Promo code logic removed
           total: finalTotal,
           status: "Completed", // La simulation suppose un succès
         };

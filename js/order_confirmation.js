@@ -76,19 +76,7 @@ function displayOrderInfo() {
     order.subtotal
   );
 
-  const discountRow = document.getElementById("discount-row");
-  const discountElement = document.getElementById("order-discount");
-  if (order.discount > 0 && discountRow && discountElement) {
-    let discountText = `-${formatPrice(order.discount)}`;
-    if (order.discountType === "percent") {
-      discountText += ` (${order.discount}%)`; // En supposant que la valeur de remise stockée était un pourcentage
-    }
-    discountElement.textContent = discountText;
-    discountRow.style.display = ""; // Afficher la ligne de remise
-  } else if (discountRow) {
-    discountRow.style.display = "none"; // Masquer si aucune remise
-  }
-
+  // Discount display logic removed as promo codes are removed
   document.getElementById("shipping-method").textContent = order.shippingMethod;
   document.getElementById("order-shipping").textContent =
     order.shippingCost > 0 ? formatPrice(order.shippingCost) : "Gratuit";

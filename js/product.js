@@ -3,43 +3,71 @@
  * Handles functionality for the products catalog page
  */
 
-// Données d'exemple de produits déplacées vers js/main.js et exposées via window.articonnect.sampleProducts
+// Define the base URL for the API (ensure this is consistent)
+const API_BASE_URL = "http://127.0.0.1:5000/api"; // Adjust if needed
+
+// Store fetched products globally within this script's scope
+let currentProductList = [];
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Afficher les produits initiaux
-  renderProducts(sampleProducts); // Afficher d'abord les produits
+  // Fetch and render products from API on initial load
+  fetchAndRenderProducts(); // Replaces renderProducts(sampleProducts)
 
-  // Initialiser la fonctionnalité des filtres
+  // Initialize UI components
   initFilters();
-
-  // Initialiser le changement de vue (grille/liste)
   initViewSwitcher();
-
-  // Initialiser le tri
   initSorting();
-
-  // Initialiser l'ajout au panier en utilisant la délégation d'événements
   initDynamicActions();
-
-  // Initialiser les filtres mobiles
   initMobileFilters();
-
-  // Mettre à jour le compteur basé sur le rendu initial
-  updateProductCount(sampleProducts.length);
 });
 
 /**
+ * Fetches products from the API and triggers rendering.
+ * Can accept query parameters for filtering/sorting.
+ * @param {string} [queryParams=''] - Optional query string like '?category=Woodwork&sort=price-asc'
+ */
+async function fetchAndRenderProducts(queryParams = "") {
+  const productsGrid = document.querySelector(".products-grid");
+  if (!productsGrid) return;
+
+  // Show loading state
+  productsGrid.innerHTML =
+    '<p class="loading-message">Chargement des produits...</p>'; // Simple loading text
+  productsGrid.classList.add("loading"); // Add class for potential CSS styling
+  updateProductCount(0); // Reset count while loading
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/products${queryParams}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const products = await response.json();
+
+    currentProductList = products; // Store the fetched list globally
+    renderProducts(currentProductList); // Render the fetched products
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    productsGrid.innerHTML =
+      '<p class="error-message">Impossible de charger les produits. Veuillez réessayer.</p>';
+  } finally {
+    // Remove loading state regardless of success or error
+    productsGrid.classList.remove("loading");
+    // Count will be updated by renderProducts on success
+  }
+}
+
+/**
  * Render product cards into the grid
- * @param {Array} products - Array of product objects to render
+ * @param {Array} products - Array of product objects fetched from the API
  */
 function renderProducts(products) {
   const productsGrid = document.querySelector(".products-grid");
   if (!productsGrid) return;
 
-  // Effacer les produits existants (sauf les indicateurs de chargement potentiels)
+  // Clear previous content (loading message or old products)
   productsGrid.innerHTML = "";
 
-  if (products.length === 0) {
+  if (!products || products.length === 0) {
     productsGrid.innerHTML = '<p class="no-products">Aucun produit trouvé.</p>';
     updateProductCount(0);
     return;
@@ -48,54 +76,49 @@ function renderProducts(products) {
   products.forEach((product) => {
     const productCard = document.createElement("div");
     productCard.className = "product-card";
-    productCard.dataset.productId = product.id; // Ajouter l'ID du produit pour un ciblage plus facile
+    productCard.dataset.productId = product.id; // Use ID from API data
 
-    // Générer le HTML de la notation par étoiles
-    let starsHtml = "";
-    const fullStars = Math.floor(product.rating);
-    const halfStar = product.rating % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-    for (let i = 0; i < fullStars; i++)
-      starsHtml += '<i class="fas fa-star"></i>';
-    if (halfStar) starsHtml += '<i class="fas fa-star-half-alt"></i>';
-    for (let i = 0; i < emptyStars; i++)
-      starsHtml += '<i class="far fa-star"></i>';
+    // Rating - Assuming API doesn't provide rating yet, hide it
+    const starsHtml = ""; // Hide stars for now
+    // TODO: Generate starsHtml when API provides rating data
+
+    // Construct detail URL
+    const detailUrl = `../client/product_detail.html?id=${product.id}`; // Construct URL
 
     productCard.innerHTML = `
-            <a href="${product.detailUrl}" class="product-image">
-                <img src="${product.imageUrl}" alt="${
-      product.name
-    }" loading="lazy" />
+            <a href="${detailUrl}" class="product-image">
+                <img src="${
+                  product.imageUrl || "../images/placeholder.jpg"
+                }" alt="${product.name}" loading="lazy" />
             </a>
             <div class="product-info">
-                <div class="product-category">${product.category}</div>
+                <div class="product-category">${product.category || "N/A"}</div>
                 <h3 class="product-title">
-                    <a href="${product.detailUrl}">${product.name}</a>
+                    <a href="${detailUrl}">${product.name}</a>
                 </h3>
                 <div class="product-artisan">
-                    <a href="#">Par ${product.artisan}</a>
+                    <a href="#">Par ${product.artisan || "N/A"}</a>
+                    <!-- TODO: Link to artisan profile page when available -->
                 </div>
                 <div class="product-price">${product.price
                   .toFixed(2)
                   .replace(".", ",")} €</div>
-                <div class="product-rating">
+                <div class="product-rating" style="display: none;"> <!-- Hide rating section for now -->
                     <div class="stars">${starsHtml}</div>
-                    <span class="rating-count">(${product.ratingCount})</span>
+                    <span class="rating-count">(0)</span> <!-- Placeholder count -->
                 </div>
                 <div class="product-actions">
                     <button class="btn btn--primary add-to-cart">
                         <i class="fas fa-shopping-cart"></i> Ajouter
                     </button>
-                    <a href="${
-                      product.detailUrl
-                    }" class="btn btn--outline view-details">Détails</a>
+                    <a href="${detailUrl}" class="btn btn--outline view-details">Détails</a>
                 </div>
             </div>
         `;
     productsGrid.appendChild(productCard);
   });
 
-  // Mettre à jour le compteur après l'affichage
+  // Update count after rendering
   updateProductCount(products.length);
 }
 
@@ -109,42 +132,39 @@ function initDynamicActions() {
   productsGrid.addEventListener("click", function (event) {
     const target = event.target;
 
-    // Gérer le clic sur le bouton Ajouter au panier
+    // Handle Add to Cart button click
     const addToCartBtn = target.closest(".add-to-cart");
     if (addToCartBtn) {
       event.preventDefault();
 
-      // Obtenir les informations du produit
       const productCard = addToCartBtn.closest(".product-card");
-      const productId = parseInt(productCard?.dataset.productId); // S'assurer que l'ID est un nombre
+      const productId = parseInt(productCard?.dataset.productId);
 
-      if (
-        productId &&
-        window.articonnect &&
-        typeof window.articonnect.addToCart === "function"
-      ) {
-        // Trouver les données complètes du produit dans la liste globale
-        const productData = window.articonnect.sampleProducts.find(
-          (p) => p.id === productId
-        );
+      // Ensure addToCart function exists (assumed from main.js or cart.js)
+      if (productId && window.articonnect?.addToCart) {
+        // Find product data in the globally stored list fetched from API
+        const productData = currentProductList.find((p) => p.id === productId);
 
         if (productData) {
-          // Préparer l'article à ajouter (quantité par défaut 1 depuis la liste de produits)
+          // Prepare item to add (default quantity 1 from list page)
           const itemToAdd = {
             id: productData.id,
             name: productData.name,
             price: productData.price,
-            imageUrl: productData.imageUrl,
-            quantity: 1, // Quantité par défaut lors de l'ajout depuis la liste
-            variant: null, // Aucune variante sélectionnable sur la page de liste
-            detailUrl: productData.detailUrl,
-            stock: productData.stock, // Passer les informations de stock si disponibles
+            imageUrl: productData.imageUrl || "../images/placeholder.jpg",
+            quantity: 1,
+            variant: null, // No variants on list page
+            detailUrl: `../client/product_detail.html?id=${productData.id}`,
+            stock: productData.stock, // Pass stock info if available from API
+            type: productData.type, // Pass type info if available from API
           };
           window.articonnect.addToCart(itemToAdd);
-          console.log(`${productData.name} ajouté au panier`); // Remplacé showNotification
-          // Le compteur de l'en-tête se met à jour automatiquement via l'écouteur d'événement 'cartUpdated' dans cart.js
+          console.log(`${productData.name} added to cart`); // Replace with better notification if needed
+          // Header count updates via 'cartUpdated' event listener in cart.js/main.js
         } else {
-          console.error(`Product data not found for ID: ${productId}`);
+          console.error(
+            `Product data not found in current list for ID: ${productId}`
+          );
           alert("Erreur: Impossible d'ajouter le produit.");
         }
       } else {
@@ -153,63 +173,60 @@ function initDynamicActions() {
         );
         alert("Erreur: Impossible d'ajouter le produit.");
       }
-      return; // Arrêter le traitement ultérieur si le bouton Ajouter au panier a été cliqué
+      return; // Stop further processing if add to cart was clicked
     }
   });
 }
 
-// Note : Les lignes suivantes (263-271 dans l'état précédent) ont été supprimées
-// car il s'agissait de fragments HTML dupliqués/mal placés par erreur.
-
 /**
- * Initialize filters
- */
-
-/**
- * Initialize filters
+ * Initialize filters - Now triggers API refetch
  */
 function initFilters() {
-  const filterOptions = document.querySelectorAll(
-    '.filter-option input[type="checkbox"]'
-  );
+  const filterContainer = document.querySelector(".filters"); // Target the main filters container
   const clearFiltersBtn = document.querySelector(".clear-filters");
   const priceApplyBtn = document.querySelector(".price-apply");
-  const minPriceInput = document.getElementById("min-price");
-  const maxPriceInput = document.getElementById("max-price");
+  // Mobile filter apply button
+  const mobileApplyFiltersBtn = document.querySelector(
+    ".mobile-filters-actions .apply-filters"
+  );
 
-  // Appliquer les filtres lorsque les cases à cocher sont modifiées
-  if (filterOptions) {
-    filterOptions.forEach((option) => {
-      option.addEventListener("change", function () {
+  // Apply filters when checkboxes change or price is applied
+  if (filterContainer) {
+    filterContainer.addEventListener("change", (event) => {
+      // Apply immediately for checkboxes inside the main container
+      if (event.target.matches('.filter-option input[type="checkbox"]')) {
         applyFilters();
-      });
+      }
+    });
+  }
+  if (priceApplyBtn) {
+    priceApplyBtn.addEventListener("click", applyFilters);
+  }
+  if (mobileApplyFiltersBtn) {
+    mobileApplyFiltersBtn.addEventListener("click", () => {
+      applyFilters();
+      closeMobileFilters(); // Close mobile panel after applying
     });
   }
 
-  // Effacer tous les filtres
+  // Clear all filters
   if (clearFiltersBtn) {
     clearFiltersBtn.addEventListener("click", function () {
-      // Décocher toutes les cases à cocher de filtre
-      filterOptions.forEach((option) => {
-        option.checked = false;
-      });
+      const filterOptions = document.querySelectorAll(
+        '.filter-option input[type="checkbox"]'
+      );
+      const minPriceInput = document.getElementById("min-price");
+      const maxPriceInput = document.getElementById("max-price");
 
-      // Réinitialiser les entrées de prix
+      filterOptions.forEach((option) => (option.checked = false));
       if (minPriceInput) minPriceInput.value = "";
       if (maxPriceInput) maxPriceInput.value = "";
 
-      applyFilters();
+      applyFilters(); // Refetch with no filters
     });
   }
 
-  // Appliquer le filtre de prix
-  if (priceApplyBtn) {
-    priceApplyBtn.addEventListener("click", function () {
-      applyFilters();
-    });
-  }
-
-  // Voir plus de catégories ou d'artisans
+  // See more categories/artisans (UI only, keep as is)
   const seeMoreLinks = document.querySelectorAll(".see-more");
   if (seeMoreLinks.length) {
     seeMoreLinks.forEach((link) => {
@@ -219,7 +236,6 @@ function initFilters() {
         const hiddenOptions = filterGroup.querySelectorAll(
           ".filter-option.hidden"
         );
-
         hiddenOptions.forEach((option) => option.classList.remove("hidden"));
         this.style.display = "none";
       });
@@ -228,38 +244,61 @@ function initFilters() {
 }
 
 /**
- * Apply active filters to products
+ * Collects active filters and triggers API refetch
  */
 function applyFilters() {
-  // Dans une implémentation réelle, cela ferait probablement une requête AJAX au serveur
-  // ou filtrer les produits sur place s'ils sont chargés côté client
-  console.log("Filters applied");
+  const params = new URLSearchParams();
 
-  // À des fins de démonstration, simuler l'application du filtre avec un état de chargement
-  const productsGrid = document.querySelector(".products-grid");
-  if (productsGrid) {
-    productsGrid.classList.add("loading");
+  // Get selected categories
+  const categoryCheckboxes = document.querySelectorAll(
+    '.filter-group[data-filter-group="category"] .filter-option input:checked'
+  );
+  categoryCheckboxes.forEach((cb) => {
+    // Assuming checkbox value is the category name/slug needed by API
+    params.append("category", cb.value); // Use append for multiple categories if backend supports it
+    // If backend only supports one category filter, use set: params.set('category', cb.value); and maybe take the first checked one.
+    // For now, assuming backend handles single category param like '?category=Woodwork'
+    if (!params.has("category")) {
+      // Simple approach: take the first checked category if multiple are selected but backend only handles one
+      params.set("category", cb.value);
+    }
+  });
 
-    setTimeout(() => {
-      productsGrid.classList.remove("loading");
-      updateProductCount();
-    }, 500);
+  // Get selected artisans (if filter exists and backend supports it)
+  // const artisanCheckboxes = document.querySelectorAll('.filter-group[data-filter-group="artisan"] .filter-option input:checked');
+  // artisanCheckboxes.forEach(cb => params.append('artisan', cb.value)); // Example
+
+  // Get price range (if backend supports it)
+  // const minPrice = document.getElementById("min-price")?.value;
+  // const maxPrice = document.getElementById("max-price")?.value;
+  // if (minPrice) params.set('min_price', minPrice);
+  // if (maxPrice) params.set('max_price', maxPrice);
+
+  // Get sorting (add from sorting dropdown if needed)
+  const sortSelect = document.getElementById("sort-select");
+  if (sortSelect && sortSelect.value) {
+    params.set("sort", sortSelect.value);
   }
+
+  console.log("Applying filters with params:", params.toString());
+  fetchAndRenderProducts(`?${params.toString()}`);
 }
 
 /**
  * Update product count in the toolbar
- * @param {number} count - The number of products to display
+ * @param {number} count - The number of products currently displayed
  */
 function updateProductCount(count) {
   const productCountElement = document.querySelector(".products-count span");
   if (productCountElement) {
-    productCountElement.textContent = `${count} produit${count > 1 ? "s" : ""}`;
+    productCountElement.textContent = `${count} produit${
+      count !== 1 ? "s" : ""
+    }`; // Correct pluralization
   }
 }
 
 /**
- * Initialize view switching (grid/list)
+ * Initialize view switching (grid/list) - Keep as is (UI only)
  */
 function initViewSwitcher() {
   const viewOptions = document.querySelectorAll(".view-option");
@@ -268,95 +307,45 @@ function initViewSwitcher() {
   if (viewOptions.length && productsContent) {
     viewOptions.forEach((option) => {
       option.addEventListener("click", function () {
-        // Retirer la classe active de toutes les options
         viewOptions.forEach((opt) => opt.classList.remove("active"));
-
-        // Ajouter la classe active à l'option cliquée
         this.classList.add("active");
-
-        // Définir le mode d'affichage
         const viewMode = this.dataset.view;
-
-        if (viewMode === "grid") {
-          productsContent.classList.add("view-grid");
-          productsContent.classList.remove("view-list");
-        } else if (viewMode === "list") {
-          productsContent.classList.add("view-list");
-          productsContent.classList.remove("view-grid");
-        }
-
-        // Enregistrer la préférence dans localStorage
+        productsContent.className = `products-content view-${viewMode}`; // Simpler class setting
         localStorage.setItem("articonnect_product_view", viewMode);
       });
     });
 
-    // Définir la vue initiale en fonction de la préférence enregistrée
-    const savedView = localStorage.getItem("articonnect_product_view");
-    if (savedView) {
-      // Syntaxe querySelector ajustée
-      const targetOption = document.querySelector(
-        '.view-option[data-view="' + savedView + '"]'
-      );
-      if (targetOption) {
-        targetOption.click();
-      }
+    const savedView =
+      localStorage.getItem("articonnect_product_view") || "grid"; // Default to grid
+    const targetOption = document.querySelector(
+      `.view-option[data-view="${savedView}"]`
+    );
+    if (targetOption) {
+      // Simulate click to apply initial view and active state
+      targetOption.click();
+    } else if (viewOptions.length > 0) {
+      viewOptions[0].click(); // Fallback to first option if saved view invalid
     }
   }
 }
 
 /**
- * Initialize sorting
+ * Initialize sorting - Now triggers API refetch via applyFilters
  */
 function initSorting() {
   const sortSelect = document.getElementById("sort-select");
-
   if (sortSelect) {
     sortSelect.addEventListener("change", function () {
-      const sortValue = this.value;
-      console.log(`Sorting by: ${sortValue}`); // Point-virgule ajouté
-
-      // Dans une implémentation réelle, cela ferait une requête AJAX ou trierait sur place
-      // À des fins de démonstration, simuler le tri avec un état de chargement
-      const productsGrid = document.querySelector(".products-grid");
-      if (productsGrid) {
-        productsGrid.classList.add("loading");
-
-        setTimeout(() => {
-          productsGrid.classList.remove("loading");
-
-          // Démo : Déplacer simplement quelques produits pour montrer que quelque chose s'est passé
-          if (sortValue === "price-low" || sortValue === "price-high") {
-            // Démo de tri par prix - déplacer simplement les articles
-            const productCards = Array.from(
-              document.querySelectorAll(".product-card")
-            );
-            if (productCards.length > 1) {
-              // Déplacer le premier produit à la fin ou vice versa
-              const firstCard = productCards[0];
-              const lastCard = productCards[productCards.length - 1];
-
-              if (sortValue === "price-low") {
-                productsGrid.removeChild(lastCard);
-                productsGrid.insertBefore(lastCard, firstCard);
-              } else {
-                productsGrid.removeChild(firstCard);
-                productsGrid.appendChild(firstCard);
-              }
-            }
-          }
-        }, 500);
-      }
+      applyFilters(); // Re-apply filters which will include the new sort parameter
     });
   }
 }
 
-// Fonction initFavorites supprimée car sa logique est maintenant dans initDynamicActions
-
 /**
- * Initialize mobile filters
+ * Initialize mobile filters - Keep as is (UI only, apply button triggers applyFilters)
  */
 function initMobileFilters() {
-  const mobileFiltesBtn = document.querySelector(".mobile-filters-button");
+  const mobileFiltersBtn = document.querySelector(".mobile-filters-button");
   const mobileFiltersOverlay = document.querySelector(
     ".mobile-filters-overlay"
   );
@@ -365,66 +354,33 @@ function initMobileFilters() {
   );
   const closeBtn = document.querySelector(".mobile-filters-close");
 
-  if (!mobileFiltesBtn || !mobileFiltersOverlay || !mobileFiltersContainer)
+  if (!mobileFiltersBtn || !mobileFiltersOverlay || !mobileFiltersContainer)
     return;
 
-  // Ouvrir les filtres mobiles
-  mobileFiltesBtn.addEventListener("click", function () {
+  mobileFiltersBtn.addEventListener("click", function () {
     mobileFiltersOverlay.classList.add("active");
     mobileFiltersContainer.classList.add("active");
-    document.body.style.overflow = "hidden"; // Empêcher le défilement
+    document.body.style.overflow = "hidden";
   });
 
-  // Fermer les filtres mobiles
-  function closeMobileFilters() {
+  function closeMobileFiltersInternal() {
+    // Renamed to avoid conflict
     mobileFiltersOverlay.classList.remove("active");
     mobileFiltersContainer.classList.remove("active");
-    document.body.style.overflow = ""; // Activer le défilement
+    document.body.style.overflow = "";
   }
+  // Assign the internal function to the global scope if needed elsewhere, or pass it
+  window.closeMobileFilters = closeMobileFiltersInternal;
 
   if (closeBtn) {
-    closeBtn.addEventListener("click", closeMobileFilters);
+    closeBtn.addEventListener("click", closeMobileFiltersInternal);
   }
-
-  mobileFiltersOverlay.addEventListener("click", closeMobileFilters);
-
-  // Empêcher les clics à l'intérieur du conteneur de fermer
+  mobileFiltersOverlay.addEventListener("click", closeMobileFiltersInternal);
   mobileFiltersContainer.addEventListener("click", function (e) {
     e.stopPropagation();
   });
 
-  // Bouton Appliquer les filtres en vue mobile
-  const applyFiltersBtn = document.querySelector(
-    ".mobile-filters-actions .apply-filters"
-  );
-  if (applyFiltersBtn) {
-    applyFiltersBtn.addEventListener("click", function () {
-      applyFilters();
-      closeMobileFilters();
-    });
-  }
+  // Apply button logic moved to initFilters
 }
 
-// Fonction initAddToCart supprimée car sa logique est maintenant dans initDynamicActions
-
-/**
- * Update cart count in header
- */
-function updateCartCount() {
-  const cartCount = document.querySelector(".cart-count");
-  if (cartCount) {
-    let count = parseInt(cartCount.textContent) || 0;
-    count += 1;
-    cartCount.textContent = count;
-
-    // Ajouter une animation
-    cartCount.classList.add("pulse");
-    setTimeout(() => {
-      cartCount.classList.remove("pulse");
-    }, 500);
-  }
-}
-
-// Fonction showNotification supprimée.
-
-// CSS ajouté dynamiquement supprimé - styles déplacés vers css/pages/products.css
+// Removed redundant/unused functions like updateCartCount, showNotification
