@@ -51,7 +51,9 @@
 }
 
 .auth-footer a {
-  color: var(--color-primary);
+  color: var(
+    --color-accent
+  ); /* Use Terracotta Red for better visibility/theme alignment */
   font-weight: var(--font-weight-medium);
 }
 

@@ -2,28 +2,29 @@
 
 /* Variables CSS pour le Système de Design */
 :root {
-  /* Couleurs */
-  --color-primary: #4a6fa5; /* Bleu profond */
-  --color-primary-light: #6b8cba; /* Bleu plus clair */
-  --color-primary-dark: #385680; /* Bleu plus foncé */
+  /* Couleurs - Nouvelle Palette */
+  --color-primary: #5b3924; /* Deep Walnut Brown */
+  --color-primary-light: #7c5a43; /* Lighter Walnut */
+  --color-primary-dark: #40281a; /* Darker Walnut */
 
-  --color-secondary: #d4a373; /* Beige chaud */
-  --color-secondary-light: #e9d8a6; /* Beige clair */
-  --color-secondary-dark: #bc8a5f; /* Beige foncé */
+  --color-secondary: #eadcc5; /* Warm Beige */
+  --color-secondary-light: #f1e7d7; /* Lighter Beige */
+  --color-secondary-dark: #dccdb3; /* Darker Beige */
 
-  --color-accent: #e76f51; /* Terre cuite */
-  --color-accent-light: #f4a261; /* Orange clair */
-  --color-accent-dark: #cc5a3e; /* Terre cuite foncée */
+  --color-accent: #b65a3a; /* Terracotta Red */
+  --color-accent-light: #d17a5b; /* Lighter Terracotta */
+  --color-accent-dark: #9e472a; /* Darker Terracotta */
 
-  --color-grey-100: #f8f9fa; /* Gris très clair */
-  --color-grey-200: #e9ecef;
-  --color-grey-300: #dee2e6;
-  --color-grey-400: #ced4da;
-  --color-grey-500: #adb5bd;
-  --color-grey-600: #6c757d;
-  --color-grey-700: #495057;
-  --color-grey-800: #343a40;
-  --color-grey-900: #212529; /* Gris très foncé */
+  /* Greys & Neutrals */
+  --color-grey-100: #f5f2ed; /* Soft Cream */
+  --color-grey-200: #e8e4dd; /* Slightly darker cream */
+  --color-grey-300: #d1ccc4; /* Light greyish beige */
+  --color-grey-400: #b8b2a9; /* Medium greyish beige */
+  --color-grey-500: #979189; /* Darker greyish beige */
+  --color-grey-600: #6f879c; /* Dusty Blue (Used as a mid-grey/neutral accent) */
+  --color-grey-700: #5a6c7d; /* Darker Dusty Blue */
+  --color-grey-800: #4a5865; /* Very Dark Dusty Blue */
+  --color-grey-900: #3d3d3d; /* Charcoal Gray (Main Text Color) */
 
   --color-white: #ffffff;
   --color-black: #000000;
@@ -116,8 +117,8 @@ body {
   font-family: var(--font-primary);
   font-size: var(--font-size-base);
   line-height: 1.5;
-  color: var(--color-grey-800);
-  background-color: var(--color-white);
+  color: var(--color-grey-900); /* Use Charcoal Gray for main text */
+  background-color: var(--color-grey-100); /* Use Soft Cream for background */
 }
 
 img {
@@ -147,6 +148,8 @@ textarea,
 select {
   font: inherit;
 }
+
+/* Removed rule applying secondary font to headings */
 
 /* ===== CLASSES UTILITAIRES ===== */
 
@@ -222,10 +225,11 @@ select {
 .btn--primary:focus {
   background-color: var(--color-primary-dark);
   border-color: var(--color-primary-dark);
+  color: var(--color-white); /* Ensure text stays white */
 }
 
 .btn--secondary {
-  color: var(--color-white);
+  color: var(--color-grey-900); /* Dark text on light background */
   background-color: var(--color-secondary);
   border-color: var(--color-secondary);
 }
@@ -234,6 +238,7 @@ select {
 .btn--secondary:focus {
   background-color: var(--color-secondary-dark);
   border-color: var(--color-secondary-dark);
+  color: var(--color-grey-900); /* Dark text on light background */
 }
 
 .btn--accent {
@@ -246,6 +251,7 @@ select {
 .btn--accent:focus {
   background-color: var(--color-accent-dark);
   border-color: var(--color-accent-dark);
+  color: var(--color-white); /* Ensure text stays white */
 }
 
 .btn--outline {
@@ -365,14 +371,20 @@ select {
 }
 
 .logo__text {
-  font-family: var(--font-secondary);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-family: "Modak", cursive; /* Changed font to Modak */
+  font-size: var(--font-size-3xl); /* Increased size for display font */
+  font-weight: var(--font-weight-normal); /* Modak is inherently bold */
   color: var(--color-primary);
+  line-height: 1; /* Adjust line height for display font */
+}
+
+/* Specific color for logo text in the dark footer */
+.footer .logo__text {
+  color: var(--color-secondary); /* Warm Beige for contrast */
 }
 
 .header__nav {
-  margin-left: auto;
+  /* margin-left: auto; Removed to allow space-between distribution */
 }
 
 .nav__list {
@@ -426,9 +438,10 @@ select {
 }
 
 .footer__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-6);
+  display: flex;
+  /* Removed justify-content: space-between; */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: var(--spacing-6); /* Keep the gap for spacing */
   margin-bottom: var(--spacing-6);
 }
 
@@ -441,6 +454,12 @@ select {
 .footer__description {
   margin-bottom: var(--spacing-4);
   color: var(--color-grey-400);
+}
+
+/* Add style for footer columns to take equal space */
+.footer__column {
+  flex: 1; /* Each column takes equal share of available space */
+  min-width: 250px; /* Prevent columns from becoming too narrow before wrapping */
 }
 
 .footer__social {
