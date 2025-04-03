@@ -312,10 +312,10 @@ function initFormSubmission() {
             // Store user info (optional, session cookie handles auth)
             localStorage.setItem(
               "articonnect_user",
-              JSON.stringify(result.user)
+              JSON.stringify({ ...result.user, type: result.user.role }) // Add type field from role
             );
 
-            // Redirect based on role
+            // Redirect based on role (updateHeaderUI will run on the *next* page load)
             if (result.user.role === "artisan") {
               window.location.href = "../artisan/dashboard.html"; // Adjust path if needed
             } else {

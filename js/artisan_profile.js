@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!isArtisanLoggedIn()) {
     // Redirect if not logged in or not an artisan
     // Calculate the correct path to index.html from html/artisan/
-    const indexPath = "../../index.html";
-    window.location.href = indexPath;
+    // const indexPath = "../../index.html"; // Commented out redirect
+    // window.location.href = indexPath; // Commented out redirect
     return; // Stop further execution
   }
 
